@@ -5,7 +5,7 @@ module.exports = {
     await queryInterface.bulkInsert('Users', [{
       firstName: 'Jose',
       lastName: 'Alvarez',
-      email: 'jfilippo04@test.com',
+      email: 'jose@test.com',
       password: '1234',
       roleId: 1,
       image: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
@@ -15,7 +15,7 @@ module.exports = {
     {
       firstName: 'Alberto',
       lastName: 'Rodriguez',
-      email: 'alberto89@test.com',
+      email: 'alberto@test.com',
       password: '7856',
       roleId: 1,
       image: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
@@ -25,7 +25,7 @@ module.exports = {
     {
       firstName: 'Katherine',
       lastName: 'Rodrigo',
-      email: 'katherine58@test.com',
+      email: 'katherine@test.com',
       password: '6492',
       roleId: 1,
       image: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
@@ -35,7 +35,7 @@ module.exports = {
     {
       firstName: 'Cesar',
       lastName: 'Castillo',
-      email: 'cesar06@test.com',
+      email: 'cesar@test.com',
       password: '1534',
       roleId: 1,
       image: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
@@ -45,7 +45,7 @@ module.exports = {
     {
       firstName: 'Israel',
       lastName: 'Salazar',
-      email: 'Israel88@test.com',
+      email: 'Israel@test.com',
       password: '1890',
       roleId: 1,
       image: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
@@ -55,7 +55,7 @@ module.exports = {
     {
       firstName: 'Gorge',
       lastName: 'Silva',
-      email: 'silva@test.com',
+      email: 'gorge@test.com',
       password: '0672',
       roleId: 1,
       image: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
@@ -66,7 +66,7 @@ module.exports = {
       firstName: 'Juan',
       lastName: 'Del mar',
       email: 'juan@test.com',
-      password: '1234',
+      password: '1264',
       roleId: 1,
       image: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
       createdAt: new Date,
@@ -85,8 +85,8 @@ module.exports = {
     {
       firstName: 'Angelica',
       lastName: 'Picasso',
-      email: 'picasso@test.com',
-      password: '1234',
+      email: 'angelica@test.com',
+      password: '1255',
       roleId: 1,
       image: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
       createdAt: new Date,
@@ -156,7 +156,7 @@ module.exports = {
       firstName: 'Osvaldo',
       lastName: 'Perez',
       email: 'osvaldo@test.com',
-      password: '22471',
+      password: '2471',
       roleId: 2,
       image: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
       createdAt: new Date,
