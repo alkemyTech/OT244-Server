@@ -112,6 +112,96 @@ module.exports = {
       createdAt: new Date,
       updatedAt: new Date
     },
+    {
+      firstName: 'Francisco',
+      lastName: 'Alvarado',
+      email: 'francisco@test.com',
+      password: '1789',
+      roleId: 2,
+      image: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
+      createdAt: new Date,
+      updatedAt: new Date
+    },
+    {
+      firstName: 'Pedro',
+      lastName: 'Salazar',
+      email: 'pedro@test.com',
+      password: '4442',
+      roleId: 2,
+      image: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
+      createdAt: new Date,
+      updatedAt: new Date
+    },
+    {
+      firstName: 'Marco',
+      lastName: 'Vasquez',
+      email: 'marco@test.com',
+      password: '5421',
+      roleId: 2,
+      image: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
+      createdAt: new Date,
+      updatedAt: new Date
+    },
+    {
+      firstName: 'Mar',
+      lastName: 'kennedy',
+      email: 'mar@test.com',
+      password: '5461',
+      roleId: 2,
+      image: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
+      createdAt: new Date,
+      updatedAt: new Date
+    },
+    {
+      firstName: 'Osvaldo',
+      lastName: 'Perez',
+      email: 'osvaldo@test.com',
+      password: '22471',
+      roleId: 2,
+      image: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
+      createdAt: new Date,
+      updatedAt: new Date
+    },
+    {
+      firstName: 'Lion',
+      lastName: 'Magallanes',
+      email: 'lion@test.com',
+      password: '5471',
+      roleId: 2,
+      image: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
+      createdAt: new Date,
+      updatedAt: new Date
+    },
+    {
+      firstName: 'Francesca',
+      lastName: 'Salas',
+      email: 'francesca@test.com',
+      password: '5671',
+      roleId: 2,
+      image: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
+      createdAt: new Date,
+      updatedAt: new Date
+    },
+    {
+      firstName: 'Luz',
+      lastName: 'Turin',
+      email: 'luz@test.com',
+      password: '0909',
+      roleId: 2,
+      image: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
+      createdAt: new Date,
+      updatedAt: new Date
+    },
+    {
+      firstName: 'Marco',
+      lastName: 'Perez',
+      email: 'marco@test.com',
+      password: '0308',
+      roleId: 2,
+      image: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
+      createdAt: new Date,
+      updatedAt: new Date
+    },
   ], {});
   },
 
