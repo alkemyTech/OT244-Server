@@ -10,12 +10,15 @@
     "cors": "^2.8.5",
     "debug": "~2.6.9",
     "dotenv": "^8.2.0",
+    "bcrypt": "^5.0.1",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
     "mysql2": "^2.2.3",
-    "sequelize": "^6.3.5"
+    "sequelize": "^6.3.5",
+    "express-validator": "^6.11.1"
+
   },
   "devDependencies": {
     "sequelize-cli": "^6.2.0"
