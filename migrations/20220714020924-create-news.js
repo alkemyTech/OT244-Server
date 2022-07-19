@@ -22,7 +22,15 @@ module.exports = {
       },
       categoryId: {
         type: Sequelize.INTEGER,
-        references: {model: 'category', key: 'id'}
+        references: {
+          model: 'Category',
+          key: 'id',
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL'
+      },
+      deletedAt: {
+        type: Sequelize.DATE
       },
       createdAt: {
         allowNull: false,
