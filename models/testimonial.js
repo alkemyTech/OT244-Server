@@ -11,12 +11,6 @@ module.exports = (sequelize, DataTypes) => {
   }
   Testimonial.init(
     {
-      id: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
-        primaryKey: true,
-        allowNull: false,
-      },
       name: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -34,7 +28,6 @@ module.exports = (sequelize, DataTypes) => {
       sequelize,
       modelName: "Testimonial",
       paranoid: true,
-      deletedAt: "destroyTime",
     }
   );
   return Testimonial;

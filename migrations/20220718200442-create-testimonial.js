@@ -13,7 +13,7 @@ module.exports = {
         allowNull: false,
       },
       image: {
-        type: SequetrueSTRING,
+        type: Sequelize.STRING,
         allowNull: true,
       },
       content: {
