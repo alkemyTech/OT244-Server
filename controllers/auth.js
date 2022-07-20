@@ -1,5 +1,6 @@
 const { User } = require("../models");
 const bcrypt = require("bcrypt");
+
 const saltRounds = 10;
 
 async function createUser(request, response) {
