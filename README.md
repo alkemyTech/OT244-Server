@@ -29,27 +29,27 @@ npm start
 ## user admin
 
 ## firstName  - lastName  - email              - password
-01) Jose      - Alvarez   - jose@test.com      - 1234
-02) Alberto   - Rodriguez - alberto@test.com   - 7846
-03) katherine - Rodrigo   - katherine@test.com - 6492
-04) Cesar     - Castillo  - cesar@test.com     - 1534
-05) Israel    - Salazar   - salazar@test.com   - 1890
-06) Gorge     - Silva     - gorge@test.com     - 0672
-08) Juan      - Del mar   - juan@test.com      - 1264
-08) Jessica   - Martinez  - jessica@test.com   - 9987
-09) Angelica  - picasso   - angelica@test.com  - 1255
-10) Albert    - Del mar   - albert@test.com    - 8971
+01) Jose      - Alvarez   - jose@test.com      - admin
+02) Alberto   - Rodriguez - alberto@test.com   - admin
+03) katherine - Rodrigo   - katherine@test.com - admin
+04) Cesar     - Castillo  - cesar@test.com     - admin
+05) Israel    - Salazar   - salazar@test.com   - admin
+06) Gorge     - Silva     - gorge@test.com     - admin
+08) Juan      - Del mar   - juan@test.com      - admin
+08) Jessica   - Martinez  - jessica@test.com   - admin
+09) Angelica  - picasso   - angelica@test.com  - admin
+10) Albert    - Del mar   - albert@test.com    - admin
 
 ## user standard
 
 ## firstName  - lastName   - email              - password
-01) Max       - Gutierrez  - max@test.com       - 5471
-02) Francisco - Alvarado   - francisco@test.com - 1789
-03) Pedro     - Salazar    - pedro@test.com     - 4442
-04) Marco     - Vazquez    - marco@test.com     - 5421
-05) Mar       - Kennedy    - mar@test.com       - 5461
-06) Osvaldo   - Perez      - osvaldo@test.com   - 2471
-07) Lion      - Magallanes - lion.com           - 5471
-08) Francesca - Salas      - francesca@test.com - 5671
-09) Luz       - Turin      - luz@test.com       - 0909
-10) Marco     - Perez      - marco@test.com     - 0308
+01) Max       - Gutierrez  - max@test.com       - standard
+02) Francisco - Alvarado   - francisco@test.com - standard
+03) Pedro     - Salazar    - pedro@test.com     - standard
+04) Marco     - Vazquez    - marco@test.com     - standard
+05) Mar       - Kennedy    - mar@test.com       - standard
+06) Osvaldo   - Perez      - osvaldo@test.com   - standard
+07) Lion      - Magallanes - lion.com           - standard
+08) Francesca - Salas      - francesca@test.com - standard
+09) Luz       - Turin      - luz@test.com       - standard
+10) Marco     - Perez      - marco@test.com     - standard
