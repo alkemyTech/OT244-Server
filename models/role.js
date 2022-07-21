@@ -12,11 +12,6 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Role.init({
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      autoIncrement: true
-    },
     name: {
       type: DataTypes.VARCHAR,
       allowNull: false
@@ -25,9 +20,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.VARCHAR,
       allowNull: true
     },
-  }, { timestamps:true},{
+  }, {   
     sequelize,
     modelName: 'Role',
+    timestamps: true,
     paranoid: true
   });
   return Role;
