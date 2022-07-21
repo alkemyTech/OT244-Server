@@ -14,11 +14,6 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Activities.init({
-    id:{ 
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      autoIncrement: true,
-    },
     name: { 
       type:DataTypes.VARCHAR,
       allowNull: false,
