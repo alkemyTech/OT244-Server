@@ -9,7 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
-        type: Sequelize.VARCHAR,
+        type: Sequelize.STRING,
         allowNull: false
       },
       content: {
@@ -17,7 +17,7 @@ module.exports = {
         allowNull: false
       },
       image: {
-        type: Sequelize.VARCHAR,
+        type: Sequelize.STRING,
         allowNull: false
       },
       createdAt: {
