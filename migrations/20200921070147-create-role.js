@@ -10,10 +10,10 @@ module.exports = {
       },
       name: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.VARCHAR
       },
       description: {
-        type: Sequelize.STRING
+        type: Sequelize.VARCHAR
       },
       deletedAt: {
         type: Sequelize.DATE
