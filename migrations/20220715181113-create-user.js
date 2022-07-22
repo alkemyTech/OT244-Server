@@ -9,28 +9,36 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       firstName: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       lastName: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       email: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true
       },
       password: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
-      image: {
+      photo: {
         type: Sequelize.STRING
       },
       roleId: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Roles',
-          key: 'id',
+          model: 'Role',
+          key: 'id'
         },
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL'
+      },
+      updatedAt: {
+        type: Sequelize.DATE
       },
       deletedAt: {
         type: Sequelize.DATE
@@ -39,10 +47,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
     });
   },
   down: async (queryInterface, Sequelize) => {
