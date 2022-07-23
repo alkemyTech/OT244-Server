@@ -17,3 +17,11 @@ const update = (req, res) => {
 const deleteOrg = (req, res) => {
     //delete 
 };
+
+module.exports = {
+    get,
+    getById,
+    create,
+    update,
+    deleteOrg,
+}

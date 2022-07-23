@@ -1,16 +1,15 @@
 const { User } = require("../models");
 const bcrypt = require("bcrypt");
-
-const saltRounds = 10;
+const auth = require('../config/auth')
 
 async function createUser(request, response) {
   try {
-    const { name, password, email, lastname } = request.body;
-    const passwordHash = await bcrypt.hash(password, saltRounds);
+    const { firstName, lastName, email, password} = request.body;
+    const passwordHash = await bcrypt.hash(password, Number(auth.rounds));
 
     const [user, created] = await User.findOrCreate({
       where: { email },
-      defaults: { lastname, name, password: passwordHash },
+      defaults: { firstName, lastName, password: passwordHash },
     });
 
     if (created) {
