@@ -14,18 +14,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Activities.init({
-    name: { 
-      type:DataTypes.VARCHAR,
-      allowNull: false,
-    },
-    content: { 
-      type:DataTypes.TEXT,
-      allowNull: false
-    },
-    image: {
-      type: DataTypes.VARCHAR,
-      allowNull: false,
-    },
+    name: DataTypes.STRING,
+    content: DataTypes.TEXT,
+    image: DataTypes.STRING
   }, {
     sequelize,
     paranoid:true, // soft delete

@@ -9,20 +9,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {}
   }
-  Testimonial.init(
-    {
-      name: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      image: {
-        type: DataTypes.STRING,
-        allowNull: true,
-      },
-      content: {
-        type: DataTypes.STRING,
-        allowNull: true,
-      },
+  Testimonial.init({
+    name: DataTypes.STRING,
+    image: DataTypes.STRING,
+    content: DataTypes.TEXT,
     },
     {
       sequelize,
