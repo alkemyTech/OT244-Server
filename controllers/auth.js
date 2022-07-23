@@ -1,6 +1,7 @@
 const { User } = require("../models");
 const bcrypt = require("bcrypt");
 const auth = require('../config/auth')
+const transporter = require('../config/mailer')
 
 async function createUser(request, response) {
   try {
@@ -10,9 +11,17 @@ async function createUser(request, response) {
     const [user, created] = await User.findOrCreate({
       where: { email },
       defaults: { firstName, lastName, password: passwordHash },
-    });
+    })
 
     if (created) {
+      await transporter.sendMail({
+        from: '"OT244 #DarkCode 👻" <foo@example.com>', // sender address
+        to: email, // list of receivers
+        subject: "You have successfully registered", // Subject line
+        text: `Welcome ${firstName} ${lastName}`, // plain text body
+      })
+      .then(() => console.log('Email sent'))
+      .catch(() => console.log('Email sent failed '))
       return response.status(201).json(user);
     }
     return response
