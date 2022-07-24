@@ -8,22 +8,21 @@ const addActivity = async ( req, res = response ) => {
         const activitie = await Activities.create({
             name: name,
             content: content,
-            image: image,
-            createAt: new Date()
+            image: image
         })
         if( !activitie ){
             return res.status(400).json({
-                msg: 'Algo ha ido mal! Verifica los campos de la actividad'
+                msg: 'Ups! Please Check the fields'
             })
         }
         return res.status(201).json({
-            msg: 'Actividad creada con éxito!',
+            msg: 'Activity created successfully',
             activitie
         })
     }catch( error ){
         console.log( error );
         return res.status(500).json({
-            msg: 'Error en el servidor'
+            msg: 'Please contact to support'
         })
     }
 };
