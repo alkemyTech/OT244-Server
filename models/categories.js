@@ -20,6 +20,9 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Categories',
+    paranoid:true, // soft delete
+    deletedAt: 'deletedAt',
+    timestamps: true,
   });
   return Categories;
 };
