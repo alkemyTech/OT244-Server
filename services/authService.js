@@ -14,7 +14,7 @@ const login = async(email, password) => {
         }
 
         //Validación de usuario habilitado
-        if(!user.enable){
+        if(!user){
             throw new AppError('Authentication failed! User disabled.', 401);
         }
 
@@ -24,11 +24,8 @@ const login = async(email, password) => {
             throw new AppError('Authentication failed! Email / password does not correct.', 401);
         }
 
-        //Generar JWT
-        const token = _encrypt(user.id);
-
         return {
-            token,
+
             user: user.name,
             role: user.role
         }
