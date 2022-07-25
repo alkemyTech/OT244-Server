@@ -1,9 +1,13 @@
 const {Category} = require("../models")
 async function createCategory(req, res) {
   try {
-    const { name } = req.body;
+    const { name,image, description } = req.body;
 
-    const newCategory = await Category.create({ name });
+    const newCategory = await Category.create({
+      name,
+      image,
+      description
+    });
     const data = { msg: "Category created successfully", newCategory };
 
     res.status(201).json(data);
