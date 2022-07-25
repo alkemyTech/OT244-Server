@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const { User } = require('../models/user');
 
 const validateToken = (req, res, next) => {
 
@@ -20,6 +21,27 @@ const validateToken = (req, res, next) => {
         return res.status(401).json({
             msg: 'Invalid token'
         });
+    }
+
+    //Adding jsonwebtoken decode 
+
+    try {
+        const decoded = jwt.decode(token);
+        const user = await User.findByPk(decoded.id);
+
+        if (!user) {
+            return res.status(403).json({
+                msg: 'Access denied'
+            });
+        }
+
+        // Role validation goes here or in another middleware file
+
+        next();
+
+    } catch (error) {
+        console.log(error);
+        return res.json(404)
     }
 };
 
