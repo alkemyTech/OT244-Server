@@ -1,12 +1,35 @@
-async function createTestimonial(request, response) {}
+const {Testimonial} = require('../models/testimonial');
 
-async function getAllTestimonials(request, response) {}
+const createTestimonial = async (req, res) => {
 
-async function getByIdTestimonial(request, response) {}
+  const { name, content, image } = req.body;
 
-async function deleteByIdTestimonial(request, response) {}
+  try {
+    await Testimonial.create({
+      name,
+      content,
+      image
+    });
 
-async function putByIdTestimonial(request, response) {}
+    res.status(201).json({
+      msg: 'Testimonial created successfully'
+    });
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      msg: 'Error creating testimonial'
+    });
+  }
+};
+
+async function getAllTestimonials(request, response) { }
+
+async function getByIdTestimonial(request, response) { }
+
+async function deleteByIdTestimonial(request, response) { }
+
+async function putByIdTestimonial(request, response) { }
 
 module.exports = {
   createTestimonial,
