@@ -5,9 +5,9 @@ const { bodyFieldsCreateActivity, validateFieldsCreateActivity } = require("../m
 const router = express.Router();
 
 router.post( "/", [
+    checkAdmin,
     bodyFieldsCreateActivity,
-    validateFieldsCreateActivity,
-    checkAdmin
+    validateFieldsCreateActivity    
 ], addActivity );
 
 module.exports = router;
