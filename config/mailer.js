@@ -12,7 +12,5 @@ const transporter = nodemailer.createTransport({
 });
 
 transporter.verify()
-.then(() => console.log ('Ready for send emails'))
-.catch(() => console.log('Connection nodeMailer failed'))
 
 module.exports = transporter
