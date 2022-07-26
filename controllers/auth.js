@@ -1,7 +1,6 @@
 const { User } = require("../models");
 const bcrypt = require("bcrypt");
 const auth = require('../config/auth')
-const transporter = require('../config/mailer')
 
 async function createUser(request, response) {
   try {
@@ -11,7 +10,7 @@ async function createUser(request, response) {
     const [user, created] = await User.findOrCreate({
       where: { email },
       defaults: { firstName, lastName, password: passwordHash },
-    })
+    });
     
     if (created) {
       return response.status(201).json(user);
