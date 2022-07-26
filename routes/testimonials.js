@@ -4,6 +4,11 @@ const { bodyFields, fieldsValidation } = require('../middlewares/testimonials-va
 
 const router = Router();
 
-router.post('/', bodyFields, fieldsValidation, createTestimonial);
+router.post('/', bodyFields,
+
+    // Add checkAdmin middleware to validate if the user is admin and can access this function
+
+    fieldsValidation,
+    createTestimonial);
 
 module.exports = router;
