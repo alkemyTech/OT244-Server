@@ -1,15 +1,23 @@
 const { User } = require("../models");
 const bcrypt = require("bcrypt");
 const auth = require('../config/auth')
-const transporter = require('../config/mailer')
 const ejs = require('ejs')
 const path = require('path')
+
+const sentEmail = async (email) => {
+  const data = await ejs.renderFile(`${path.join(__dirname, '../views/plantilla-email.ejs')}`)
+  await transporter.sendMail({
+    from: '"OT244 #DarkCode 👻" <foo@example.com>', // sender address
+    to: email, // list of receivers
+    subject: "Somos Más", // Subject line
+    html: data // HTML 
+  })
+}
 
 async function createUser(request, response) {
   try {
     const { firstName, lastName, email, password} = request.body;
     const passwordHash = await bcrypt.hash(password, Number(auth.rounds));
-    const data = await ejs.renderFile(`${path.join(__dirname, '../views/email.ejs')}`)
 
     const [user, created] = await User.findOrCreate({
       where: { email },
@@ -17,14 +25,7 @@ async function createUser(request, response) {
     })
     
     if (created) {
-      await transporter.sendMail({
-        from: '"OT244 #DarkCode 👻" <foo@example.com>', // sender address
-        to: email, // list of receivers
-        subject: "Somos Más", // Subject line
-        html: data // HTML 
-      })
-      .then(() => console.log('Email sent'))
-      .catch(() => console.log('Email sent failed '))
+      sentEmail(email)
       return response.status(201).json(user);
     }
     return response
