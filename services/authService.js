@@ -13,11 +13,6 @@ const login = async(email, password) => {
             throw new AppError('Authentication failed! Email / password does not correct.', 401);
         }
 
-        //Validación de usuario habilitado
-        if(!user){
-            throw new AppError('Authentication failed! User disabled.', 401);
-        }
-
         //Validación de password
         const validPassword = await bcrypt.compare(password, user.password);
         if(!validPassword) {
