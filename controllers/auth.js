@@ -4,12 +4,12 @@ const auth = require('../config/auth')
 const ejs = require('ejs')
 const path = require('path');
 const sendEmail = require("../helpers/mailer");
-const data = await ejs.renderFile(`${path.join(__dirname, '../views/plantilla-email.ejs')}`)
 
 async function createUser(request, response) {
   try {
     const { firstName, lastName, email, password} = request.body;
     const passwordHash = await bcrypt.hash(password, Number(auth.rounds));
+    const data = await ejs.renderFile(`${path.join(__dirname, '../views/plantilla-email.ejs')}`)
 
     const [user, created] = await User.findOrCreate({
       where: { email },
