@@ -7,7 +7,7 @@ const userService = require('./userService');
 const login = async(email, password) => {
     try {
         //Validación de email
-        const user = await userService.findbyEmail(email);
+        const user = await userService.findByEmail(email);
 
         if(!user){
             throw new AppError('Authentication failed! Email / password does not correct.', 401);
@@ -20,7 +20,6 @@ const login = async(email, password) => {
         }
 
         return {
-
             user: user.name,
             role: user.role
         }
