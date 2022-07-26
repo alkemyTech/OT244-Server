@@ -11,7 +11,7 @@ async function createUser(request, response) {
       where: { email },
       defaults: { firstName, lastName, password: passwordHash },
     });
-    
+
     if (created) {
       return response.status(201).json(user);
     }
