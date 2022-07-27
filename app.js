@@ -10,9 +10,9 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const newsRouter = require('./routes/news');
 const authRouter = require('./routes/auth');
+const membersRouter = require('./routes/members');
 const categoryRouter = require('./routes/category');
 const routerActivities = require('./routes/activities');
-
 
 const app = express();
 app.use(cors());
@@ -33,6 +33,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/news', newsRouter);
 app.use('/auth', authRouter);
+app.use('/members', membersRouter);
 app.use('/categories', categoryRouter);
 app.use('/activities', routerActivities)
 
