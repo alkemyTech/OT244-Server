@@ -2,8 +2,6 @@ const bcrypt = require('bcrypt');
 const AppError = require('../errors/appErrors');
 const userService = require('./userService');
 
-
-
 const login = async(email, password) => {
     try {
         //Validación de email
@@ -20,8 +18,8 @@ const login = async(email, password) => {
         }
 
         return {
-            user: user.name,
-            role: user.role
+            user: user.lastName,
+            role: user.roleId
         }
 
     }catch(error) {
