@@ -18,8 +18,8 @@ const login = async(email, password) => {
         }
 
         return {
-            user: user.name,
-            role: user.role
+            user: user.lastName,
+            role: user.roleId
         }
 
     }catch(error) {
