@@ -1,4 +1,5 @@
 const {Category} = require("../models")
+
 async function createCategory(req, res) {
   try {
     const { name,image, description } = req.body;

@@ -1,4 +1,5 @@
 const { News } = require("../models");
+
 async function createNews(req, res) {
   try {
     const { name, content, image } = req.body;
