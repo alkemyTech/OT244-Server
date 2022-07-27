@@ -14,7 +14,7 @@ module.exports = {
       email: 'jose@test.com',
       password: admin,
       roleId: 1,
-      image: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
+      photo: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
       createdAt: new Date,
       updatedAt: new Date
     },
@@ -24,7 +24,7 @@ module.exports = {
       email: 'alberto@test.com',
       password: admin,
       roleId: 1,
-      image: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
+      photo: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
       createdAt: new Date,
       updatedAt: new Date
     },
@@ -34,7 +34,7 @@ module.exports = {
       email: 'katherine@test.com',
       password: admin,
       roleId: 1,
-      image: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
+      photo: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
       createdAt: new Date,
       updatedAt: new Date
     },
@@ -44,7 +44,7 @@ module.exports = {
       email: 'cesar@test.com',
       password: admin,
       roleId: 1,
-      image: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
+      photo: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
       createdAt: new Date,
       updatedAt: new Date
     },
@@ -54,7 +54,7 @@ module.exports = {
       email: 'Israel@test.com',
       password: admin,
       roleId: 1,
-      image: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
+      photo: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
       createdAt: new Date,
       updatedAt: new Date
     },
@@ -64,7 +64,7 @@ module.exports = {
       email: 'gorge@test.com',
       password: admin,
       roleId: 1,
-      image: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
+      photo: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
       createdAt: new Date,
       updatedAt: new Date
     },
@@ -74,7 +74,7 @@ module.exports = {
       email: 'juan@test.com',
       password: admin,
       roleId: 1,
-      image: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
+      photo: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
       createdAt: new Date,
       updatedAt: new Date
     },
@@ -84,7 +84,7 @@ module.exports = {
       email: 'jessica@test.com',
       password: admin,
       roleId: 1,
-      image: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
+      photo: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
       createdAt: new Date,
       updatedAt: new Date
     },
@@ -94,7 +94,7 @@ module.exports = {
       email: 'angelica@test.com',
       password: admin,
       roleId: 1,
-      image: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
+      photo: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
       createdAt: new Date,
       updatedAt: new Date
     },
@@ -104,7 +104,7 @@ module.exports = {
       email: 'albert@test.com',
       password: admin,
       roleId: 1,
-      image: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
+      photo: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
       createdAt: new Date,
       updatedAt: new Date
     },
@@ -114,7 +114,7 @@ module.exports = {
       email: 'max@test.com',
       password: standard,
       roleId: 2,
-      image: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
+      photo: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
       createdAt: new Date,
       updatedAt: new Date
     },
@@ -124,7 +124,7 @@ module.exports = {
       email: 'francisco@test.com',
       password: standard,
       roleId: 2,
-      image: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
+      photo: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
       createdAt: new Date,
       updatedAt: new Date
     },
@@ -134,7 +134,7 @@ module.exports = {
       email: 'pedro@test.com',
       password: standard,
       roleId: 2,
-      image: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
+      photo: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
       createdAt: new Date,
       updatedAt: new Date
     },
@@ -144,7 +144,7 @@ module.exports = {
       email: 'marco@test.com',
       password: standard,
       roleId: 2,
-      image: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
+      photo: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
       createdAt: new Date,
       updatedAt: new Date
     },
@@ -154,7 +154,7 @@ module.exports = {
       email: 'mar@test.com',
       password: standard,
       roleId: 2,
-      image: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
+      photo: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
       createdAt: new Date,
       updatedAt: new Date
     },
@@ -164,7 +164,7 @@ module.exports = {
       email: 'osvaldo@test.com',
       password: standard,
       roleId: 2,
-      image: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
+      photo: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
       createdAt: new Date,
       updatedAt: new Date
     },
@@ -174,7 +174,7 @@ module.exports = {
       email: 'lion@test.com',
       password: standard,
       roleId: 2,
-      image: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
+      photo: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
       createdAt: new Date,
       updatedAt: new Date
     },
@@ -184,7 +184,7 @@ module.exports = {
       email: 'francesca@test.com',
       password: standard,
       roleId: 2,
-      image: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
+      photo: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
       createdAt: new Date,
       updatedAt: new Date
     },
@@ -194,20 +194,20 @@ module.exports = {
       email: 'luz@test.com',
       password: standard,
       roleId: 2,
-      image: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
+      photo: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
       createdAt: new Date,
       updatedAt: new Date
     },
     {
-      firstName: 'Marco',
+      firstName: 'Maximilian',
       lastName: 'Perez',
-      email: 'marco@test.com',
+      email: 'maximilian@test.com',
       password: standard,
       roleId: 2,
-      image: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
+      photo: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
       createdAt: new Date,
       updatedAt: new Date
-    },
+    }
   ], {});
   },
 

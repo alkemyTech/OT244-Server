@@ -12,50 +12,13 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Organization.init({
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      autoIncrement: true
-    },
-
-    name: {
-      type: DataTypes.VARCHAR,
-      allowNull: false
-    },
-
-    image: {
-      type: DataTypes.VARCHAR,
-      allowNull: false
-    },
-
-    address: {
-      type: DataTypes.VARCHAR,
-      allowNull: true
-    },
-
-    phone: {
-      type: DataTypes.INTEGER,
-      allowNull: true
-    },
-
-    email: {
-      type: DataTypes.VARCHAR,
-      allowNull: false
-    },
-
-    welcomeText: {
-      type: DataTypes.TEXT,
-      allowNull: false
-    },
-
-    aboutUsText: {
-      type: DataTypes.TEXT,
-      allowNull: true
-    },
-
-    deletedAt: {
-      type: DataTypes.DATE
-    },
+    name: DataTypes.STRING,
+    image: DataTypes.STRING,
+    address: DataTypes.STRING,
+    phone: DataTypes.INTEGER,
+    email: DataTypes.STRING,
+    welcomeText: DataTypes.TEXT,
+    aboutUsText:  DataTypes.TEXT,
   },
     {
       sequelize,
