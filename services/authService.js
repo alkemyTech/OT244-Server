@@ -2,8 +2,6 @@ const bcrypt = require('bcrypt');
 const AppError = require('../errors/appErrors');
 const userService = require('./userService');
 
-
-
 const login = async(email, password) => {
     try {
         //Validación de email
