@@ -1,9 +1,23 @@
+const express = require('express');
+const { request, response } = require('express');
+const authService = require('../services/authService');
 const { User } = require("../models");
 const bcrypt = require("bcrypt");
 const auth = require('../config/auth')
 const ejs = require('ejs')
 const path = require('path');
 const sendEmail = require("../helpers/mailer");
+
+const login = async(req = request, res = response, next) => {
+
+    const {email, password} = req.body;
+    try{
+        res.json(await authService.login(email, password));
+
+    }catch(error) {
+        next(error);
+    }
+}
 
 async function createUser(request, response) {
   try {
@@ -30,5 +44,6 @@ async function createUser(request, response) {
 }
 
 module.exports = {
-  createUser,
-};
+    login,
+    createUser
+}
