@@ -42,14 +42,14 @@ npm start
 
 ## user standard
 
-## firstName  - lastName   - email              - password
-01) Max       - Gutierrez  - max@test.com       - standard
-02) Francisco - Alvarado   - francisco@test.com - standard
-03) Pedro     - Salazar    - pedro@test.com     - standard
-04) Marco     - Vazquez    - marco@test.com     - standard
-05) Mar       - Kennedy    - mar@test.com       - standard
-06) Osvaldo   - Perez      - osvaldo@test.com   - standard
-07) Lion      - Magallanes - lion.com           - standard
-08) Francesca - Salas      - francesca@test.com - standard
-09) Luz       - Turin      - luz@test.com       - standard
-10) Marco     - Perez      - marco@test.com     - standard
+## firstName   - lastName   - email               - password
+01) Max        - Gutierrez  - max@test.com        - standard
+02) Francisco  - Alvarado   - francisco@test.com  - standard
+03) Pedro      - Salazar    - pedro@test.com      - standard
+04) Marco      - Vazquez    - marco@test.com      - standard
+05) Mar        - Kennedy    - mar@test.com        - standard
+06) Osvaldo    - Perez      - osvaldo@test.com    - standard
+07) Lion       - Magallanes - lion.com            - standard
+08) Francesca  - Salas      - francesca@test.com  - standard
+09) Luz        - Turin      - luz@test.com        - standard
+10) Maximilian - Perez      - maximilian@test.com - standard
