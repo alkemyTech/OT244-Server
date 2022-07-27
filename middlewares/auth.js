@@ -10,15 +10,14 @@ const _passwordRequired = check('password', 'Password required').not().isEmpty()
 const postLoginRequestValidations = [
     _emailRequired,
     _emailValid,
-    _passwordRequired,
-    validResult
+    _passwordRequired
 ]
 
 
 const validResult = (req, res, next) => {
     const errors = validationResult(req);
     if(!errors.isEmpty()){
-        throw new AppError('Validarion Errors', 400, errors.errors);
+        return res.status(400).json({ errors: errors.array()});
     }
     next();
 }
@@ -26,4 +25,5 @@ const validResult = (req, res, next) => {
 
 module.exports = {
     postLoginRequestValidations,
+    validResult
 }
