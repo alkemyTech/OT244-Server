@@ -1,5 +1,7 @@
 const {Categories} = require("../models")
 
+const getCategories = async (req,res) => {}
+
 async function createCategory(req, res) {
   try {
     const { name,image, description } = req.body;
@@ -18,4 +20,7 @@ async function createCategory(req, res) {
   }
 }
 
-module.exports = { createCategory };
+module.exports = {
+  createCategory,
+  getCategories,
+};
