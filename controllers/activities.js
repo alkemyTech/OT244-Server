@@ -2,6 +2,7 @@ const { response } = require( "express" );
 const { Activities } = require("../models");
 
 const getActivities = async ( req, res ) => {};
+
 const addActivity = async ( req, res = response ) => {
     const { name, content, image } = req.body;
     try{        
