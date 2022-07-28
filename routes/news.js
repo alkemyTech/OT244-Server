@@ -1,6 +1,5 @@
 const express = require("express");
 const { createNews } = require("../controllers/news");
-const checkAdmin = require("../middlewares/checkAdmin");
 const {
   bodyFieldsCreateNews,
   validateFieldsCreateNews,
@@ -11,7 +10,7 @@ const router = express.Router();
 
 router.post(
   "/",
-  checkAdmin,
+  /* verifyAdmin, */
   bodyFieldsCreateNews,
   validateFieldsCreateNews,
   createNews
