@@ -12,7 +12,7 @@ const newsRouter = require('./routes/news');
 const authRouter = require('./routes/auth');
 const testimonialRouter = require('./routes/testimonials');
 const membersRouter = require('./routes/members');
-const categoryRouter = require('./routes/category');
+const categoryRouter = require('./routes/categories');
 const routerActivities = require('./routes/activities');
 
 const app = express();

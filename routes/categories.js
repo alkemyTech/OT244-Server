@@ -1,6 +1,6 @@
 const express = require("express");
-const { createCategory } = require("../controllers/category");
-const bodyFieldsCreateCategory = require("../middlewares/validateCreateCategory");
+const { createCategory } = require("../controllers/categories");
+const bodyFieldsCreateCategory = require("../middlewares/validateCreateCategories");
 const { validateFields } = require("../middlewares/validateCreateUser");
 const router = express.Router();
 
@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.post(
   "/",
-  /* checkAdmin, */
+  /* verifyAdmin, */
   bodyFieldsCreateCategory,
   validateFields,
   createCategory
