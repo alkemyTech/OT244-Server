@@ -1,7 +1,7 @@
 const express = require("express");
 const validationResult = require('../middlewares/validationResult')
 const { categories } = require("../middlewares/validationBody");
-const { createCategory } = require("../controllers/categories");
+const { createCategory, updateCategory } = require("../controllers/categories");
 const router = express.Router();
 
 // POST create category

@@ -18,4 +18,34 @@ async function createCategory(req, res) {
   }
 }
 
-module.exports = { createCategory };
+const updateCategory = async (req, res, next) => {
+
+  const { id } = req.params;
+  const { name, image, description } = req.body;
+
+  try {
+
+    const category = await Categories.findByPk(id);
+
+    if (!category) {
+      return res.status(404).json({
+        msg: 'Category not found'
+      });
+    }
+
+    await category.update({
+      name,
+      image,
+      description
+    });
+
+    return res.status(201).json({
+      msg: 'Category updated successfully'
+    });
+
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { createCategory, updateCategory };
