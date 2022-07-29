@@ -1,15 +1,9 @@
-const { Router } = require('express');
+const express = require( "express" );
+const { testimonials } = require('../middlewares/validationBody');
 const { createTestimonial } = require('../controllers/testimonial');
-const { bodyFields, fieldsValidation } = require('../middlewares/testimonials-validation');
+const validationResult = require('../middlewares/validationResult')
+const router = express.Router();
 
-const router = Router();
-
-router.post('/',
-
-    // Add checkAdmin middleware to validate if the user is admin and can access this function
-
-    bodyFields,
-    fieldsValidation,
-    createTestimonial);
+router.post('/', /* verifyAdmin */ testimonials, validationResult, createTestimonial);
 
 module.exports = router;

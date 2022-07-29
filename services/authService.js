@@ -18,7 +18,7 @@ const login = async(email, password) => {
         }
 
         return {
-            user: user.lastName,
+            user: user.firstName,
             role: user.roleId
         }
 
