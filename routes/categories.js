@@ -10,7 +10,7 @@ router.post("/", /* verifyAdmin, */ categories, validationResult, createCategory
 
 router.put('/:id',
   /* verifyAdmin */
-  validateFields,
+  validationResult,
   updateCategory);
 
 module.exports = router;
