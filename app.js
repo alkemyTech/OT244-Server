@@ -6,14 +6,7 @@ const logger = require('morgan');
 const cors = require('cors');
 require('dotenv').config();
 
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
-const newsRouter = require('./routes/news');
-const authRouter = require('./routes/auth');
-const testimonialRouter = require('./routes/testimonials');
-const membersRouter = require('./routes/members');
-const categoryRouter = require('./routes/categories');
-const routerActivities = require('./routes/activities');
+const index = require ('./routes');
 
 const app = express();
 app.use(cors());
@@ -30,16 +23,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/news', newsRouter);
-app.use('/auth', authRouter);
-app.use('/testimonials', testimonialRouter);
-app.use('/members', membersRouter);
-app.use('/categories', categoryRouter);
-app.use('/activities', routerActivities)
+app.use(index);
 
 // catch 404 and forward to error handler
+
 app.use(function (req, res, next) {
   next(createError(404));
 });
