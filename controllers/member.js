@@ -18,10 +18,21 @@ const createMember = async (req,res) => {
             image,
             description
         })
-        res.status(201).json(member)
+        res.status(201)
     } catch (error) {
         res.status(500).json({ message: error.message })
     }
 }
 
-module.exports = {createMember}
+const deleteMember = async (req,res) => {
+    const { id } = req.params;
+    try{
+        await Member.destroy({ where: { id } });
+        res.sendStatus(204);
+    }
+    catch(error){
+        res.status(500).json({ message: error.message });
+    }    
+}
+
+module.exports = {createMember, deleteMember}
