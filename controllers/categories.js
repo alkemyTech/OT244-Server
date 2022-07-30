@@ -1,3 +1,4 @@
+const { request, response } = require("express");
 const {Categories} = require("../models")
 
 async function createCategory(req, res) {
@@ -18,4 +19,30 @@ async function createCategory(req, res) {
   }
 }
 
-module.exports = { createCategory };
+const getCategoryById = async(req = request, res = response, next) => {
+  const id = req.params.id
+  try{
+    const category = await Categories.findOne({
+      where: { id },
+      attributes: {
+        exclude: [ 'id', 'deletedAt', 'createdAt', 'updatedAt' ]
+      }     
+    })
+    if(category){
+      return res.json({
+        category
+      })
+    }else{
+      res.status(404).json({
+        msg: "This category doesnt exist!"
+      });
+    }
+  }catch(error){
+    next(error)
+  }
+}
+
+module.exports = { 
+  createCategory,
+  getCategoryById
+};
