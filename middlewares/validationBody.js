@@ -39,9 +39,9 @@ const testimonials = [
 ];
 
 const bodyUpdateDataUser = [
-  body("firstName", "Enter a valid name!").isString().isLength({min:3}).escape(),
-  body("lastName", "Enter a valid lastName!").isString().isLength({min:3}).escape(),
-  body("photo", "Enter a valid URL photo!").isString().isLength({min:10}).escape(),
+  body("firstName", "Enter a valid name!").isString().isLength({min:3}).escape().optional({nullable:true}),
+  body("lastName", "Enter a valid lastName!").isString().isLength({min:3}).escape().optional({nullable:true}),
+  body("photo", "Enter a valid URL photo!").isString().isLength({min:10}).escape().optional({nullable:true}),
 ];
 
 module.exports = {
