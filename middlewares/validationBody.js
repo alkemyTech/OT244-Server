@@ -38,6 +38,12 @@ const testimonials = [
     body('content', 'Content is required').notEmpty(),
 ];
 
+const bodyUpdateDataUser = [
+  body("firstName", "Enter a valid name!").isString().isLength({min:3}).escape(),
+  body("lastName", "Enter a valid lastName!").isString().isLength({min:3}).escape(),
+  body("photo", "Enter a valid URL photo!").isString().isLength({min:10}).escape(),
+];
+
 module.exports = {
     activities,
     bodyLogin,
@@ -46,4 +52,5 @@ module.exports = {
     members,
     news,
     testimonials,
+    bodyUpdateDataUser,
 }
