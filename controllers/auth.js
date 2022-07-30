@@ -26,7 +26,7 @@ async function createUser(request, response) {
 
     const [user, created] = await User.findOrCreate({
       where: { email },
-      defaults: { firstName, lastName, password: passwordHash },
+      defaults: { firstName, lastName, password: passwordHash, roleId: process.env.STANDARD_ROLE, },
     });
 
     if (created) {
