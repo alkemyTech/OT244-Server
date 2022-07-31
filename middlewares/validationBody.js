@@ -38,11 +38,18 @@ const testimonials = [
     body('content', 'Content is required').notEmpty(),
 ];
 
+const comments = [
+    body('news_id').exists().withMessage("News id is required"),
+    body('user_id').exists().withMessage("User id is required"),
+    body('body').exists().withMessage("Body is required"),
+];
+
 module.exports = {
     activities,
     bodyLogin,
     bodyRegister,
     categories,
+    comments,
     members,
     news,
     testimonials,
