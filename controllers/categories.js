@@ -18,4 +18,25 @@ async function createCategory(req, res) {
   }
 }
 
-module.exports = { createCategory };
+const deleteCategoryById = async (req, res, next) => { 
+  const { id } = req.params 
+  try {
+    const category = await Categories.findByPk(id)
+    
+    if (category) {
+      await category.destroy()
+      return res.status(200).json({msg:"Category deleted successfully!"})
+    }
+    else {
+      return res.status(404).json({msg:"Category not found"})
+    }
+      
+  } catch (error) {
+    next(error)
+  }
+}
+
+module.exports = {
+  createCategory,
+  deleteCategoryById,
+};
