@@ -20,7 +20,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      /* 
       categoryId: {
         type: Sequelize.INTEGER,
         references: {
@@ -30,7 +29,6 @@ module.exports = {
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL'
       },
-      */
       deletedAt: {
         type: Sequelize.DATE
       },
