@@ -38,6 +38,25 @@ const testimonials = [
     body('content', 'Content is required').notEmpty(),
 ];
 
+const bodyUpdateActivityById = [
+  body("name", "Name cannot be empty or accept numbers!")
+    .isString()
+    .isLength({ min: 3 })
+    .escape()
+    .optional({ nullable: true }),
+
+  body("content", "Content cannot be empty or accept numbers!")
+    .isString()
+    .isLength({ min: 10 })
+    .escape()
+    .optional({ nullable: true }),
+  body("image", "Image cannot be empty or accept numbers!")
+    .isString()
+    .isLength({ min: 10 })
+    .escape()
+    .optional({ nullable: true }),
+];
+
 module.exports = {
     activities,
     bodyLogin,
@@ -46,4 +65,5 @@ module.exports = {
     members,
     news,
     testimonials,
+    bodyUpdateActivityById,
 }
