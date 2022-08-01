@@ -1,4 +1,4 @@
-const {body} = require( "express-validator" );
+const { body } = require("express-validator");
 
 const activities = [
     body("name", "Name cannot be empty or accept numbers!").isString().notEmpty().trim(),
@@ -20,7 +20,7 @@ const bodyRegister = [
 ]
 
 const categories = [
-    body("name", "Enter a valid name!").trim().notEmpty().isString({ min:4 }).escape(),
+    body("name", "Enter a valid name!").trim().notEmpty().isString({ min: 4 }).escape(),
 ]
 
 const members = [
@@ -38,6 +38,50 @@ const testimonials = [
     body('content', 'Content is required').notEmpty(),
 ];
 
+bodyUpdateMember = [
+    body('name', 'Name can not be empty and must be a string')
+        .notEmpty()
+        .isString()
+        .isLength({ min: 3 })
+        .escape()
+        .optional({ nullable: true }),
+
+    body('facebookUrl', 'Facebook link can not be empty and must be a string')
+        .notEmpty()
+        .isLength({ min: 10 })
+        .escape()
+        .isString()
+        .optional({ nullable: true }),
+
+    body('instagramUrl', 'Instagram link can not be empty and must be a string')
+        .notEmpty()
+        .isString()
+        .isLength({ min: 10 })
+        .escape()
+        .optional({ nullable: true }),
+
+    body('linkedinUrl', 'Linkedin link can not be empty and must be a string')
+        .notEmpty()
+        .isString()
+        .isLength({ min: 10 })
+        .escape()
+        .optional({ nullable: true }),
+
+    body('image', 'Image can not be empty')
+        .notEmpty()
+        .isString()
+        .isLength({ min: 10 })
+        .escape()
+        .optional({ nullable: true }),
+
+    body('description', 'Description can not be empty and must be a string')
+        .notEmpty()
+        .isString()
+        .isLength({ min: 10 })
+        .escape()
+        .optional({ nullable: true })
+];
+
 module.exports = {
     activities,
     bodyLogin,
@@ -46,4 +90,5 @@ module.exports = {
     members,
     news,
     testimonials,
+    bodyUpdateMember
 }
