@@ -49,9 +49,7 @@ async function putByIdTestimonial(request, response) {
       content
     });
 
-    return res.status(201).json({
-      msg: 'Testimonial updated successfully'
-    });
+    return res.status(201).json(testimonial); 
 
   } catch (error) {
     next(error);
