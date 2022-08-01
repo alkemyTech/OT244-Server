@@ -29,7 +29,7 @@ async function getByIdTestimonial(request, response) { }
 
 async function deleteByIdTestimonial(request, response) { }
 
-async function putByIdTestimonial(request, response) { 
+async function putByIdTestimonial(request, response,next) { 
   const { id } = req.params;
   const { name, image, content, } = req.body;
 
