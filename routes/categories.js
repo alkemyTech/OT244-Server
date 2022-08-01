@@ -1,6 +1,6 @@
 const express = require("express");
 const validationResult = require('../middlewares/validationResult')
-const { categories } = require("../middlewares/validationBody");
+const { categories, bodyUpdateCategories } = require("../middlewares/validationBody");
 const { createCategory, updateCategory } = require("../controllers/categories");
 const router = express.Router();
 
@@ -9,7 +9,8 @@ const router = express.Router();
 router.post("/", /* verifyAdmin, */ categories, validationResult, createCategory);
 
 router.put('/:id',
-  /* verifyAdmin */
+  /* verifyAdmin, */
+  bodyUpdateCategories,
   validationResult,
   updateCategory);
 
