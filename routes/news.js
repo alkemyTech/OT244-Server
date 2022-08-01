@@ -1,6 +1,6 @@
 const express = require("express");
 const validationResult = require('../middlewares/validationResult')
-const { news } = require("../middlewares/validationBody");
+const { news, bodyUpdateNews } = require("../middlewares/validationBody");
 const { createNews, updateNews } = require("../controllers/news");
 const router = express.Router();
 
@@ -8,6 +8,6 @@ const router = express.Router();
 
 router.post("/", /* verifyAdmin, */ news, validationResult, createNews);
 
-router.put('/:id', /* verifyAdmin */  validationResult, updateNews);
+router.put('/:id', /* verifyAdmin */  bodyUpdateNews, validationResult, updateNews);
 
 module.exports = router;
