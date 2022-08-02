@@ -34,7 +34,7 @@ const updateNews = async (req, res, next) => {
     );
 
     if (updatedNews != 0) {
-      return res.status(201).json({
+      return res.status(200).json({
         msg: 'News updated successfully'
       });
     } else {
