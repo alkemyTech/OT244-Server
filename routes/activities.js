@@ -10,7 +10,7 @@ router.post("/", /* verifyAdmin, */ activities, validationResult, addActivity);
 // PUT activity by id
 router.put(
   "/:id",
-  verifyAdmin,
+  /* verifyAdmin, */
   bodyUpdateActivityById,
   validationResult,
   updateActivityById

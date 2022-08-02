@@ -42,9 +42,10 @@ const updateActivityById = async (req, res, next) => {
         });
 
         return res.status(201).json(updatedActivity);
-      } else {
-        return res.status(404).json({ msg: "Activity not found!" });
-      }
+      } 
+      
+      return res.status(404).json({ msg: "Activity not found!" });
+      
     } catch (error) {
       next(error);
     }
