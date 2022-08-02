@@ -41,7 +41,7 @@ const updateActivityById = async (req, res, next) => {
           image,
         });
 
-        return res.status(201).json(updatedActivity);
+        return res.status(200).json(updatedActivity);
       } 
       
       return res.status(404).json({ msg: "Activity not found!" });
