@@ -19,30 +19,34 @@ const updateNews = async (req, res, next) => {
 
   try {
 
-    const news = await News.findByPk(id);
+    const updatedNews = await News.update(
+      {
+        name,
+        content,
+        image
+      },
+      {
+        where:
+        {
+          id
+        }
+      }
+    );
 
-    if (!news) {
+    if (updatedNews != 0) {
+      return res.status(201).json({
+        msg: 'News updated successfully'
+      });
+    } else {
       return res.status(404).json({
         msg: 'News not found'
       });
     }
 
-    await news.update({
-      name,
-      content,
-      image
-    });
-
-    return res.status(201).json({
-      msg: 'News updated successfully'
-    });
-
   } catch (error) {
     next(error)
   }
 };
-
-
 
 module.exports = {
   createNews,
