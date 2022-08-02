@@ -1,8 +1,8 @@
-const {Categories} = require("../models")
+const { Categories } = require("../models")
 
 async function createCategory(req, res) {
   try {
-    const { name,image, description } = req.body;
+    const { name, image, description } = req.body;
 
     const newCategory = await Categories.create({
       name,
@@ -24,24 +24,29 @@ const updateCategory = async (req, res, next) => {
   const { name, image, description } = req.body;
 
   try {
+    const updatedCategory = await category.update(
+      {
+        name,
+        image,
+        description
+      },
+      {
+        where:
+        {
+          id
+        }
+      });
 
-    const category = await Categories.findByPk(id);
-
-    if (!category) {
-      return res.status(404).json({
-        msg: 'Category not found'
+    if (updatedCategory != 0) {
+      return res.status(201).json({
+        msg: 'Category updated successfully'
       });
     }
-
-    await category.update({
-      name,
-      image,
-      description
-    });
-
-    return res.status(201).json({
-      msg: 'Category updated successfully'
-    });
+    else {
+      return res.status(404).json({
+        msg: 'Category not found'
+      })
+    }
 
   } catch (error) {
     next(error);
