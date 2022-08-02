@@ -1,26 +1,5 @@
 const {User} = require("../models")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const updateUserById = async (req, res, next) => { 
   const { id } = req.params
   const {
@@ -30,15 +9,18 @@ const updateUserById = async (req, res, next) => {
   } = req.body
 
   try {
-    const user = await User.findByPk(id)
-    if(user){
-      
-      await user.update({
+    const updatedUser =  await User.update({
         firstName,
         lastName,
         photo,
+      },
+      {
+        where:{
+          id,
+          }
       });
-      
+    if(updatedUser){
+       
       return res.status(201).json({msg:"User update successfully!"})
     }
     else{
