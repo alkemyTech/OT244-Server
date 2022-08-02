@@ -22,7 +22,7 @@ const updateUserById = async (req, res, next) => {
       
     if(updatedUser[0]){
        
-      return res.status(201).json({msg:"User update successfully!"})
+      return res.status(200).json({msg:"User update successfully!"})
     }
     
     return res.status(404).json({msg:"User not found!"})
