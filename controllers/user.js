@@ -23,9 +23,9 @@ const updateUserById = async (req, res, next) => {
        
       return res.status(201).json({msg:"User update successfully!"})
     }
-    else{
-      return res.status(404).json({msg:"User not found!"})
-    }
+    
+    return res.status(404).json({msg:"User not found!"})
+    
 
   } catch (error) {
     next(error)
