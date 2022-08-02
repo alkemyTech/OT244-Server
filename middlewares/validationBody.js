@@ -28,38 +28,15 @@ const members = [
 ]
 
 const news = [
-    body("name", "Enter a valid name!").trim().notEmpty().escape(),
-    body("content", "Enter a valid content!").trim().notEmpty().escape(),
-    body("image", "Enter a image!").trim().notEmpty().escape(),
+    body("name", "Enter a valid name!").trim().isString().isLength({ min: 3 }).notEmpty().escape(),
+    body("content", "Enter a valid content!").trim().notEmpty().isString().isLength({ min: 10 }).escape(),
+    body("image", "Enter a image!").trim().notEmpty().isString().isLength({ min: 10 }).escape(),
 ]
 
 const testimonials = [
     body('name', 'Name is required').notEmpty(),
     body('content', 'Content is required').notEmpty(),
 ];
-
-bodyUpdateNews = [
-    body('name', 'Name can not be empty and must be a string')
-        .notEmpty()
-        .isString()
-        .isLength({ min: 3 })
-        .escape()
-        .optional({ nullable: true }),
-
-    body('content', 'Content can not be empty and must be a string')
-        .notEmpty()
-        .isLength({ min: 10 })
-        .escape()
-        .isString()
-        .optional({ nullable: true }),
-
-    body('image', 'Image can not be empty')
-        .notEmpty()
-        .isString()
-        .isLength({ min: 10 })
-        .escape()
-        .optional({ nullable: true })
-]
 
 module.exports = {
     activities,
@@ -69,5 +46,4 @@ module.exports = {
     members,
     news,
     testimonials,
-    bodyUpdateNews
 }
