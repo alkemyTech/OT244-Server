@@ -38,7 +38,7 @@ const updateCategory = async (req, res, next) => {
       });
 
     if (updatedCategory != 0) {
-      return res.status(201).json({
+      return res.status(200).json({
         msg: 'Category updated successfully'
       });
     }
