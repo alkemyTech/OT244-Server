@@ -24,7 +24,7 @@ const updateCategory = async (req, res, next) => {
   const { name, image, description } = req.body;
 
   try {
-    const updatedCategory = await category.update(
+    const updatedCategory = await Categories.update(
       {
         name,
         image,
