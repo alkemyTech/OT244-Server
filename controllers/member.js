@@ -48,7 +48,7 @@ const updateMember = async (req, res, next) => {
             description
         });
 
-        return res.status(201).json(updatedMember);
+        return res.status(200).json(updatedMember);
 
 
     } catch (error) {
