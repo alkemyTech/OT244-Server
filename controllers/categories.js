@@ -21,10 +21,10 @@ async function createCategory(req, res) {
 const deleteCategoryById = async (req, res, next) => { 
   const { id } = req.params 
   try {
-    const category = await Categories.findByPk(id)
-    
+    const category = await Categories.destroy({where:{id}})
+    console.log(category)
     if (category) {
-      await category.destroy()
+     
       return res.status(200).json({msg:"Category deleted successfully!"})
     }
     else {
