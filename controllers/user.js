@@ -6,7 +6,7 @@ const deleteUser = async (req,res) => {
         await User.destroy({
             where: { id }
         });
-        res.sendStatus(204)        
+        res.sendStatus(200)        
     }catch(error){
         res.status(500).json({ message: error.message });
     }
