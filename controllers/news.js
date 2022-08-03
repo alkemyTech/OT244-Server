@@ -1,4 +1,4 @@
-const { request, response } = require("express")
+const { request, response } = require("express");
 const { News } = require("../models");
 
 async function createNews(req, res) {
@@ -13,17 +13,26 @@ async function createNews(req, res) {
   }
 }
 
-const deleteNew = async(req = request, res = response) => {
+const deleteNew = async(req = request, res = response, next) => {
   const { id } = req.params;
   try{
-    await News.destroy({ 
-      where: { id }
-    })
-    res.sendStatus(204)
+    const myNew = await News.findAll({
+        where: { id }
+    });      
+    if(!myNew || myNew.length === 0){
+        res.status(404).json({
+            msg: "The new doesnt exist or it had been deleted"
+        })
+    }else{
+        await News.destroy({ 
+          where: { id }
+        })
+        res.json({
+          msg: 'The new has been deleted!'
+        })
+    }    
   }catch(error){
-    res.status(500).json({
-      msg: "Please contact to support"
-    })
+    next(error)
   }
 }
 
