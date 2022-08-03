@@ -1,3 +1,4 @@
+
 const {Slides} = require("../models")
 
 const postSlides = async (req,res) => {
@@ -14,6 +15,21 @@ const postSlides = async (req,res) => {
     }
 }
 
+
+
+
+
+
+const getSlides = async (req,res) => {
+    try {
+        const getData = await Slides.findAll({attributes: ['text','imageUrl','order']})
+        res.status(200).json(getData)
+      } catch (error) {
+        return res.status(500).json({ msg: "An unexpected error occurred" });
+      }
+}
+
 module.exports = {
-    postSlides,
+    getSlides,
+
 }
