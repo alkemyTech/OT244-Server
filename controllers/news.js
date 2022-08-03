@@ -26,7 +26,7 @@ async function getNew(request, response,next) {
           news
         })
       }else{
-        res.status(400).json({
+        res.status(404).json({
           msg: "This news doesn't exist!"
         });
       }
