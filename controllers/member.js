@@ -24,4 +24,20 @@ const createMember = async (req,res) => {
     }
 }
 
-module.exports = {createMember}
+const deleteMember = async (req,res,next) => {
+    const { id } = req.params;
+    try{
+        const deleted = await Member.destroy({ where: { id } });
+        if(deleted) {
+            res.sendStatus(200);
+        }else{
+            throw new Error('Member not found');
+        }
+    
+    }
+    catch(error){
+        next(error);
+    }    
+}
+
+module.exports = {createMember, deleteMember}
