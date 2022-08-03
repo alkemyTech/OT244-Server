@@ -1,3 +1,4 @@
+const { request, response } = require("express")
 const { Member } = require('../models')
 
 const createMember = async (req,res) => {
@@ -24,6 +25,22 @@ const createMember = async (req,res) => {
     }
 }
 
+const getMembers = async(req = request, res = response) => {
+    try{
+        const members = await Member.findAll({
+            attributes: ["name", "image", "description"]
+        })
+        return res.json({
+            members
+        })
+    }catch(error){        
+        return res.status(500).json({
+            msg: "Please contact to support",
+            error
+        })
+    }
+}
+
 const deleteMember = async (req,res,next) => {
     const { id } = req.params;
     try{
@@ -40,4 +57,8 @@ const deleteMember = async (req,res,next) => {
     }    
 }
 
-module.exports = {createMember, deleteMember}
+module.exports = {
+    createMember,
+    getMembers,
+    deleteMember
+}
