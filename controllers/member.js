@@ -18,20 +18,25 @@ const createMember = async (req,res) => {
             image,
             description
         })
-        res.status(201)
+        res.status(201).json(member)
     } catch (error) {
         res.status(500).json({ message: error.message })
     }
 }
 
-const deleteMember = async (req,res) => {
+const deleteMember = async (req,res,next) => {
     const { id } = req.params;
     try{
-        await Member.destroy({ where: { id } });
-        res.sendStatus(204);
+        const deleted = await Member.destroy({ where: { id } });
+        if(deleted) {
+            res.sendStatus(200);
+        }else{
+            throw new Error('Member not found');
+        }
+    
     }
     catch(error){
-        res.status(500).json({ message: error.message });
+        next(error);
     }    
 }
 
