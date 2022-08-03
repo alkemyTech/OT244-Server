@@ -31,7 +31,7 @@ async function deleteByIdTestimonial(request, response,next) {
     const { id } = req.params;
     try{
         await Testimonial.destroy({ where: { id } });
-        res.sendStatus(204);
+        res.sendStatus(200);
       }
      catch (error) {
       next(error);
