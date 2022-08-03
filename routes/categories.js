@@ -1,8 +1,12 @@
 const express = require("express");
 const validationResult = require('../middlewares/validationResult')
 const { categories } = require("../middlewares/validationBody");
-const { createCategory } = require("../controllers/categories");
+const { createCategory, getCategories } = require("../controllers/categories");
 const router = express.Router();
+
+// GET list categories
+
+router.get('/', /* verifyAdmin, */ getCategories)
 
 // POST create category
 
