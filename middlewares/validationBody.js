@@ -38,11 +38,12 @@ const testimonials = [
     body('content', 'Content is required').notEmpty(),
 ];
 
-
 const comments = [
     body('news_id').exists().withMessage("News id is required"),
     body('user_id').exists().withMessage("User id is required"),
     body('body').exists().withMessage("Body is required"),
+];
+
 bodyUpdateCategories = [
     body('name', 'Name can not be empty and must be a string').notEmpty().isString().isLength({min: 3}).escape().optional({nullable: true}),
     body('description', 'Description can not be empty and must be a string').notEmpty().isLength({min: 10}).escape().isString().optional({nullable: true}),
@@ -65,5 +66,5 @@ module.exports = {
     news,
     testimonials,
     bodyUpdateCategories,
-    bodyUpdateDataUser
+    bodyUpdateDataUser,
 }
