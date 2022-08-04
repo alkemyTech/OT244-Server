@@ -12,7 +12,7 @@ const getCategories = async (req,res) => {
 
 async function createCategory(req, res) {
   try {
-    const { name,image, description } = req.body;
+    const { name, image, description } = req.body;
 
     const newCategory = await Categories.create({
       name,
@@ -27,6 +27,41 @@ async function createCategory(req, res) {
     return res.status(500).json({ msg: "An unexpected error occurred" });
   }
 }
+
+const updateCategory = async (req, res, next) => {
+
+  const { id } = req.params;
+  const { name, image, description } = req.body;
+
+  try {
+    const updatedCategory = await Categories.update(
+      {
+        name,
+        image,
+        description
+      },
+      {
+        where:
+        {
+          id
+        }
+      });
+
+    if (updatedCategory != 0) {
+      return res.status(200).json({
+        msg: 'Category updated successfully'
+      });
+    }
+    else {
+      return res.status(404).json({
+        msg: 'Category not found'
+      })
+    }
+
+  } catch (error) {
+    next(error);
+  }
+};
 
 const getCategoryById = async(req = request, res = response, next) => {
   const id = req.params.id
@@ -54,5 +89,6 @@ const getCategoryById = async(req = request, res = response, next) => {
 module.exports = {
   createCategory,
   getCategories,
-  getCategoryById
+  getCategoryById,
+  updateCategory
 };

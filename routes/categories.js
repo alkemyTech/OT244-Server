@@ -1,19 +1,24 @@
 const express = require("express");
+
 const validationResult = require('../middlewares/validationResult')
+const { categories, bodyUpdateCategories } = require("../middlewares/validationBody");
 const verifyAdmin = require("./../middlewares/verifyAdmin")
-const { categories } = require("../middlewares/validationBody");
-const { createCategory, getCategories, getCategoryById } = require("../controllers/categories");
+const { createCategory, getCategories, getCategoryById , updateCategory } = require("../controllers/categories");
 
 const router = express.Router();
 
 // GET list categories
 
 router.get('/', /* verifyAdmin, */ getCategories)
+router.get("/:id", verifyAdmin, getCategoryById);
 
 // POST create category
 
 router.post("/", /* verifyAdmin, */ categories, validationResult, createCategory);
-
-router.get("/:id", verifyAdmin, getCategoryById);
+router.put('/:id',
+  /* verifyAdmin, */
+  bodyUpdateCategories,
+  validationResult,
+  updateCategory);
 
 module.exports = router;
