@@ -1,20 +1,11 @@
 const express = require("express");
+const validationResult = require('../middlewares/validationResult')
+const { news } = require("../middlewares/validationBody");
 const { createNews } = require("../controllers/news");
-const checkAdmin = require("../middlewares/checkAdmin");
-const {
-  bodyFieldsCreateNews,
-  validateFieldsCreateNews,
-} = require("../middlewares/validateCreateNews");
 const router = express.Router();
 
 // POST for the admin to create news - full path "/news"
 
-router.post(
-  "/",
-  checkAdmin,
-  bodyFieldsCreateNews,
-  validateFieldsCreateNews,
-  createNews
-);
+router.post("/", /* verifyAdmin, */ news, validationResult, createNews);
 
 module.exports = router;
