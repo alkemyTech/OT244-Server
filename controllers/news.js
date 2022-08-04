@@ -16,22 +16,20 @@ async function createNews(req, res) {
 const deleteNew = async(req = request, res = response, next) => {
   const { id } = req.params;
   try{
-    const myNew = await News.findAll({
-        where: { id }
-    });      
-    if(!myNew || myNew.length === 0){
-        res.status(404).json({
-            msg: "The new doesnt exist or it had been deleted"
-        })
+    const myNews = await News.destroy({
+      where: { id }
+    })
+    if( myNews ){
+      return res.json({
+        msg: 'The new has been deleted!'
+      })
     }else{
-        await News.destroy({ 
-          where: { id }
-        })
-        res.json({
-          msg: 'The new has been deleted!'
-        })
-    }    
+      return res.status(404).json({
+        msg: "The new doesnt exist or it had been deleted"
+    })
+    }
   }catch(error){
+    console.log(error)
     next(error)
   }
 }

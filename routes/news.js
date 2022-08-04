@@ -9,6 +9,6 @@ const router = express.Router();
 
 router.post("/", /* verifyAdmin, */ news, validationResult, createNews);
 
-router.delete("/:id", verifyAdmin, deleteNew);
+router.delete("/:id", /* verifyAdmin,*/ deleteNew);
 
 module.exports = router;
