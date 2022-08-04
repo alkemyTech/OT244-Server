@@ -19,7 +19,7 @@ const login = async(email, password) => {
         if(!validPassword) {
             throw new AppError('Authentication failed! Email / password does not correct.', 401);
         }
-        const token = generateToken(user.id);
+        const token = generateToken(user);
 
         return {
             token,
