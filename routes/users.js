@@ -1,10 +1,8 @@
 const express = require("express");
-
 const { updateUserById, deleteUser } = require("../controllers/user");
 const { bodyUpdateDataUser } = require("../middlewares/validationBody");
 const validationResult = require("../middlewares/validationResult");
 const { ownershipVerification } = require("../middlewares/ownership");
-
 const router = express.Router();
 
 /* GET users listing . */
