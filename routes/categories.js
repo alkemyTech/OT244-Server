@@ -1,6 +1,7 @@
 const express = require("express");
 
 const validationResult = require('../middlewares/validationResult')
+
 const { categories, bodyUpdateCategories } = require("../middlewares/validationBody");
 const verifyAdmin = require("./../middlewares/verifyAdmin")
 const { createCategory, getCategories, getCategoryById , updateCategory } = require("../controllers/categories");
@@ -20,5 +21,9 @@ router.put('/:id',
   bodyUpdateCategories,
   validationResult,
   updateCategory);
+
+// DELETE category by id
+
+router.delete("/:id", verifyAdmin, deleteCategoryById)
 
 module.exports = router;

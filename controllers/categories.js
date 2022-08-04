@@ -28,6 +28,24 @@ async function createCategory(req, res) {
   }
 }
 
+
+const deleteCategoryById = async (req, res, next) => { 
+  const { id } = req.params 
+  try {
+    const category = await Categories.destroy({where:{id}})
+    console.log(category)
+    if (category) {
+     
+      return res.status(200).json({msg:"Category deleted successfully!"})
+    }
+    else {
+      return res.status(404).json({msg:"Category not found"})
+    }
+      
+  } catch (error) {
+     next(error)
+  }
+
 const updateCategory = async (req, res, next) => {
 
   const { id } = req.params;
@@ -88,6 +106,7 @@ const getCategoryById = async(req = request, res = response, next) => {
 
 module.exports = {
   createCategory,
+  deleteCategoryById,
   getCategories,
   getCategoryById,
   updateCategory
