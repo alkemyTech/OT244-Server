@@ -2,7 +2,7 @@ const express = require("express");
 const validationResult = require('../middlewares/validationResult');
 const { categories, bodyUpdateCategories } = require("../middlewares/validationBody");
 const verifyAdmin = require("./../middlewares/verifyAdmin")
-const { createCategory, getCategories, getCategoryById , updateCategory } = require("../controllers/categories");
+const { createCategory, getCategories, getCategoryById , updateCategory, deleteCategoryById } = require("../controllers/categories");
 const router = express.Router();
 
 // GET list categories

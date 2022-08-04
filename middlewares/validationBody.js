@@ -44,7 +44,7 @@ const comments = [
     body('body').exists().withMessage("Body is required"),
 ];
 
-bodyUpdateCategories = [
+const bodyUpdateCategories = [
     body('name', 'Name can not be empty and must be a string').notEmpty().isString().isLength({min: 3}).escape().optional({nullable: true}),
     body('description', 'Description can not be empty and must be a string').notEmpty().isLength({min: 10}).escape().isString().optional({nullable: true}),
     body('image', 'Image can not be empty').notEmpty().isString().isLength({min: 10}).escape().optional({nullable: true})
