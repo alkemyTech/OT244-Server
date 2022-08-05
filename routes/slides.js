@@ -1,9 +1,10 @@
 const express = require('express')
+const user_authenticate = require('../middlewares/user-authenticate')
+const verifyAdmin = require("../middlewares/verifyAdmin")
 const { postSlides, getSlides } = require('../controllers/slides')
-const verifyAdmin = require('../middlewares/verifyAdmin')
 const router = express.Router()
 
-router.post('/', verifyAdmin, postSlides)
-router.get('/', verifyAdmin, getSlides)
+router.post('/', user_authenticate, verifyAdmin, postSlides)
+router.get('/', user_authenticate, verifyAdmin, getSlides)
 
 module.exports = router
