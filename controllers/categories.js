@@ -45,6 +45,7 @@ const deleteCategoryById = async (req, res, next) => {
   } catch (error) {
      next(error)
   }
+}
 
 const updateCategory = async (req, res, next) => {
 
@@ -96,7 +97,7 @@ const getCategoryById = async(req = request, res = response, next) => {
       })
     }else{
       res.status(404).json({
-        msg: "This category doesnt exist!"
+        msg: "This category does'nt exist!"
       });
     }
   }catch(error){
@@ -109,5 +110,5 @@ module.exports = {
   deleteCategoryById,
   getCategories,
   getCategoryById,
-  updateCategory
-};
+  updateCategory,
+}
