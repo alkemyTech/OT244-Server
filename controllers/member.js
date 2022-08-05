@@ -1,3 +1,4 @@
+const { request, response } = require("express")
 const { Member } = require('../models')
 
 const createMember = async (req, res) => {
@@ -23,7 +24,6 @@ const createMember = async (req, res) => {
         res.status(500).json({ message: error.message })
     }
 }
-
 
 const updateMember = async (req, res, next) => {
 
@@ -56,4 +56,40 @@ const updateMember = async (req, res, next) => {
     }
 }
 
-module.exports = { createMember, updateMember }
+const getMembers = async(req = request, res = response) => {
+    try{
+        const members = await Member.findAll({
+            attributes: ["name", "image", "description"]
+        })
+        return res.json({
+            members
+        })
+    }catch(error){        
+        return res.status(500).json({
+            msg: "Please contact to support",
+            error
+        })
+    }
+}
+
+const deleteMember = async (req,res,next) => {
+    const { id } = req.params;
+    try{
+        const deleted = await Member.destroy({ where: { id } });
+        if(deleted) {
+            res.sendStatus(200);
+        }else{
+            throw new Error('Member not found');
+        }
+    
+    }
+    catch(error){
+        next(error);
+    }    
+}
+
+module.exports = {
+    createMember,
+    getMembers,
+    deleteMember
+}
