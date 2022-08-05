@@ -1,4 +1,4 @@
-const {body} = require( "express-validator" );
+const { body } = require("express-validator");
 
 const activities = [
     body("name", "Name cannot be empty or accept numbers!").isString().notEmpty().trim(),
@@ -20,11 +20,11 @@ const bodyRegister = [
 ];
 
 const categories = [
-    body("name", "Enter a valid name!").trim().notEmpty().isString({ min:4 }).escape(),
-];
+    body("name", "Enter a valid name!").trim().notEmpty().isString({ min: 4 }).escape(),
+]
 
 const members = [
-    body("name").exists().withMessage("Name is required").isString().withMessage("Name must be a string"),
+    body("name").exists().withMessage("Name is required").isString().isLength({ min: 3 }).withMessage("Name must be a string"),
 ];
 
 const news = [
@@ -65,6 +65,7 @@ module.exports = {
     members,
     news,
     testimonials,
+    bodyUpdateMember,
     bodyUpdateCategories,
     bodyUpdateDataUser,
 }
