@@ -91,5 +91,6 @@ const deleteMember = async (req,res,next) => {
 module.exports = {
     createMember,
     getMembers,
-    deleteMember
+    deleteMember,
+    updateMember,
 }

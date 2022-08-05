@@ -65,7 +65,6 @@ module.exports = {
     members,
     news,
     testimonials,
-    bodyUpdateMember,
     bodyUpdateCategories,
     bodyUpdateDataUser,
 }
