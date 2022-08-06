@@ -39,6 +39,23 @@ const testimonials = [
     body('content', 'Content is required').notEmpty(),
 ];
 
+const bodyUpdateActivityById = [
+  body("name", "Name cannot be empty or accept numbers!")
+    .isString()
+    .isLength({ min: 3 })
+    .escape()
+    .optional({ nullable: true }),
+
+  body("content", "Content cannot be empty or accept numbers!")
+    .isString()
+    .isLength({ min: 10 })
+    .escape()
+    .optional({ nullable: true }),
+  body("image", "Image cannot be empty or accept numbers!")
+    .isString()
+    .isLength({ min: 10 })
+    .escape()
+    .optional({ nullable: true }),
 const comments = [
     body('news_id').exists().withMessage("News id is required"),
     body('user_id').exists().withMessage("User id is required"),
@@ -66,6 +83,7 @@ module.exports = {
     members,
     news,
     testimonials,
+    bodyUpdateActivityById,
     bodyUpdateCategories,
-    bodyUpdateDataUser,
+    bodyUpdateDataUser
 }
