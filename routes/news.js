@@ -3,7 +3,8 @@ const userAuthenticate = require('../middlewares/user-authenticate')
 const verifyAdmin = require("../middlewares/verifyAdmin")
 const validationResult = require('../middlewares/validationResult')
 const { news } = require("../middlewares/validationBody");
-const { createNews, updateNews, getNew } = require("../controllers/news");
+const { createNews, updateNews, getNew, deleteNew } = require("../controllers/news");
+const verifyAdmin = require("./../middlewares/verifyAdmin")
 
 const router = express.Router();
 
@@ -14,5 +15,6 @@ router.get("/:id", /* verifyAdmin, */  getNew);
 
 router.put('/:id', verifyAdmin, news, validationResult, updateNews);
 
+router.delete("/:id", /* verifyAdmin,*/ deleteNew);
 
 module.exports = router;
