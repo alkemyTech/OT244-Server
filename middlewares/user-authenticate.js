@@ -1,7 +1,7 @@
 const { request, response } = require( "express" );
 const jwt = require('jsonwebtoken');
 
-const validateJWT = ( req = request, res = response, next ) => {
+module.exports = ( req = request, res = response, next ) => {
     try {
         const bearerHeader = req.headers['authorization'];        
         if(bearerHeader){        
@@ -30,5 +30,3 @@ const validateJWT = ( req = request, res = response, next ) => {
         })
     }   
 }
-
-module.exports = validateJWT;
