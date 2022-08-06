@@ -28,10 +28,11 @@ const members = [
 ];
 
 const news = [
-    body("name", "Enter a valid name!").trim().notEmpty().escape(),
-    body("content", "Enter a valid content!").trim().notEmpty().escape(),
-    body("image", "Enter a image!").trim().notEmpty().escape(),
-];
+
+    body("name", "Enter a valid name!").trim().isString().isLength({ min: 3 }).notEmpty().escape(),
+    body("content", "Enter a valid content!").trim().notEmpty().isString().isLength({ min: 10 }).escape(),
+    body("image", "Enter a image!").trim().notEmpty().isString().isLength({ min: 10 }).escape(),
+]
 
 const testimonials = [
     body('name', 'Name is required').notEmpty(),

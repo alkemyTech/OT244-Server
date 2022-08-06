@@ -12,6 +12,34 @@ async function createNews(req, res) {
   }
 }
 
+const updateNews = async (req, res, next) => {
+
+  const { id } = req.params;
+  const { name, content, image } = req.body;
+
+  try {
+
+    const news = await News.findByPk(id);
+
+    if (!news) {
+      return res.status(404).json({
+        msg: 'News not found'
+      });
+    }
+
+    const updatedNews = await news.update({
+      name,
+      content,
+      image
+    });
+
+    return res.status(200).json(updatedNews);
+
+  } catch (error) {
+    next(error)
+  }
+};
+
 async function getNew(request, response,next) { 
   const id = req.params.id
     try{
@@ -38,4 +66,5 @@ async function getNew(request, response,next) {
 module.exports = {
   createNews,
   getNew,
+  updateNews
 };
