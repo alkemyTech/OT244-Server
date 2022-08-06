@@ -40,7 +40,31 @@ const updateNews = async (req, res, next) => {
   }
 };
 
+async function getNew(request, response,next) { 
+  const id = req.params.id
+    try{
+      const news = await News.findOne({
+        where: { id },
+        attributes: {
+          exclude: [ 'id', 'deletedAt', 'createdAt', 'updatedAt' ]
+        }     
+      })
+      if(news){
+        return res.json({
+          news
+        })
+      }else{
+        res.status(404).json({
+          msg: "This news doesn't exist!"
+        });
+      }
+  } catch (error) {
+    next(error)
+  }
+}
+
 module.exports = {
   createNews,
+  getNew,
   updateNews
 };
