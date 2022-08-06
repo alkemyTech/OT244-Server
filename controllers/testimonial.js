@@ -27,8 +27,16 @@ async function getAllTestimonials(request, response) { }
 
 async function getByIdTestimonial(request, response) { }
 
-async function deleteByIdTestimonial(request, response) { }
-
+async function deleteByIdTestimonial(request, response,next) {
+    const { id } = req.params;
+    try{
+        await Testimonial.destroy({ where: { id } });
+        res.sendStatus(200);
+      }
+     catch (error) {
+      next(error);
+    }
+  }
 async function putByIdTestimonial(request, response) { }
 
 module.exports = {

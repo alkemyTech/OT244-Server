@@ -5,8 +5,6 @@ const ownershipVerification = (req, res, next) => {
     const { id } = req?.params;
     const token = req?.headers?.authorization;
 
-    const ADMIN_ROLE = 1;
-
     if (!token || !id) {
         res.json('Id or token missing')
     }
@@ -15,7 +13,7 @@ const ownershipVerification = (req, res, next) => {
 
         const payload = jwt.verify(token, process.env.JWT_SECRET);
 
-        if (payload.roleId === ADMIN_ROLE || id === payload.id) {
+        if (payload.roleId === process.env.ADMIN_ROLE || id === payload.id) {
 
             next();
         }

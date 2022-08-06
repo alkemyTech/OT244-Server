@@ -20,7 +20,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      /* 
+      /*   
       categoryId: {
         type: Sequelize.INTEGER,
         references: {
