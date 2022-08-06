@@ -1,6 +1,9 @@
 const bcrypt = require('bcrypt');
 const AppError = require('../errors/appErrors');
 const userService = require('./userService');
+const generateToken = require('../helpers/jwt-generation')
+
+
 
 const login = async(email, password) => {
     try {
@@ -16,8 +19,10 @@ const login = async(email, password) => {
         if(!validPassword) {
             throw new AppError('Authentication failed! Email / password does not correct.', 401);
         }
+        const token = generateToken(user);
 
         return {
+            token,
             user: user.firstName,
             role: user.roleId
         }
