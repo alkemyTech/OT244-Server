@@ -28,7 +28,6 @@ const members = [
 ];
 
 const news = [
-
     body("name", "Enter a valid name!").trim().isString().isLength({ min: 3 }).notEmpty().escape(),
     body("content", "Enter a valid content!").trim().notEmpty().isString().isLength({ min: 10 }).escape(),
     body("image", "Enter a image!").trim().notEmpty().isString().isLength({ min: 10 }).escape(),
@@ -40,22 +39,11 @@ const testimonials = [
 ];
 
 const bodyUpdateActivityById = [
-  body("name", "Name cannot be empty or accept numbers!")
-    .isString()
-    .isLength({ min: 3 })
-    .escape()
-    .optional({ nullable: true }),
+  body("name", "Name cannot be empty or accept numbers!").isString().isLength({ min: 3 }).escape().optional({ nullable: true }),
+  body("content", "Content cannot be empty or accept numbers!").isString().isLength({ min: 10 }).escape().optional({ nullable: true }),
+  body("image", "Image cannot be empty or accept numbers!").isString().isLength({ min: 10 }).escape().optional({ nullable: true }),
+];
 
-  body("content", "Content cannot be empty or accept numbers!")
-    .isString()
-    .isLength({ min: 10 })
-    .escape()
-    .optional({ nullable: true }),
-  body("image", "Image cannot be empty or accept numbers!")
-    .isString()
-    .isLength({ min: 10 })
-    .escape()
-    .optional({ nullable: true }),
 const comments = [
     body('news_id').exists().withMessage("News id is required"),
     body('user_id').exists().withMessage("User id is required"),
@@ -85,5 +73,5 @@ module.exports = {
     testimonials,
     bodyUpdateActivityById,
     bodyUpdateCategories,
-    bodyUpdateDataUser
+    bodyUpdateDataUser,
 }

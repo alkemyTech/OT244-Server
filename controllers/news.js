@@ -31,6 +31,7 @@ const deleteNew = async(req = request, res = response, next) => {
   }catch(error){
     console.log(error)
 }
+}
 
 const updateNews = async (req, res, next) => {
   const { id } = req.params;
@@ -80,5 +81,5 @@ module.exports = {
   createNews,
   deleteNew,
   getNew,
-  updateNews
+  updateNews,
 };
