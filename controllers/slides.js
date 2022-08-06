@@ -26,7 +26,7 @@ const postSlides = async (req,res) => {
 
 const getSlidesId = async (req,res) => {
     const data = await getId(req)
-    if (!data) res.status(404).json("Id don't find")
+    if (!data) res.status(404).json("Id not found")
     else res.status(200).json(data)
 }
 
