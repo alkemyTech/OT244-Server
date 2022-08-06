@@ -1,4 +1,5 @@
-const {Slides} = require("../models")
+const {Slides} = require("../models");
+const { getId } = require("../services/slides");
 
 const getSlides = async (req,res) => {
     try {
@@ -23,7 +24,13 @@ const postSlides = async (req,res) => {
     }
 }
 
+const getSlidesId = async (req,res) => {
+   const data = await getId(req)
+   res.json(data)
+}
+
 module.exports = {
     getSlides,
     postSlides,
+    getSlidesId,
 }
