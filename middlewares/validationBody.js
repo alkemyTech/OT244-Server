@@ -62,6 +62,13 @@ const bodyUpdateDataUser = [
   body("photo", "Enter a valid URL photo!").isString().isLength({min:10}).escape().optional({nullable:true}),
 ];
 
+const contacts = [
+    body("name", "Enter a valid name!").trim().isString().isLength({min:3}).notEmpty().escape(),
+    body("phone", "Enter a valid phone").trim().isNumeric().optional(),
+    body("message", "Enter a valid message!").trim().isString().optional(),
+    body("email", "Enter a valid email!").trim().isEmail().normalizeEmail().notEmpty()
+]
+
 module.exports = {
     activities,
     bodyLogin,
@@ -74,4 +81,5 @@ module.exports = {
     bodyUpdateActivityById,
     bodyUpdateCategories,
     bodyUpdateDataUser,
+    contacts
 }
