@@ -7,6 +7,6 @@ const { createTestimonial, deleteByIdTestimonial} = require('../controllers/test
 const router = express.Router();
 
 router.post('/', userAuthenticate, verifyAdmin, testimonials, validationResult, createTestimonial);
-router.delete('/:id',  verifyAdmin, deleteByIdTestimonial);
+router.delete('/:id', userAuthenticate, verifyAdmin, deleteByIdTestimonial);
 
 module.exports = router;
