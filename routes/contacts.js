@@ -1,7 +1,9 @@
-const express = require('express')
-const { listAll } = require('../controllers/contacts')
-const router = express.Router()
+const express = require('express');
+const userAuthenticate = require('../middlewares/user-authenticate');
+const verifyAdmin = require("../middlewares/verifyAdmin");
+const { listAll } = require('../controllers/contacts');
+const router = express.Router();
 
-router.get('/', listAll)
+router.get('/', userAuthenticate, verifyAdmin, listAll);
 
-module.exports = router
+module.exports = router;
