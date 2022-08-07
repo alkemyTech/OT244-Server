@@ -1,14 +1,30 @@
 const { request, response } = require("express");
 const {Categories} = require("../models")
+const { nextPage, prevPage } = require("../helpers/paginationTools");
 
 const getCategories = async (req,res) => {
+  const { page=0 } = req.query;
+  const size = process.env.PAGE_SIZE;
+
   try {
-    const getData = await Categories.findAll({attributes: ['name']})
-    res.status(200).json(getData)
+    const getData = await Categories.findAndCountAll({
+      limit: parseInt(size),
+      offset: parseInt(page * size),
+    });
+
+    const pages =  Math.floor(getData.count/size);
+
+    res.status(200).json({
+      getData,
+      next: nextPage(parseInt(page),pages),
+      prev: prevPage(parseInt(page),pages),
+    })
   } catch (error) {
     return res.status(500).json({ msg: "An unexpected error occurred" });
   }
 }
+
+
 
 async function createCategory(req, res) {
   try {
