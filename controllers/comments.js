@@ -16,7 +16,7 @@ const createComments = async (req, res,next) => {
 }
 
 const getComments = async(req, res, next) => {
-    const data = await getAll( req )
+    const data = await getAll()
     try{
         return res.status(200).json({
             data

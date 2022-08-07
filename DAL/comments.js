@@ -1,8 +1,7 @@
-const { Comments } = require("./../models/comments")
-const { Categories } = require("./../models/categories")
+const { Comment } = require("./../models")
 
 const findAll = async( order ) => {
-    const comments = await Categories.findAll({
+    const comments = await Comment.findAll({
         order: order,
         attributes: ['body']
     })
