@@ -1,4 +1,5 @@
 const { Comment } = require('../models');
+const { getAll } = require("./../services/comments")
 
 const createComments = async (req, res,next) => {  
     const { body, user_id, news_id } = req.body;
@@ -14,4 +15,18 @@ const createComments = async (req, res,next) => {
     }
 }
 
-module.exports = createComments;
+const getComments = async(req, res, next) => {
+    const data = await getAll( req )
+    try{
+        return res.status(200).json({
+            data
+        })
+    }catch(error){
+        next(error)
+    }
+}
+
+module.exports = {
+    createComments,
+    getComments
+}
