@@ -43,13 +43,13 @@ async function putByIdTestimonial(request, response,next) {
       });
     }
 
-    await testimonial.update({
+    const newTestimonial = await testimonial.update({
       name,
       image,
       content
     });
 
-    return res.status(200).json(testimonial); 
+    return res.status(200).json(newTestimonial); 
 
   } catch (error) {
     next(error);
