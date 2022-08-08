@@ -1,5 +1,6 @@
 const { request, response } = require("express");
 const { News } = require("../models");
+const { nextPage, prevPage } = require("../helpers/paginationTools");
 
 async function createNews(req, res) {
   try {
@@ -13,24 +14,24 @@ async function createNews(req, res) {
   }
 }
 
-const deleteNew = async(req = request, res = response, next) => {
+const deleteNew = async (req = request, res = response, next) => {
   const { id } = req.params;
-  try{
+  try {
     const myNews = await News.destroy({
       where: { id }
     })
-    if( myNews ){
+    if (myNews) {
       return res.json({
         msg: 'The new has been deleted!'
       })
-    }else{
+    } else {
       return res.status(404).json({
-        msg: "The new doesnt exist or it had been deleted"
-    })
+        msg: "The new doesn't exist or it had been deleted"
+      })
     }
-  }catch(error){
+  } catch (error) {
     console.log(error)
-}
+  }
 }
 
 const updateNews = async (req, res, next) => {
@@ -54,24 +55,46 @@ const updateNews = async (req, res, next) => {
   }
 };
 
-async function getNew(request, response,next) { 
+async function getNew(request, response, next) {
   const id = req.params.id
-    try{
-      const news = await News.findOne({
-        where: { id },
-        attributes: {
-          exclude: [ 'id', 'deletedAt', 'createdAt', 'updatedAt' ]
-        }     
-      })
-      if(news){
-        return res.json({
-          news
-        })
-      }else{
-        res.status(404).json({
-          msg: "This news doesn't exist!"
-        });
+  try {
+    const news = await News.findOne({
+      where: { id },
+      attributes: {
+        exclude: ['id', 'deletedAt', 'createdAt', 'updatedAt']
       }
+    })
+    if (news) {
+      return res.json({
+        news
+      })
+    } else {
+      res.status(404).json({
+        msg: "This news doesn't exist!"
+      });
+    }
+  } catch (error) {
+    next(error)
+  }
+}
+
+const getAllNews = async (req, res) => {
+  const { page = 0 } = req.query;
+  const size = process.env.PAGE_SIZE;
+
+  try {
+    const getData = await News.findAndCountAll({
+      limit: parseInt(size),
+      offset: parseInt(page * size),
+    });
+
+    const pages = Math.floor(getData.count / size);
+
+    res.status(200).json({
+      getData,
+      next: nextPage(parseInt(page), pages),
+      prev: prevPage(parseInt(page), pages),
+    })
   } catch (error) {
     next(error)
   }
@@ -82,4 +105,5 @@ module.exports = {
   deleteNew,
   getNew,
   updateNews,
+  getAllNews,
 };

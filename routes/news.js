@@ -16,4 +16,6 @@ router.put('/:id', userAuthenticate, verifyAdmin, news, validationResult, update
 
 router.delete("/:id", userAuthenticate, verifyAdmin, deleteNew);
 
+router.get('/', userAuthenticate, getAllNews)
+
 module.exports = router;
