@@ -23,7 +23,20 @@ const postSlides = async (req,res) => {
     }
 }
 
+const deleteSlides = async (req,res) => {
+    const { id } = req.params;
+    try{
+        await Testimonial.destroy({ where: { id } });
+        res.sendStatus(200);
+      }
+     catch (error) {
+      next(error);
+    }
+  }
+
+
 module.exports = {
     getSlides,
     postSlides,
+    deleteSlides,
 }

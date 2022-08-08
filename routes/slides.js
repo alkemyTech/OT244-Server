@@ -6,5 +6,7 @@ const router = express.Router()
 
 router.post('/', userAuthenticate, verifyAdmin, postSlides)
 router.get('/', userAuthenticate, verifyAdmin, getSlides)
+router.delete('/:id', userAuthenticate, verifyAdmin, deleteSlides)
+
 
 module.exports = router
