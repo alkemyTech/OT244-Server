@@ -1,4 +1,5 @@
 const { Testimonial } = require('../models');
+const { servicesGetTestimonial } = require('../services/testimonials');
 
 const createTestimonial = async (req, res) => {
 
@@ -24,7 +25,8 @@ const createTestimonial = async (req, res) => {
 };
 
 async function getAllTestimonials(request, response) {
-  
+  const data = await servicesGetTestimonial(request)
+  res.json(data)
 }
 
 async function getByIdTestimonial(request, response) { }
