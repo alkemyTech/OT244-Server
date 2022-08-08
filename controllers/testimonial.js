@@ -23,7 +23,9 @@ const createTestimonial = async (req, res) => {
   }
 };
 
-async function getAllTestimonials(request, response) { }
+async function getAllTestimonials(request, response) {
+  
+}
 
 async function getByIdTestimonial(request, response) { }
 
