@@ -1,9 +1,12 @@
 const express = require( "express" );
-const { testimonials } = require('../middlewares/validationBody');
-const { createTestimonial } = require('../controllers/testimonial');
+const userAuthenticate = require('../middlewares/user-authenticate')
+const verifyAdmin = require("../middlewares/verifyAdmin")
 const validationResult = require('../middlewares/validationResult')
+const { testimonials } = require('../middlewares/validationBody');
+const { createTestimonial, deleteByIdTestimonial} = require('../controllers/testimonial');
 const router = express.Router();
 
-router.post('/', /* verifyAdmin */ testimonials, validationResult, createTestimonial);
+router.post('/', userAuthenticate, verifyAdmin, testimonials, validationResult, createTestimonial);
+router.delete('/:id', userAuthenticate, verifyAdmin, deleteByIdTestimonial);
 
 module.exports = router;

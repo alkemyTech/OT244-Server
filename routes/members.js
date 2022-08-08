@@ -1,14 +1,15 @@
 const express = require("express");
-const validationResult = require('../middlewares/validationResult')
+const userAuthenticate = require('../middlewares/user-authenticate');
+const verifyAdmin = require("../middlewares/verifyAdmin");
+const validationResult = require('../middlewares/validationResult');
 const { members } = require("../middlewares/validationBody");
-const verifyAdmin = require("./../middlewares/verifyAdmin")
-const { createMember, deleteMember, getMembers } = require("../controllers/member");
-const router = express.Router()
+const { createMember, deleteMember, getMembers, updateMember } = require("../controllers/member");
+const router = express.Router();
 
-router.post("/", members, validationResult, createMember)
+router.get("/", userAuthenticate, verifyAdmin, getMembers);
+router.post("/", userAuthenticate, verifyAdmin, members, validationResult, createMember);
+router.put('/', userAuthenticate, verifyAdmin, members, validationResult, updateMember);
+router.delete("/:id", userAuthenticate, verifyAdmin, deleteMember, );
 
-router.delete("/:id", deleteMember, )
 
-router.get("/", verifyAdmin, getMembers)
-
-module.exports = router
+module.exports = router;

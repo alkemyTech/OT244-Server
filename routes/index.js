@@ -21,6 +21,7 @@ router.use('/testimonials', testimonialRouter);
 router.use('/members', membersRouter);
 router.use('/categories', categoryRouter);
 router.use('/activities', routerActivities);
+router.use('/comments', commentsRouter)
 router.use('/slides', slidesRouter);
 
 
