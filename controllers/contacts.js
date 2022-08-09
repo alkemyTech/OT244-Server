@@ -1,11 +1,17 @@
-const { listService } = require("../services/contacts")
+const { Contact } = require('../models');
 
-const listAll = async (req, res) => {
-    const listData = await listService()
-    if (!listData) res.status(404).json('Emails not found')
-    else res.status(201).json(listData)
-}
+const getContacts = async (req, res, next) => {
 
-module.exports = {
-    listAll,
-}
+    try {
+
+        const contacts = await Contact.findAll();
+
+        return res.status(200).json(contacts);
+
+    } catch (error) {
+        next(error)
+    }
+};
+
+
+module.exports = { getContacts };

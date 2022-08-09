@@ -39,9 +39,9 @@ const testimonials = [
 ];
 
 const bodyUpdateActivityById = [
-  body("name", "Name cannot be empty or accept numbers!").isString().isLength({ min: 3 }).escape().optional({ nullable: true }),
-  body("content", "Content cannot be empty or accept numbers!").isString().isLength({ min: 10 }).escape().optional({ nullable: true }),
-  body("image", "Image cannot be empty or accept numbers!").isString().isLength({ min: 10 }).escape().optional({ nullable: true }),
+    body("name", "Name cannot be empty or accept numbers!").isString().isLength({ min: 3 }).escape().optional({ nullable: true }),
+    body("content", "Content cannot be empty or accept numbers!").isString().isLength({ min: 10 }).escape().optional({ nullable: true }),
+    body("image", "Image cannot be empty or accept numbers!").isString().isLength({ min: 10 }).escape().optional({ nullable: true }),
 ];
 
 const comments = [
@@ -51,16 +51,26 @@ const comments = [
 ];
 
 const bodyUpdateCategories = [
-    body('name', 'Name can not be empty and must be a string').notEmpty().isString().isLength({min: 3}).escape().optional({nullable: true}),
-    body('description', 'Description can not be empty and must be a string').notEmpty().isLength({min: 10}).escape().isString().optional({nullable: true}),
-    body('image', 'Image can not be empty').notEmpty().isString().isLength({min: 10}).escape().optional({nullable: true})
+    body('name', 'Name can not be empty and must be a string').notEmpty().isString().isLength({ min: 3 }).escape().optional({ nullable: true }),
+    body('description', 'Description can not be empty and must be a string').notEmpty().isLength({ min: 10 }).escape().isString().optional({ nullable: true }),
+    body('image', 'Image can not be empty').notEmpty().isString().isLength({ min: 10 }).escape().optional({ nullable: true })
 ];
 
 const bodyUpdateDataUser = [
-  body("firstName", "Enter a valid name!").isString().isLength({min:3}).escape().optional({nullable:true}),
-  body("lastName", "Enter a valid lastName!").isString().isLength({min:3}).escape().optional({nullable:true}),
-  body("photo", "Enter a valid URL photo!").isString().isLength({min:10}).escape().optional({nullable:true}),
+    body("firstName", "Enter a valid name!").isString().isLength({ min: 3 }).escape().optional({ nullable: true }),
+    body("lastName", "Enter a valid lastName!").isString().isLength({ min: 3 }).escape().optional({ nullable: true }),
+    body("photo", "Enter a valid URL photo!").isString().isLength({ min: 10 }).escape().optional({ nullable: true }),
 ];
+
+const updateOrganizationData = [
+    body('name', 'Name cannot be empty and must be a string').isString().isLength({ min: 3 }).escape().optional({ nullable: true }),
+    body('image', 'Image cannot be empty and you must send a valid URL').isString().isLength({ min: 10 }).escape().optional({ nullable: true }),
+    body('address', 'Address cannot be empty').isLength({ min: 10 }).escape().optional({ nullable: true }),
+    body('phone', 'Phone cannot be empty and you only can send numbers').isLength({ min: 8 }).isNumeric().escape().optional({ nullable: true }),
+    body('email', 'Email cannot be empty').isString().isLength({ min: 10 }).escape().optional({ nullable: true }),
+    body('welcomeText', 'Welcome text cannot be empty').isString().isLength({ min: 10 }).escape().optional({ nullable: true }),
+    body('aboutUsText', 'About us text cannot be empty').isString().isLength({ min: 10 }).escape().optional({ nullable: true }),
+]
 
 module.exports = {
     activities,
@@ -74,4 +84,5 @@ module.exports = {
     bodyUpdateActivityById,
     bodyUpdateCategories,
     bodyUpdateDataUser,
+    updateOrganizationData
 }
