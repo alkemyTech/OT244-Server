@@ -1,9 +1,12 @@
-const { listService } = require("../services/contacts")
+const { contactServices } = require("../services/backoffice")
 
-const getContacts = async (req, res) => {
-    const Data = await listService()
-    if (!listData) res.status(404).json('Emails not found')
-    else res.status(201).json(listData)
+const getContacts = async (req,res,next) => {
+    const data = await contactServices()
+    try {
+        return res.status(200).json(data)
+    } catch (error) {
+        return next(error)
+    }
 }
 
 module.exports = {

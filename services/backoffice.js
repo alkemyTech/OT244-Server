@@ -1,10 +1,10 @@
-const { getListData } = require("../DAL/contacts")
+const { findAllContacts } = require("../DAL/backoffice")
 
-const listService = async () => {
-    const data = await getListData()
+const contactServices = async () => {
+    const data = await findAllContacts()
     return data
 }
 
 module.exports = {
-    listService,
+    contactServices,
 }

@@ -1,10 +1,14 @@
 const {Contacts} = require('../models')
 
-const getListData = async () => {
-    const contacts = await Contacts.findAll({attributes: ['email']})
+const findAllContacts = async () => {
+    const contacts = await Contacts.findAll({
+        attributes: {
+            exclude: [ 'id', 'deletedAt', 'createdAt', 'updatedAt' ]
+        },
+    })
     return contacts
 }
 
 module.exports = {
-    getListData,
+    findAllContacts,
 }
