@@ -1,5 +1,5 @@
 const { Testimonial } = require('../models');
-const { servicesGetTestimonial } = require('../services/testimonials');
+const { testimonialsServiceGet } = require('../services/testimonials');
 
 const createTestimonial = async (req, res) => {
 
@@ -24,10 +24,14 @@ const createTestimonial = async (req, res) => {
   }
 };
 
-async function getAllTestimonials(request, response) {
-  const data = await servicesGetTestimonial()
-  if (!data) response.status(404).json('Testimonial not found')
-  else response.status(202).json(data)
+async function getAllTestimonials(request, response, next) {
+  const data = await testimonialsServiceGet()
+  try {
+    if(!data) return response.status(404).json('Testimonial not found')
+    return response.status(200).json(data)
+  } catch (error) {
+    return next(error)
+  }
 }
 
 async function getByIdTestimonial(request, response) { }

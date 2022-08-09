@@ -1,10 +1,10 @@
-const { dalGetTestimonials } = require("../DAL/testimonials")
+const { findAndCountAllTestimonials } = require("../DAL/testimonials")
 
-const servicesGetTestimonial = async () => {
-    const data = await dalGetTestimonials()
+const testimonialsServiceGet = async () => {
+    const data = await findAndCountAllTestimonials()
     return data
 }
 
 module.exports = {
-    servicesGetTestimonial,
+    testimonialsServiceGet,
 }

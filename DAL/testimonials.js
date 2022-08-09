@@ -1,6 +1,6 @@
 const {Testimonials} = require('../models')
 
-const dalGetTestimonials = async () => {
+const findAndCountAllTestimonials = async () => {
     const data = await Testimonials.findAndCountAll({
         attributes: {
             exclude: [ 'id', 'deletedAt', 'createdAt', 'updatedAt' ]
@@ -11,5 +11,5 @@ const dalGetTestimonials = async () => {
 }
 
 module.exports = {
-    dalGetTestimonials,
+    findAndCountAllTestimonials,
 }
