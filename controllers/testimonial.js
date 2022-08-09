@@ -25,9 +25,12 @@ const createTestimonial = async (req, res) => {
 };
 
 async function getAllTestimonials(request, response, next) {
+  const { page, size } = request.query
+  const limit = size ? +size : 10
+  const offset = page ? page * limit : 0
   try {
-    const data = await testimonialsServiceGet()
-    if(!data) return response.status(404).json('Testimonial not found')
+    const data = await testimonialsServiceGet(limit,offset,page)
+    if(!data) return response.status(404).json('Testimonials not found')
     return response.status(200).json(data)
   } catch (error) {
     return next(error)
