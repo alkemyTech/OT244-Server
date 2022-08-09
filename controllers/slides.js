@@ -26,8 +26,8 @@ const postSlides = async (req,res) => {
 
 const getSlidesId = async (req,res,next) => {
     const { id } = req.params
-    const data = await getId(id)
     try {
+        const data = await getId(id)
         if(!data) return res.status(404).json('Slide not found')
         return res.status(200).json(data)
     } catch (error) {
