@@ -25,8 +25,9 @@ const postSlides = async (req,res) => {
 }
 
 const getSlidesId = async (req,res,next) => {
-    const data = await getId(req)
+    const { id } = req.params
     try {
+        const data = await getId(id)
         return res.status(200).json(data)
     } catch (error) {
         return next(error)
