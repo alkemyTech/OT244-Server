@@ -11,6 +11,9 @@ const categoryRouter = require('./categories');
 const routerActivities = require('./activities');
 const commentsRouter = require('./comments');
 const slidesRouter = require('./slides')
+const organizationRouter = require('./organizations');
+const contactsRouter = require('./contacts');
+
 
 
 router.use('/', indexRouter);
@@ -23,7 +26,8 @@ router.use('/categories', categoryRouter);
 router.use('/activities', routerActivities);
 router.use('/comments', commentsRouter)
 router.use('/slides', slidesRouter);
+router.use('/organization', organizationRouter);
+router.use('/contacts', contactsRouter);
 
 
 module.exports = router;
-
