@@ -1,8 +1,9 @@
 const { createNewContact } = require("../services/contacts")
 
 const addContact = async( req, res, next ) => {
+    const { name, phone, message, email } = req.body
     try{
-        const data = await createNewContact(req, res)
+        const data = await createNewContact(name, phone, message, email)
         if(data){
             return res.status(200).json({
                 msg: 'Contact created successfully'
