@@ -24,10 +24,13 @@ const postSlides = async (req,res) => {
     }
 }
 
-const getSlidesId = async (req,res) => {
+const getSlidesId = async (req,res,next) => {
     const data = await getId(req)
-    if (!data) res.status(404).json("Id not found")
-    else res.status(200).json(data)
+    try {
+        return res.status(200).json(data)
+    } catch (error) {
+        return next(error)
+    }
 }
 
 module.exports = {

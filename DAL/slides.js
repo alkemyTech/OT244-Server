@@ -1,7 +1,7 @@
-const {Slides} = require("../models");
+const {Slides, Categories} = require("../models");
 
 const allId =  async (id) => {
-    const category = await Slides.findOne({
+    const category = await Categories.findOne({
         where: { id },
         attributes: {
           exclude: [ 'id', 'deletedAt', 'createdAt', 'updatedAt' ]
