@@ -1,8 +1,8 @@
 const { contactServices } = require("../services/backoffice")
 
 const getContacts = async (req,res,next) => {
-    const data = await contactServices()
     try {
+        const data = await contactServices()
         return res.status(200).json(data)
     } catch (error) {
         return next(error)
