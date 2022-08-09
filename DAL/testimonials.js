@@ -1,7 +1,7 @@
-const {Testimonials,Categories} = require('../models')
+const {Testimonials} = require('../models')
 
 const findAndCountAllTestimonials = async (limit,offset) => {
-    const data = await Categories.findAndCountAll({
+    const data = await Testimonials.findAndCountAll({
         attributes: {
             exclude: [ 'id', 'deletedAt', 'createdAt', 'updatedAt' ]
         },
