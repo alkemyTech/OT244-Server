@@ -16,8 +16,10 @@ const createComments = async (req, res,next) => {
 }
 
 const putComment = async(req, res, next) => {
+    const { id } = req.params
+    const { body } = req.body
     try{
-        const data = await putCommentService( req, res )
+        const data = await putCommentService( id, body )
         if(data){
             return res.status(200).json({
                 msg: 'Comment updated successfully'

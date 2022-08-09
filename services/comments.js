@@ -1,8 +1,6 @@
 const { putComment } = require("./../DAL/comments")
 
-const putCommentService = async( req, res ) => {
-    const { id } = req.params
-    const { body } = req.body
+const putCommentService = async( id, body ) => {    
     const data = await putComment( id, body )
 
     if(data.includes(0)){
