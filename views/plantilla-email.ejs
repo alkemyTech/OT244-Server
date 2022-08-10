@@ -301,12 +301,14 @@
                             style="font-size: 24px;"><strong>Proyecto ONG - Somos Más</strong></span></p>
                         <p style="text-align: center;">&nbsp;</p>
                         <h2 style="text-align: center;">
-                          <% if (firstName) { %>
-                            <b><%= firstName %></b>
-                            <% } %>
+                          <% if (message) { %>
+                            <b><%= message.title %></b>
                         </h2>
-                        <p style="text-align: center;"><span style="font-size: 16px;">
-                          Bienvenid@ al proyecto Somos Más
+                        <p style="text-align: center;">
+                          <span style="font-size: 16px;">
+                            <%= message.content %>
+                            <% } %>
+                          </span></p>
                         </span></p>
                       </div>
 
@@ -331,11 +333,11 @@
                     <td align="left" style="font-size:0px;padding:15px 15px 15px 15px;word-break:break-word;">
                       <div  style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:11px;line-height:1.5;text-align:left;color:#000000;">
                         <% if (message) { %>                       
-                        <p style="text-align: center;"><%= message.title %></p>
-                        <p style="text-align: center;"><%= message.mail %></p>
-                        <p style="text-align: center;"><%= message.instagram %></p>
-                        <p style="text-align: center;"><%= message.facebook %></p>
-                        <p style="text-align: center;"><%= message.phone %></p>
+                        <p style="text-align: center;">Datos de contacto de ONG</p>
+                        <p style="text-align: center;">Mail: somosfundacionmas@gmail.com</p>
+                        <p style="text-align: center;">Instagram: SomosMás</p>
+                        <p style="text-align: center;">Facebook: Somos_Más</p>
+                        <p style="text-align: center;">Teléfono de contacto: 1160112988</p>
                         <% } %>
                       </div>
                     </td>
