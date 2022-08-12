@@ -1,7 +1,7 @@
-const { findAllSlidesById } = require("../DAL/slides");
+const { findOneSlideById } = require("../DAL/slides");
 
 const getId = async (id) => {
-    const data = await findAllSlidesById(id)
+    const data = await findOneSlideById(id)
     return data
 }
 

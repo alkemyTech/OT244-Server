@@ -1,6 +1,6 @@
 const {Slides} = require("../models");
 
-const findAllSlidesById =  async (id) => {
+const findOneSlideById =  async (id) => {
     const category = await Slides.findOne({
         where: { id },
         attributes: {
@@ -11,5 +11,5 @@ const findAllSlidesById =  async (id) => {
 }
 
 module.exports = {
-    findAllSlidesById,
+    findOneSlideById,
 }
