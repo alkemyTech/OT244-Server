@@ -60,10 +60,25 @@ module.exports = router;
 /**
  * @swagger
  * paths:
- *  /news:
+ *  /news/{page}/{size}:
  *      get:
  *          tags:
  *              - News
+ *          summary: Gets a news
+ *          parameters:
+ *              - name: page
+ *                in: query
+ *                required: true
+ *              - name: size
+ *                in: query
+ *          responses:
+ *              '200':
+ *                  description: OK
+ *              '403':
+ *                  description: Token does'nt belong to any user
+ *              '500':
+ *                  description: Internal Server Error
+ *  /news:
  *      post:
  *          tags:
  *              - News
