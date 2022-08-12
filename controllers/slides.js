@@ -23,7 +23,24 @@ const postSlides = async (req,res) => {
     }
 }
 
+const deleteSlides = async (req,res) => {
+    const { id } = req.params;
+    try{
+      const deleted = await Slides.destroy({ where: { id } });
+        if(deleted) {
+          res.sendStatus(200);
+      }else{
+          throw new Error('Slides not found');
+      }
+      }
+     catch (error) {
+      next(error);
+    }
+  }
+
+
 module.exports = {
     getSlides,
     postSlides,
+    deleteSlides,
 }
