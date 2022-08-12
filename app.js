@@ -5,6 +5,8 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
 require('dotenv').config();
+const swaggerUI = require('swagger-ui-express')
+const swaggerJsDoc = require('swagger-jsdoc')
 
 const index = require ('./routes');
 
@@ -22,8 +24,25 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+const swaggerSpec = {
+  definition: {
+      openapi: '3.0.0',
+      info: {
+          title: 'Nodejs',
+          version: '1.0.0',
+      },
+      servers: [
+          {
+              url:'http://localhost:3000'
+          }
+      ]
+  },
+  apis: [`${path.join(__dirname, './routes/*.js')}`],
+}
+
 // Routes
 app.use(index);
+app.use('/api', swaggerUI.serve, swaggerUI.setup(swaggerJsDoc(swaggerSpec)));
 
 // catch 404 and forward to error handler
 
