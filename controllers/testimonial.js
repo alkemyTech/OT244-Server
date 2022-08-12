@@ -27,8 +27,6 @@ async function getAllTestimonials(request, response) { }
 
 async function getByIdTestimonial(request, response) { }
 
-async function deleteByIdTestimonial(request, response) { }
-
 async function putByIdTestimonial(request, response,next) { 
   const { id } = req.params;
   const { name, image, content, } = req.body;
@@ -56,6 +54,17 @@ async function putByIdTestimonial(request, response,next) {
   }
 };
 
+
+async function deleteByIdTestimonial(request, response,next) {
+    const { id } = req.params;
+    try{
+        await Testimonial.destroy({ where: { id } });
+        res.sendStatus(200);
+      }
+     catch (error) {
+      next(error);
+    }
+  }
 
 module.exports = {
   createTestimonial,
