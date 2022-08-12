@@ -13,7 +13,7 @@ const commentsRouter = require('./comments');
 const slidesRouter = require('./slides')
 const organizationRouter = require('./organizations');
 const contactsRouter = require('./contacts');
-
+const uploadRouter = require('./upload');
 
 
 router.use('/', indexRouter);
@@ -28,6 +28,7 @@ router.use('/comments', commentsRouter)
 router.use('/slides', slidesRouter);
 router.use('/organization', organizationRouter);
 router.use('/contacts', contactsRouter);
+router.use('/upload', uploadRouter);
 
 
 module.exports = router;
