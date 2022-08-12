@@ -1,9 +1,13 @@
+
 const express = require("express");
 const validationResult = require('../middlewares/validationResult');
+const userAuthenticate = require('../middlewares/user-authenticate');
+const verifyAdmin = require("../middlewares/verifyAdmin");
 const { contacts } = require('../middlewares/validationBody');
-const { addContact } = require("./../controllers/contacts")
+const { addContact, getContacts } = require("./../controllers/contacts");
 const router = express.Router();
 
-router.post("/", contacts, validationResult, addContact)
+router.get('/', userAuthenticate, verifyAdmin, getContacts);
+router.post("/", contacts, validationResult, addContact);
 
-module.exports = router
+module.exports = router;

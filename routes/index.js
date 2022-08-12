@@ -10,9 +10,10 @@ const membersRouter = require('./members');
 const categoryRouter = require('./categories');
 const routerActivities = require('./activities');
 const commentsRouter = require('./comments');
-const slidesRouter = require('./slides')
-const contactsRouter = require('./contacts')
-
+const slidesRouter = require('./slides');
+const organizationRouter = require('./organizations');
+const contactsRouter = require('./contacts');
+const backofficeRouter = require('./backoffice');
 
 router.use('/', indexRouter);
 router.use('/users', usersRouter);
@@ -24,8 +25,8 @@ router.use('/categories', categoryRouter);
 router.use('/activities', routerActivities);
 router.use('/comments', commentsRouter)
 router.use('/slides', slidesRouter);
-router.use('/contacts', contactsRouter)
-
+router.use('/organization', organizationRouter);
+router.use('/contacts', contactsRouter);
+router.use('/backoffice', backofficeRouter);
 
 module.exports = router;
-
