@@ -68,8 +68,9 @@ module.exports = router;
  *          parameters:
  *              - name: page
  *                in: query
- *                required: true
  *              - name: size
+ *                description: Default gets 10 news
+ *                required: true
  *                in: query
  *          responses:
  *              '200':
@@ -108,10 +109,7 @@ module.exports = router;
  *          summary: Get a news by id
  *          parameters:
  *              - name: id
- *                description: New ID
- *                required: true
- *                schema:
- *                  type: integer
+ *                in: params
  *          responses:
  *              '200':
  *                  description: OK
@@ -136,10 +134,7 @@ module.exports = router;
  *          summary: Delete a news by id
  *          parameters:
  *              - name: id
- *                description: New ID
- *                required: true
- *                schema:
- *                  type: integer
+ *                in: params
  *          responses:
  *              '200':
  *                  description: OK
@@ -163,10 +158,7 @@ module.exports = router;
  *          summary: Delete a new by id
  *          parameters:
  *              - name: id
- *                description: New ID
- *                required: true
- *                schema:
- *                  type: integer
+ *                in: params
  *          responses:
  *              '200':
  *                  description: The new has been deleted!
