@@ -67,11 +67,30 @@ module.exports = router;
  *      post:
  *          tags:
  *              - News
+ *          summary: Create a news
+ *          requestBody:
+ *              required: true
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          $ref: '#/components/schemas/News'
+ *                      example:
+ *                          name: New
+ *                          content: Last new
+ *                          image: New.jpg
+ *                          categoryId: 1
+ *          responses:
+ *              '201':
+ *                  description: OK
+ *              '403':
+ *                  description: Token does'nt belong to any user
+ *              '500':
+ *                  description: An unexpected error occurred
  *  /news/{id}:
  *      get:
  *          tags:
  *              - News
- *          summary: Get a new by id
+ *          summary: Get a news by id
  *          parameters:
  *              - name: id
  *                description: New ID
@@ -99,7 +118,7 @@ module.exports = router;
  *      put:
  *          tags:
  *              - News
- *          summary: Delete a new by id
+ *          summary: Delete a news by id
  *          parameters:
  *              - name: id
  *                description: New ID
