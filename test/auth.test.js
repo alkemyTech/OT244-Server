@@ -26,6 +26,49 @@ describe("Login a user", () => {
   })
 });
 
-beforeAll(done => {
-  done()
+// BAD LOGIN ATTEMPS
+
+describe("Login a user without a email or an invalid one", () => {
+  test("should return an error message", async () => {
+    const res = await request(app)
+      .post("/auth/login")
+      .send({password: "test"});
+    expect(res.statusCode).toEqual(400);
+    expect(res.text.includes("Email is invalid"));
+  })
 })
+
+describe("Login a user without a password or an invalid one", () => {
+  test("should return an error message", async () => {
+    const res = await request(app)
+      .post("/auth/login")
+      .send({email: "hol@hola.com"});
+    expect(res.statusCode).toEqual(400);
+    expect(res.text.includes("Password required"));
+  });
+});
+
+describe("Login a user without any data", () => {
+  test("Should return an error message", async () => {
+    const res = await request(app)
+      .post("/auth/login")
+      .send({});
+    expect(res.statusCode).toEqual(400);
+    expect(res.text.includes("Email is invalid"));
+    expect(res.text.includes("Password is required"));
+  });
+});
+
+describe("Login with wrong password", () => {
+  test("Should avoid the successfully login and return 500 status code", async () => {
+    const res = await request(app)
+      .post("/auth/login")
+      .send({email: userOk.email, password: "test"});
+    expect(res.statusCode).toEqual(500);
+    console.log(res);
+    expect(res.text.includes('Authentication failed! Email / password does not correct'));
+  })
+})
+
+// Bad register attempts
+
