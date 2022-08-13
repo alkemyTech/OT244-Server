@@ -72,3 +72,43 @@ describe("Login with wrong password", () => {
 
 // Bad register attempts
 
+describe("Register a user without a email or an invalid one", () => {
+  test("should return an error message", async () => {
+    const res = await request(app)
+      .post("/auth/register")
+      .send({firstName: "Homer", lastName: "Thompson", password: "password"});
+    expect(res.statusCode).toEqual(400);
+    expect(res.text.includes("Enter a valid email!"));
+  })
+})
+
+describe("Register a user without a password or an invalid one", () => {
+  test("should return an error message", async () => {
+    const res = await request(app)
+      .post("/auth/register")
+      .send({firstName: "Homer", lastName: "Thompson", email:"homerthomson@aol.com"});
+    expect(res.statusCode).toEqual(400);
+    expect(res.text.includes("Enter a valid password!"));
+  })
+})
+
+describe("Register a user without a firstName", () => {
+  test("should return an error message", async () => {
+    const res = await request(app)
+      .post("/auth/register")
+      .send({lastName: "Thompson", password: "password" ,email:"homerthomson@aol.com"});
+    expect(res.statusCode).toEqual(400);
+    expect(res.text.includes("Enter a valid name!"));
+  })
+})
+
+describe("Register a user without a lastName", () => {
+  test("should return an error message", async () => {
+    const res = await request(app)
+      .post("/auth/register")
+      .send({firstName: "Homer", password: "password" ,email:"homerthomson@aol.com"});
+    expect(res.statusCode).toEqual(400);
+    expect(res.text.includes("Enter a valid lastName!"));
+  })
+})
+
