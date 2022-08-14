@@ -2,15 +2,29 @@ const supertest = require('supertest')
 const app = require('../app')
 const generateToken = require('../helpers/jwt-generation')
 
-const token = generateToken({
+const admin = generateToken({
     "email":"jose@test.com",
     "roleId": '1',
 })
 
-test('ok', async() => {
-    const api = await supertest(app)
-    .get("/categories")
-    .set('Authorization', `Bearer ${token}`)
-    .expect(200)
-    .expect('Content-Type', /application\/json/)
+const standard = generateToken({
+    "email":"max@test.com",
+    "roleId": '2',
+})
+
+describe('POST JWT invalid', () =>{
+    test('There is no token', async() => {
+        const api = await supertest(app)
+        .post("/activities")
+        .expect(403)
+    })
+})
+
+describe('POST Unauthorized', () =>{
+    test('User is not authorize', async() => {
+        const api = await supertest(app)
+        .post("/activities")
+        .set('Authorization', `Bearer ${standard}`)
+        .expect(401)
+    })
 })
