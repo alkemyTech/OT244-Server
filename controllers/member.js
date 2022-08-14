@@ -26,7 +26,7 @@ const createMember = async (req, res) => {
 }
 
 const updateMember = async (req, res, next) => {
-
+    const { id } = req.params;
     const { name, facebookUrl, instagramUrl, linkedinUrl, image, description } = req.body;
 
     try {
