@@ -111,7 +111,7 @@ describe('PUT verified body', () =>{
     test('There is no content', async() => {
         const api = await supertest(app)
         .put("/activities/1")
-        .send({name:"name", image:"image.example"})
+        .send({name:"name", image:"image.example", content:""})
         .set('Authorization', `Bearer ${admin}`)
         .expect(400)
     })
@@ -131,7 +131,7 @@ describe('PUT verified body', () =>{
     test('There is no Body', async() => {
         const api = await supertest(app)
         .put("/activities/1")
-        .send({})
+        .send({name:"", content:"", image:""})
         .set('Authorization', `Bearer ${admin}`)
         .expect(400)
     })
@@ -141,7 +141,7 @@ describe('PUT verified body', () =>{
     test('If there is data', async() => {
         const api = await supertest(app)
         .put("/activities/1")
-        .send({content:"content", name:"name", image:"image.example"})
+        .send({content:"content-example", name:"name", image:"image.example"})
         .set('Authorization', `Bearer ${admin}`)
         .expect(200)
         .expect('Content-Type', /application\/json/)
