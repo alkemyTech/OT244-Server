@@ -28,3 +28,54 @@ describe('POST Unauthorized', () =>{
         .expect(401)
     })
 })
+
+describe('POST verified body', () =>{
+    test('There is no name', async() => {
+        const api = await supertest(app)
+        .post("/activities")
+        .send({content:"content", image:"image.example"})
+        .set('Authorization', `Bearer ${admin}`)
+        .expect(400)
+    })
+})
+
+describe('POST verified body', () =>{
+    test('There is no content', async() => {
+        const api = await supertest(app)
+        .post("/activities")
+        .send({name:"name", image:"image.example"})
+        .set('Authorization', `Bearer ${admin}`)
+        .expect(400)
+    })
+})
+
+describe('POST verified body', () =>{
+    test('There is no image', async() => {
+        const api = await supertest(app)
+        .post("/activities")
+        .send({content:"content", name:"name"})
+        .set('Authorization', `Bearer ${admin}`)
+        .expect(400)
+    })
+})
+
+describe('POST verified body', () =>{
+    test('There is no Body', async() => {
+        const api = await supertest(app)
+        .post("/activities")
+        .send({})
+        .set('Authorization', `Bearer ${admin}`)
+        .expect(400)
+    })
+})
+
+describe('POST verified body', () =>{
+    test('If there is data', async() => {
+        const api = await supertest(app)
+        .post("/activities")
+        .send({content:"content", name:"name", image:"image.example"})
+        .set('Authorization', `Bearer ${admin}`)
+        .expect(201)
+        .expect('Content-Type', /application\/json/)
+    })
+})
