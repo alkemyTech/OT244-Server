@@ -24,7 +24,11 @@ const putComment = async(req, res, next) => {
             return res.status(200).json({
                 msg: 'Comment updated successfully'
             })
-        }        
+        }else{
+            res.status(404).json({
+                msg: 'There isnt any comment for update'
+            })
+        }    
     }catch(error){
         next(error)
     }
