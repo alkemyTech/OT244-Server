@@ -169,10 +169,10 @@ describe('PUT /news/:id', () => {
 
 describe('DELETE /news/:id', () => {
     test('Should delete a new', async () => {
-        const response = await request.delete('/news/3')
+        const response = await request.delete('/news/1')
             .set('Authorization', `Bearer ${token}`)
         expect(response.status).toBe(200)
-        const news = await News.findByPk(4);
+        const news = await News.findByPk(1);
         expect(news).toBeNull();
     });
 
@@ -183,18 +183,18 @@ describe('DELETE /news/:id', () => {
     });
 
     test('Should return an error if no token was sent', async () => {
-        request.delete('/news/3')
+        request.delete('/news/1')
             .then(response => expect(response.status).toBe(403))
     });
 
     test('Should return a 403 error if token is invalid', async () => {
-        request.delete('/news/3')
+        request.delete('/news/1')
             .set('Authorization', `Bearer 123`)
             .then(response => expect(response.status).toBe(403));
     });
 
     test('Should respond with a 403 error - user is not admin', async () => {
-        const response = await request.delete('/news/3')
+        const response = await request.delete('/news/1')
             .set('Authorization', `Bearer ${standardToken}`)
         expect(response.status).toBe(401);
     });
