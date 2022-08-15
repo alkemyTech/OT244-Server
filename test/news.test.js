@@ -81,21 +81,89 @@ describe('POST /news', () => {
         const response = await request.post('/news')
             .set('Authorization', `Bearer ${token}`)
             .send(noNameNew)
-            expect(response.status).toBe(400)
+        expect(response.status).toBe(400)
     });
 
     test('Should return an 400 error - no content was sent', async () => {
         const response = await request.post('/news')
             .set('Authorization', `Bearer ${token}`)
             .send(noContentNew)
-            expect(response.status).toBe(400)
+        expect(response.status).toBe(400)
     });
 
     test('Should return an 400 error - no image was sent', async () => {
         const response = await request.post('/news')
             .set('Authorization', `Bearer ${token}`)
             .send(noImageNew)
-            expect(response.status).toBe(400)
+        expect(response.status).toBe(400)
+    });
+});
+
+describe('PUT /news/:id', () => {
+    test('Should update a new', async () => {
+        const response = await request.put('/news/4')
+            .set('Authorization', `Bearer ${token}`)
+            .send(randomNew)
+        expect(response.status).toBe(200)
+        const news = await News.findByPk(3)
+        expect(news.name).toBe('Testing news')
+        expect(news.content).toBe('Testing content')
+        expect(news.image).toBe('newsTesting.jpg')
+    })
+
+    test('Should return an error if no token was sent', async () => {
+        request.put('/news/4')
+            .send(randomNew)
+            .then(response => expect(response.status).toBe(403))
+    });
+
+    test('Should return a 403 error if token is invalid', async () => {
+        request.put('/news/4')
+            .set('Authorization', `Bearer 123`)
+            .send(randomNew)
+            .then(response => expect(response.status).toBe(403));
+    });
+
+    test('Should respond with a 403 error - user is not admin', async () => {
+        const response = await request.put('/news/4')
+            .set('Authorization', `Bearer ${standardToken}`)
+            .send(randomNew);
+        expect(response.status).toBe(401);
+    });
+
+    test('Should return a 400 error if no fields were sent', async () => {
+        const response = await request.put('/news/4')
+            .set('Authorization', `Bearer ${token}`)
+            .send({})
+        expect(response.status).toBe(400)
+    });
+
+    test('Should return a 400 error - no name was sent', async () => {
+        const response = await request.put('/news/4')
+            .set('Authorization', `Bearer ${token}`)
+            .send(noNameNew)
+        expect(response.status).toBe(400)
+    });
+
+    test('Should return a 400 error - no content was sent', async () => {
+        const response = await request.put('/news/4')
+            .set('Authorization', `Bearer ${token}`)
+            .send(noContentNew)
+        expect(response.status).toBe(400)
+    });
+
+    test('Should return a 400 error - no image was sent', async () => {
+        const response = await request.put('/news/4')
+            .set('Authorization', `Bearer ${token}`)
+            .send(noImageNew)
+        expect(response.status).toBe(400)
+    });
+
+    test('Should return a 404 error - id does not exist', async () => {
+        const response = await request.put('/news/1234')
+            .set('Authorization', `Bearer ${token}`)
+            .send(randomNew)
+        expect(response.status).toBe(404)
     });
 });
 
