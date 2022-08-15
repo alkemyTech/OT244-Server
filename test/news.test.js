@@ -57,6 +57,13 @@ describe('POST /news', () => {
             .then(response => expect(response.status).toBe(403))
     });
 
+    test('Should return a 403 error if token is invalid', async () => {
+        request.put('/news/4')
+            .set('Authorization', `Bearer 123`)
+            .send(randomNew)
+            .then(response => expect(response.status).toBe(403));
+    });
+
     test('Should respond with a 403 error - user is not admin', async () => {
         const response = await request.post('/news')
             .set('Authorization', `Bearer ${standardToken}`)
