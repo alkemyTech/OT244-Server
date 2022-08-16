@@ -1,5 +1,5 @@
 const express = require("express");
-const { updateUserById, deleteUser, getDataUser } = require("../controllers/user");
+const { updateUserById, deleteUser } = require("../controllers/user");
 const { bodyUpdateDataUser } = require("../middlewares/validationBody");
 const validationResult = require("../middlewares/validationResult");
 const { ownershipVerification } = require("../middlewares/ownership");
