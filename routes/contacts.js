@@ -8,6 +8,6 @@ const { addContact, getContacts } = require("./../controllers/contacts");
 const router = express.Router();
 
 router.get('/', userAuthenticate, verifyAdmin, getContacts);
-router.post("/", contacts, validationResult, addContact);
+router.post("/", contacts, validationResult, addContact);   
 
 module.exports = router;
