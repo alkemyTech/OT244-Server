@@ -1,7 +1,7 @@
-const app = require("./../app")
+const app = require("../app")
 const request = require('supertest')(app)
-const generateToken = require("./../helpers/jwt-generation")
-const { User } = require("./../models")
+const generateToken = require("../helpers/jwt-generation")
+const { User } = require("../models")
 
 
 const user = {
