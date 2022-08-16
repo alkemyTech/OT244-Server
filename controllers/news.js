@@ -79,21 +79,21 @@ async function getNew(request, response, next) {
 }
 
 const getAllNews = async (req, res) => {
-  const { page = 0 } = req.query;
-  const size = process.env.PAGE_SIZE;
-
+  const { page=0, limit=10 } = req.query;
+  const offset = parseInt(page * limit);
+  const endpoint = "news";
   try {
     const getData = await News.findAndCountAll({
-      limit: parseInt(size),
-      offset: parseInt(page * size),
+      limit: parseInt(limit),
+      offset
     });
 
     const pages = Math.floor(getData.count / size);
 
     res.status(200).json({
       getData,
-      next: nextPage(parseInt(page), pages),
-      prev: prevPage(parseInt(page), pages),
+      next: nextPage(endpoint,parseInt(page), pages),
+      prev: prevPage(endpoint,parseInt(page), pages),
     })
   } catch (error) {
     next(error)
