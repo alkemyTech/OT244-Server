@@ -1,0 +1,95 @@
+openapi: 3.0.3
+paths:
+  /testimonials/:id:
+    put:
+      tags: [Testimonial]
+      description: Actualizacion de  testimonios
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          description: ID del testimonio ha actualizar
+          required: true
+      requestBody:
+        description: Como Administrador solamente actualizar testimonios
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/testimonials'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/testimonials'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Testimonial not found
+    delete:
+      tags:
+       - Testimonial
+      description: 
+        Eliminacion de testimonio por ID
+      security:
+        - bearerAuth: []  
+      parameters:
+        - name: id
+          in: path
+          description: ID del testimonio a eliminar
+          required: true
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          description: Bad request
+  /testimonials:
+    post:
+      tags: [Testimonial]
+      description: Creacion de  testimonios
+      security:
+        - bearerAuth: []
+      requestBody:
+        description: Creacion de testimonios
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/testimonials'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/testimonials'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Testimonial not found
+components:
+  securitySchemes:
+    bearerAuth:      
+      type: http
+      scheme: bearer
+  schemas:
+    testimonials:
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        name:
+          type: string
+          example: Marcos
+        image:
+          type: string
+          example: URL de la image subida a amazon
+        content:
+          type: string
+          example: Contenido del testimonio 
