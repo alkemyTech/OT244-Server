@@ -58,7 +58,7 @@ describe('POST /news', () => {
     });
 
     test('Should return a 403 error if token is invalid', async () => {
-        request.put('/news/4')
+        request.post('/news')
             .set('Authorization', `Bearer 123`)
             .send(randomNew)
             .then(response => expect(response.status).toBe(403));
