@@ -1,5 +1,6 @@
 const { request, response } = require("express")
 const { Member } = require('../models')
+const { paginationMembers } = require("../services/menber")
 
 const createMember = async (req, res) => {
     const { name,
@@ -57,10 +58,12 @@ const updateMember = async (req, res, next) => {
 }
 
 const getMembers = async(req = request, res = response) => {
-    try{
-        const members = await Member.findAll({
-            attributes: ["name", "image", "description"]
-        })
+    try {
+        let { page = 0 } = req.query
+        page = parseInt(page)
+        
+        const members = await paginationMembers(page)
+
         return res.json({
             members
         })
