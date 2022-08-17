@@ -1,4 +1,4 @@
-const { putComment } = require("./../DAL/comments")
+const { putComment, findAll } = require("./../DAL/comments")
 
 const putCommentService = async( id, body ) => {    
     const data = await putComment( id, body )
@@ -10,6 +10,14 @@ const putCommentService = async( id, body ) => {
     }   
 }
 
+const getAll = async() => {
+    let dateOrder = []
+    dateOrder.push([ 'createdAt', 'DESC' ])
+    const data = await findAll( dateOrder )
+    return data  
+}
+
 module.exports = {
-    putCommentService
+    putCommentService,
+    getAll
 }

@@ -11,6 +11,15 @@ const putComment = async( id, body ) => {
     
 }
 
+const findAll = async( order ) => {
+    const comments = await Comment.findAll({
+        order: order,
+        attributes: ['body']
+    })
+    return comments
+}
+
 module.exports = {
-    putComment
+    putComment,
+    findAll
 }
