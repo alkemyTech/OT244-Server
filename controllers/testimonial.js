@@ -36,6 +36,34 @@ async function getAllTestimonials(request, response, next) {
 
 async function getByIdTestimonial(request, response) { }
 
+async function putByIdTestimonial(request, response,next) { 
+  const { id } = req.params;
+  const { name, image, content, } = req.body;
+
+  try {
+
+    const testimonial = await Testimonial.findByPk(id);
+
+    if (!testimonial) {
+      return res.status(404).json({
+        msg: 'Testimonial not found'
+      });
+    }
+
+    const newTestimonial = await testimonial.update({
+      name,
+      image,
+      content
+    });
+
+    return res.status(200).json(newTestimonial); 
+
+  } catch (error) {
+    next(error);
+  }
+};
+
+
 async function deleteByIdTestimonial(request, response,next) {
     const { id } = req.params;
     try{
@@ -46,7 +74,6 @@ async function deleteByIdTestimonial(request, response,next) {
       next(error);
     }
   }
-async function putByIdTestimonial(request, response) { }
 
 module.exports = {
   createTestimonial,
