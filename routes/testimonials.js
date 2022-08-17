@@ -6,7 +6,7 @@ const { testimonials } = require('../middlewares/validationBody');
 const { createTestimonial, deleteByIdTestimonial, getAllTestimonials, putByIdTestimonial} = require('../controllers/testimonial');
 const router = express.Router();
 
-router.put('/:id', userAuthenticate, verifyAdmin , testimonials, putByIdTestimonial)
+router.put('/:id', userAuthenticate, verifyAdmin , testimonials, validationResult, putByIdTestimonial)
 router.post('/', userAuthenticate, verifyAdmin, testimonials, validationResult, createTestimonial);
 router.delete('/:id', userAuthenticate, verifyAdmin, deleteByIdTestimonial);
 router.get('/', getAllTestimonials)
