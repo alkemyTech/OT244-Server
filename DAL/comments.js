@@ -1,5 +1,16 @@
 const { Comment } = require("./../models")
 
+const putComment = async( id, body ) => {
+    const comment = await Comment.update({
+        body: body
+    }, {
+        where: { id }
+    })
+    
+    return comment
+    
+}
+
 const findAll = async( order ) => {
     const comments = await Comment.findAll({
         order: order,
@@ -9,5 +20,6 @@ const findAll = async( order ) => {
 }
 
 module.exports = {
+    putComment,
     findAll
 }
