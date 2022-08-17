@@ -1,4 +1,5 @@
 const { Testimonial } = require('../models');
+const { testimonialsServiceGet } = require('../services/testimonials');
 
 const createTestimonial = async (req, res) => {
 
@@ -23,7 +24,15 @@ const createTestimonial = async (req, res) => {
   }
 };
 
-async function getAllTestimonials(request, response) { }
+async function getAllTestimonials(request, response, next) {
+  try {
+    const { page, size } = request.query
+    const data = await testimonialsServiceGet(page,size)
+    return response.status(200).json(data)
+  } catch (error) {
+    return next(error)
+  }
+}
 
 async function getByIdTestimonial(request, response) { }
 
