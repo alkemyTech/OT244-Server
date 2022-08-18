@@ -10,4 +10,29 @@ const nextPage = (location,currentPage,totalPages) => {
     }
 }
 
-module.exports = { prevPage,nextPage };
+// reformulando funciones prev and next page
+
+const prevAndNextPages = (location, currentPage, totalPages) => {
+    const pages = {
+        prev: null,
+        next: null,
+    }
+    if (totalPages === 1) {
+        return pages
+    }
+    
+    if (currentPage < totalPages - 1) {
+        let next = currentPage + 1
+        pages.next = `${process.env.BASE_URL + location}?page=${next}`;
+    }
+
+    if (currentPage > 0 && currentPage<=totalPages) {
+        let prev = currentPage - 1
+        pages.prev = `${process.env.BASE_URL + location}?page=${prev}`;
+    }
+
+    return pages
+
+};
+
+module.exports = { prevPage,nextPage, prevAndNextPages, };

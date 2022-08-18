@@ -1,11 +1,14 @@
 const express = require("express");
-const { createComments, getComments } = require("../controllers/comments");
+const { createComments, putComment, getComments } = require("../controllers/comments");
+const { ownershipVerification } = require("../middlewares/ownership");
 const { comments } = require("../middlewares/validationBody");
-const verifyAdmin = require("../middlewares/verifyAdmin")
+const verifyAdmin = require("./../middlewares/verifyAdmin");
+const validationResult = require('../middlewares/validationResult');
+const userAuthenticate = require('../middlewares/user-authenticate')
 const router = express.Router();
 
-router.post("/", comments, createComments);
-
-router.get("/", verifyAdmin, getComments)
+router.post("/", comments, validationResult, createComments);
+router.put("/:id", ownershipVerification, verifyAdmin, putComment)
+router.get("/", userAuthenticate, verifyAdmin, getComments)
 
 module.exports = router;
