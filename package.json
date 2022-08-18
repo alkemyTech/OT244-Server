@@ -25,7 +25,9 @@
     "nodemailer": "^6.7.7",
     "sequelize": "^6.3.5",
     "short-uuid": "^4.2.0",
-    "sqlite3": "^5.0.9"
+    "sqlite3": "^5.0.9",
+    "swagger-jsdoc": "^6.2.5",
+    "swagger-ui-express": "^4.5.0"
   },
   "devDependencies": {
     "jest": "^28.1.3",

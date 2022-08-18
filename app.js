@@ -5,6 +5,8 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
 const upload = require('express-fileupload');
+const swaggerUI = require('swagger-ui-express');
+const swaggerJsDoc = require('swagger-jsdoc');
 
 require('dotenv').config();
 
@@ -23,10 +25,27 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(upload()); 
+app.use(upload());
+
+const swaggerSpec = {
+  definition: {
+      openapi: '3.0.0',
+      info: {
+          title: 'Challenge Nodejs',
+          version: '1.0.0',
+      },
+      servers: [
+          {
+              url:'http://localhost:8000'
+          }
+      ]
+  },
+  apis: [`${path.join(__dirname, './docs/**/*.yaml')}`],
+}
 
 // Routes
 app.use(index);
+app.use('/api', swaggerUI.serve, swaggerUI.setup(swaggerJsDoc(swaggerSpec)))
 
 // catch 404 and forward to error handler
 
