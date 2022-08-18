@@ -62,6 +62,13 @@ const bodyUpdateDataUser = [
     body("photo", "Enter a valid URL photo!").isString().isLength({ min: 10 }).escape().optional({ nullable: true }),
 ];
 
+const contacts = [
+    body("name", "Enter a valid name!").trim().isString().isLength({min:3}).notEmpty().escape(),
+    body("phone", "Enter a valid phone").trim().isNumeric().optional(),
+    body("message", "Enter a valid message!").trim().isString().optional(),
+    body("email", "Enter a valid email!").trim().isEmail().normalizeEmail().notEmpty()
+]
+
 const updateOrganizationData = [
     body('name', 'Name cannot be empty and must be a string').isString().isLength({ min: 3 }).escape().optional({ nullable: true }),
     body('image', 'Image cannot be empty and you must send a valid URL').isString().isLength({ min: 10 }).escape().optional({ nullable: true }),
@@ -84,5 +91,6 @@ module.exports = {
     bodyUpdateActivityById,
     bodyUpdateCategories,
     bodyUpdateDataUser,
-    updateOrganizationData
+    contacts,
+    updateOrganizationData,
 }
