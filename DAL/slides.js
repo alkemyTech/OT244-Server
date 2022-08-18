@@ -10,6 +10,11 @@ const findOneSlideById =  async (id) => {
     return slide   
 }
 
+const findById = async (id) => {
+    return await Slides.findByPk(id);
+  }
+
 module.exports = {
     findOneSlideById,
+    findById,
 }

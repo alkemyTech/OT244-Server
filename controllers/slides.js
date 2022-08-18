@@ -1,5 +1,5 @@
 const {Slides} = require("../models");
-const { getId } = require("../services/slides");
+const { getId, associate} = require("../services/slides");
 
 const getSlides = async (req,res) => {
     try {
@@ -49,6 +49,29 @@ const deleteSlides = async (req,res) => {
       next(error);
     }
   }
+  const associeteOrganization= async (req, res, next) => {
+    try {
+        const { idslider ,idorganization } = req.params;
+
+        const asociateOrnandSli = await associate(idslider,idorganization);
+
+        res.sendStatus(200).json(asociateOrnandSli);
+    } catch (err) {
+        next(err);
+    }
+};
+
+const getSlidesAssoOrg= async (req, res, next) => {
+    try {
+        const {  idorganization } = req.params;
+
+        const getSliderwithOrg = await Slides.findAll(idorganization);
+
+        res.sendStatus(200).json(getSliderwithOrg);
+    } catch (err) {
+        next(err);
+    }
+};
 
 
 module.exports = {
@@ -56,4 +79,6 @@ module.exports = {
     postSlides,
     getSlidesId,
     deleteSlides,
+    associeteOrganization,
+    getSlidesAssoOrg,
 }
