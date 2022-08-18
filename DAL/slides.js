@@ -1,7 +1,7 @@
-const {Slides} = require("../models");
+const {Slide} = require("../models");
 
 const findOneSlideById =  async (id) => {
-    const slide = await Slides.findOne({
+    const slide = await Slide.findOne({
         where: { id },
         attributes: {
           exclude: [ 'id', 'deletedAt', 'createdAt', 'updatedAt' ]
@@ -10,6 +10,11 @@ const findOneSlideById =  async (id) => {
     return slide   
 }
 
+const findById = async (id) => {
+    return await Slide.findByPk(id);
+  }
+
 module.exports = {
     findOneSlideById,
+    findById,
 }
