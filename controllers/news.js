@@ -55,7 +55,7 @@ const updateNews = async (req, res, next) => {
 };
 
 async function getNew(req, res, next) { 
-  const { id } = req?.params
+  const  id  = req.params.id;
     try{
       const news = await News.findOne({
         where: { id },
