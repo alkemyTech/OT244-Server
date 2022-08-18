@@ -1,4 +1,5 @@
-const {Slides} = require("../models")
+const {Slides} = require("../models");
+const { getId } = require("../services/slides");
 
 const getSlides = async (req,res) => {
     try {
@@ -23,6 +24,17 @@ const postSlides = async (req,res) => {
     }
 }
 
+const getSlidesId = async (req,res,next) => {
+    const { id } = req.params
+    try {
+        const data = await getId(id)
+        if(!data) return res.status(404).json('Slide not found')
+        return res.status(200).json(data)
+    } catch (error) {
+        return next(error)
+    }
+}
+
 const deleteSlides = async (req,res) => {
     const { id } = req.params;
     try{
@@ -42,5 +54,6 @@ const deleteSlides = async (req,res) => {
 module.exports = {
     getSlides,
     postSlides,
+    getSlidesId,
     deleteSlides,
 }
