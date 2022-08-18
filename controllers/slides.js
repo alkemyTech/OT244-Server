@@ -1,26 +1,27 @@
-const {Slides} = require("../models");
+const {Slide} = require( "../models")
 const { getId, associate} = require("../services/slides");
 
-const getSlides = async (req,res) => {
+const getSlides = async (req,res,next) => {
     try {
         const getData = await Slides.findAll({attributes: ['text','imageUrl','order']})
         res.status(200).json(getData)
       } catch (error) {
-        return res.status(500).json({ msg: "An unexpected error occurred" });
+        return next(error)
       }
 }
 
-const postSlides = async (req,res) => {
+const postSlides = async (req,res,next) => {
     try {
-        const newSlide = await Slides.create({
-            text: 'image-example',
-            imageUrl: 'https://image-example.com',
-            order: 'image-example-2022',
+        const { text, imageUrl, order } = req.body
+        const newSlide = await Slide.create({
+            text,
+            imageUrl,
+            order,
         })
         const data = { msg: "Slide created successfully", newSlide }
         return res.status(201).json(data)
     } catch (error) {
-        return res.status(500).json(error)
+        return next(error)
     }
 }
 
@@ -35,7 +36,7 @@ const getSlidesId = async (req,res,next) => {
     }
 }
 
-const deleteSlides = async (req,res) => {
+const deleteSlides = async (req,res,next) => {
     const { id } = req.params;
     try{
       const deleted = await Slides.destroy({ where: { id } });
