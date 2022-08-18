@@ -1,4 +1,5 @@
 const { Testimonial } = require('../models');
+const { testimonialsServiceGet } = require('../services/testimonials');
 
 const createTestimonial = async (req, res) => {
 
@@ -23,11 +24,47 @@ const createTestimonial = async (req, res) => {
   }
 };
 
-async function getAllTestimonials(request, response) { }
+async function getAllTestimonials(request, response, next) {
+  try {
+    const { page, size } = request.query
+    const data = await testimonialsServiceGet(page,size)
+    return response.status(200).json(data)
+  } catch (error) {
+    return next(error)
+  }
+}
 
 async function getByIdTestimonial(request, response) { }
 
-async function deleteByIdTestimonial(request, response,next) {
+async function putByIdTestimonial(req, res,next) { 
+  const { id } = req.params;
+  const { name, image, content, } = req.body;
+
+  try {
+
+    const testimonial = await Testimonial.findByPk(id);
+
+    if (!testimonial) {
+      return res.status(404).json({
+        msg: 'Testimonial not found'
+      });
+    }
+
+    const newTestimonial = await testimonial.update({
+      name,
+      image,
+      content
+    });
+
+    return res.status(200).json(newTestimonial); 
+
+  } catch (error) {
+    next(error);
+  }
+};
+
+
+async function deleteByIdTestimonial(req, res,next) {
     const { id } = req.params;
     try{
         await Testimonial.destroy({ where: { id } });
@@ -37,7 +74,6 @@ async function deleteByIdTestimonial(request, response,next) {
       next(error);
     }
   }
-async function putByIdTestimonial(request, response) { }
 
 module.exports = {
   createTestimonial,

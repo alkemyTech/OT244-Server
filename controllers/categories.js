@@ -1,14 +1,31 @@
 const { request, response } = require("express");
 const {Categories} = require("../models")
+const { nextPage, prevPage } = require("../helpers/paginationTools");
 
 const getCategories = async (req,res) => {
+  const { page=0, limit=10 } = req.query;
+  const offset = parseInt(page * limit);
+  const endpoint = "categories";
+
   try {
-    const getData = await Categories.findAll({attributes: ['name']})
-    res.status(200).json(getData)
+    const getData = await Categories.findAndCountAll({
+      limit: parseInt(limit),
+      offset,
+    });
+
+    const pages =  Math.floor(getData.count/limit);
+
+    res.status(200).json({
+      getData,
+      next: nextPage(endpoint,parseInt(page),pages),
+      prev: prevPage(endpoint,parseInt(page),pages),
+    })
   } catch (error) {
     return res.status(500).json({ msg: "An unexpected error occurred" });
   }
 }
+
+
 
 async function createCategory(req, res) {
   try {
