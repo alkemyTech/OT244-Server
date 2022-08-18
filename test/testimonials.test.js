@@ -77,7 +77,7 @@ describe('POST /testimonials', () => {
         expect(res.statusCode).toBe(400)
     });
 });
-describe('PUT /testimonials7:id', () => {
+describe('PUT /testimonials/:id', () => {
     test("should Upgrade a testimonials with token admin", async () => {
         const res = await request(app)
         .put("/testimonials/1")
