@@ -44,4 +44,7 @@ const addContact = async( req, res, next ) => {
     }
 }
 
-module.exports = { getContacts,addContact };
+module.exports = { 
+    addContact,
+    getContacts,
+}
