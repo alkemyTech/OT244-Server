@@ -1,19 +1,18 @@
 const app = require("./../app")
-const request = require("supertest");
+const request = require("supertest")(app);
 const generateToken = require("./../helpers/jwt-generation");
 
 const newContact = {
     name: 'Luis',
     phone: 3227191368,
-    email: 'lucho@email.com',
-    message: 'My friend'
-    
+    email: 'lucho1@email.com',
+    message: 'My friend'    
 }
 
 const contactEmptyMessage = {
     name: 'Luis',
     phone: 3227191368,
-    email: 'lucho1@email.com',
+    email: 'lucho2@email.com',
     message: ''    
 }
 
@@ -41,7 +40,7 @@ const contactEmptyEmail = {
 const userAdmin = {
     email: 'admin@test.com',
     password: 'Pass1234',
-    roleId: process.env.ADMIN_ROLE_ID
+    roleId: process.env.ADMIN_ROLE
 }
 
 const standarUser = {

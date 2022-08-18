@@ -1,4 +1,4 @@
-const { Contact } = require('../models');
+const { contacts } = require('../models');
 const { createNewContact } = require("../services/contacts")
 
 const addContact = async( req, res, next ) => {
@@ -24,9 +24,9 @@ const getContacts = async (req, res, next) => {
 
     try {
 
-        const contacts = await Contact.findAll();
+        const contact = await contacts.findAll();
 
-        return res.status(200).json(contacts);
+        return res.status(200).json(contact);
 
     } catch (error) {
         next(error)
