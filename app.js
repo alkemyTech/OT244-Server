@@ -31,8 +31,8 @@ const swaggerSpec = {
   definition: {
       openapi: '3.0.0',
       info: {
-          title: 'Challenge Nodejs',
-          version: '1.0.0',
+          title: 'Somos mas',
+          version: 'API ONG Somos Mas',
       },
       servers: [
           {
