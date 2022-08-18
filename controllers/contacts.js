@@ -1,22 +1,8 @@
+const { contacts } = require('../models');
 const ejs = require('ejs')
 const path = require('path');
 const sendEmail = require("../helpers/mailer");
-
-const { Contact } = require('../models');
 const { createNewContact } = require("../services/contacts")
-
-const getContacts = async (req, res, next) => {
-
-    try {
-
-        const contacts = await Contact.findAll();
-
-        return res.status(200).json(contacts);
-
-    } catch (error) {
-        next(error)
-    }
-};
 
 const addContact = async( req, res, next ) => {
     const { name, phone, message, email } = req.body
@@ -43,6 +29,19 @@ const addContact = async( req, res, next ) => {
         next(error)
     }
 }
+
+const getContacts = async (req, res, next) => {
+
+    try {
+
+        const contact = await contacts.findAll();
+
+        return res.status(200).json(contact);
+
+    } catch (error) {
+        next(error)
+    }
+};
 
 module.exports = { 
     addContact,
