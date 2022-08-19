@@ -142,7 +142,10 @@ components:
       properties:
         name: 
           type: string
+          example: Category example
         image:
           type: string
+          example: categoryDoc.jpg
         description: 
           type: string
+          example: This is a category
