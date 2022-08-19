@@ -5,16 +5,16 @@ const sendEmail = require("../helpers/mailer");
 const { createNewContact } = require("../services/contacts")
 
 const addContact = async( req, res, next ) => {
-    const { name, phone, message, email } = req.body
+    const { name, phone, email, message  } = req.body
 
     try{
-        const data = await createNewContact(name, phone, message, email)
+        const data = await createNewContact(name, phone, email, message)
         if(data){
-            const infoTemplate = await ejs.renderFile(`${path.join(__dirname, '../views/plantilla-email.ejs')}`,{message : message})
-            const message = {
+            const msg = {
                 title: "Bienvenid@ al proyecto Somos Más",
                 content: email + "," + " Recibimos tu contacto con exito",
             }
+            const infoTemplate = await ejs.renderFile(`${path.join(__dirname, '../views/plantilla-email.ejs')}`,{message : msg})            
             sendEmail('"OT244 #DarkCode 👻" <foo@example.com>',email,"Somos Más", infoTemplate)
             return res.status(200).json({
                 msg: 'Contact created successfully'
