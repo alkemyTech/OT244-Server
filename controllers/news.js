@@ -9,7 +9,6 @@ async function createNews(req, res) {
 
     res.status(201).json(news);
   } catch (error) {
-    console.log(error);
     res.status(500).json({ msg: "An unexpected error occurred" });
   }
 }
@@ -30,7 +29,7 @@ const deleteNew = async (req = request, res = response, next) => {
       })
     }
   } catch (error) {
-    console.log(error)
+    next(error)
   }
 }
 

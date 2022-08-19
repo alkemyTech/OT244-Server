@@ -19,7 +19,6 @@ const addActivity = async ( req, res = response ) => {
             activitie
         })
     }catch( error ){
-        console.log( error );
         return res.status(500).json({
             msg: 'Please contact to support'
         })
