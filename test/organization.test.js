@@ -12,24 +12,20 @@ const standard = generateToken({
     "roleId": '2',
 })
 
-describe('POST JWT invalid', () =>{
+describe('POST:/organization/public/id', () =>{
     test('There is no token', async() => {
         const api = await supertest(app)
         .post("/organization/public/1")
         .expect(403)
     })
-})
 
-describe('POST Unauthorized', () =>{
     test('User is not authorize', async() => {
         const api = await supertest(app)
         .post("/organization/public/1")
         .set('Authorization', `Bearer ${standard}`)
         .expect(401)
     })
-})
 
-describe('POST verified body', () =>{
     test('There is no name', async() => {
         const api = await supertest(app)
         .post("/organization/public/1")
@@ -44,9 +40,7 @@ describe('POST verified body', () =>{
         .set('Authorization', `Bearer ${admin}`)
         .expect(400)
     })
-})
-
-describe('POST verified body', () =>{
+    
     test('There is no image', async() => {
         const api = await supertest(app)
         .post("/organization/public/1")
@@ -61,9 +55,7 @@ describe('POST verified body', () =>{
         .set('Authorization', `Bearer ${admin}`)
         .expect(400)
     })
-})
 
-describe('POST verified body', () =>{
     test('There is no address', async() => {
         const api = await supertest(app)
         .post("/organization/public/1")
@@ -78,9 +70,7 @@ describe('POST verified body', () =>{
         .set('Authorization', `Bearer ${admin}`)
         .expect(400)
     })
-})
 
-describe('POST verified body', () =>{
     test('There is no phone', async() => {
         const api = await supertest(app)
         .post("/organization/public/1")
@@ -96,9 +86,7 @@ describe('POST verified body', () =>{
         .set('Authorization', `Bearer ${admin}`)
         .expect(400)
     })
-})
-
-describe('POST verified body', () =>{
+    
     test('There is no email', async() => {
         const api = await supertest(app)
         .post("/organization/public/1")
@@ -113,9 +101,7 @@ describe('POST verified body', () =>{
         .set('Authorization', `Bearer ${admin}`)
         .expect(400)
     })
-})
 
-describe('POST verified body', () =>{
     test('There is no welcomeText', async() => {
         const api = await supertest(app)
         .post("/organization/public/1")
@@ -130,9 +116,7 @@ describe('POST verified body', () =>{
         .set('Authorization', `Bearer ${admin}`)
         .expect(400)
     })
-})
 
-describe('POST verified body', () =>{
     test('There is no aboutUsText', async() => {
         const api = await supertest(app)
         .post("/organization/public/1")
@@ -147,9 +131,7 @@ describe('POST verified body', () =>{
         .set('Authorization', `Bearer ${admin}`)
         .expect(400)
     })
-})
 
-describe('POST verified body', () =>{
     test('There is no Data', async() => {
         const api = await supertest(app)
         .post("/organization/public/1")
@@ -165,9 +147,6 @@ describe('POST verified body', () =>{
         .set('Authorization', `Bearer ${admin}`)
         .expect(400)
     })
-})
-
-describe('POST verified body', () =>{
     test('Data already ready', async() => {
         const api = await supertest(app)
         .post("/organization/public/1")
@@ -184,40 +163,12 @@ describe('POST verified body', () =>{
         .expect(404)
         .expect('Content-Type', /application\/json/)
     })
-})
 
-describe('POST verified Id', () =>{
     test('ID not found', async() => {
         const api = await supertest(app)
         .put("/organization/public")
         .set('Authorization', `Bearer ${admin}`)
         .expect(404)
     })
-})
-
-describe('GET JWT invalid', () =>{
-    test('There is no token', async() => {
-        const api = await supertest(app)
-        .post("/organization/public")
-        .expect(403)
-    })
-})
-
-describe('GET Unauthorized', () =>{
-    test('User is not authorize', async() => {
-        const api = await supertest(app)
-        .post("/organization/public")
-        .set('Authorization', `Bearer ${standard}`)
-        .expect(401)
-    })
-})
-
-describe('GET', () =>{
-    test('Get data', async() => {
-        const api = await supertest(app)
-        .post("/organization/public")
-        .set('Authorization', `Bearer ${standard}`)
-        .expect(200)
-        .expect('Content-Type', /application\/json/)
-    })
+    
 })
