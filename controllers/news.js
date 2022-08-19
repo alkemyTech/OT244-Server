@@ -77,7 +77,7 @@ async function getNew(req, res, next) {
 }
 
 const getAllNews = async (req, res) => {
-  const { page=0, limit=10 } = req.query;
+  const { page = 0, limit = 10 } = req.query;
   const offset = parseInt(page * limit);
   const endpoint = "news";
   try {
@@ -90,8 +90,8 @@ const getAllNews = async (req, res) => {
 
     res.status(200).json({
       getData,
-      next: nextPage(endpoint,parseInt(page), pages),
-      prev: prevPage(endpoint,parseInt(page), pages),
+      next: nextPage(endpoint, parseInt(page), pages),
+      prev: prevPage(endpoint, parseInt(page), pages),
     })
   } catch (error) {
     next(error)
