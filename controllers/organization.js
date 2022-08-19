@@ -1,17 +1,5 @@
 const { Organization } = require("../models")
 
-const get = (req, res) => {
-    //get
-};
-
-const getById = (req, res) => {
-    //get by id
-};
-
-const create = (req, res) => {
-    //create 
-};
-
 const updatePublicData = async (req, res, next) => {
 
     const { id } = req.params;
@@ -47,14 +35,6 @@ const updatePublicData = async (req, res, next) => {
     }
 };
 
-const deleteOrg = (req, res) => {
-    //delete 
-};
-
 module.exports = {
-    get,
-    getById,
-    create,
     updatePublicData,
-    deleteOrg,
 }

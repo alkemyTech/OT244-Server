@@ -49,8 +49,9 @@ const deleteSlides = async (req,res,next) => {
      catch (error) {
       next(error);
     }
-  }
-  const associeteOrganization= async (req, res, next) => {
+}
+
+const associeteOrganization= async (req, res, next) => {
     try {
         const { idslider ,idorganization } = req.params;
 

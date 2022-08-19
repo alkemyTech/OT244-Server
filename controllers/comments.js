@@ -1,7 +1,6 @@
 const { Comment } = require('../models');
 const { putCommentService, getAll } = require("./../services/comments")
 
-
 const createComments = async (req, res,next) => {  
     const { body, user_id, news_id } = req.body;
     try{
@@ -15,7 +14,6 @@ const createComments = async (req, res,next) => {
         next(err);
     }
 }
-
 
 const putComment = async(req, res, next) => {
     const { id } = req.params

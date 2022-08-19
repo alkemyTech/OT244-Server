@@ -1,8 +1,6 @@
 const { response } = require( "express" );
 const { Activities } = require("../models");
 
-const getActivities = async ( req, res ) => {};
-
 const addActivity = async ( req, res = response ) => {
     const { name, content, image } = req.body;
     try{        
@@ -27,6 +25,7 @@ const addActivity = async ( req, res = response ) => {
         })
     }
 };
+
 const updateActivityById = async (req, res, next) => {
     const { id } = req.params;
     const { name, content, image } = req.body;
@@ -50,11 +49,8 @@ const updateActivityById = async (req, res, next) => {
       next(error);
     }
 };
-const deleteActivity = async ( req, res ) => {};
 
 module.exports = {
-    getActivities,
     addActivity,
     updateActivityById,
-    deleteActivity,
 }

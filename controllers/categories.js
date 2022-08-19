@@ -25,8 +25,6 @@ const getCategories = async (req,res) => {
   }
 }
 
-
-
 async function createCategory(req, res) {
   try {
     const { name, image, description } = req.body;
@@ -44,7 +42,6 @@ async function createCategory(req, res) {
     return res.status(500).json({ msg: "An unexpected error occurred" });
   }
 }
-
 
 const deleteCategoryById = async (req, res, next) => { 
   const { id } = req.params 

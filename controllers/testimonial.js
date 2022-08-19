@@ -34,8 +34,6 @@ async function getAllTestimonials(request, response, next) {
   }
 }
 
-async function getByIdTestimonial(request, response) { }
-
 async function putByIdTestimonial(req, res,next) { 
   const { id } = req.params;
   const { name, image, content, } = req.body;
@@ -63,7 +61,6 @@ async function putByIdTestimonial(req, res,next) {
   }
 };
 
-
 async function deleteByIdTestimonial(req, res,next) {
     const { id } = req.params;
     try{
@@ -78,7 +75,6 @@ async function deleteByIdTestimonial(req, res,next) {
 module.exports = {
   createTestimonial,
   getAllTestimonials,
-  getByIdTestimonial,
   deleteByIdTestimonial,
   putByIdTestimonial,
 };
