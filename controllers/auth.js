@@ -5,6 +5,7 @@ const auth = require('../config/auth')
 const ejs = require('ejs')
 const path = require('path');
 const sendEmail = require("../helpers/mailer");
+const uploadFile = require('../helpers/uploadAWS');
 
 const login = async(req, res, next) => {
 
@@ -21,11 +22,12 @@ const createUser = async (request, response) => {
   try {
     
     const { firstName, lastName, email, password} = request.body;
+    const fileLocation = await uploadFile(request.files.file);
     const passwordHash = await bcrypt.hash(password, Number(auth.rounds));
     
     const [user, created] = await User.findOrCreate({
       where: { email },
-      defaults: { firstName, lastName, password: passwordHash, roleId: process.env.STANDARD_ROLE, },
+      defaults: { firstName, lastName, password: passwordHash, roleId: process.env.STANDARD_ROLE, photo: fileLocation },
     });
 
     const message = {
