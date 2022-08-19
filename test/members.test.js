@@ -116,12 +116,12 @@ describe("POST:/members", () => {
     const { body: member, statusCode } = await api
       .post("/members")
       .set("Authorization", `Bearer ${tokenAdmin}`)
-      .send({ name: "Maxi Ceballos", image: "www.localhost:3000/image.png" });
+      .send({ name: "Maxi Ceballos", image: "www.localhost:3000.image.png" });
 
     expect(statusCode).toBe(201);
     expect(member.id).toEqual(1);
     expect(member.name).toEqual("Maxi Ceballos");
-    expect(member.image).toEqual("www.localhost:3000/image.png");
+    expect(member.image).toEqual("www.localhost:3000.image.png");
   });
 
   afterEach(async () => {

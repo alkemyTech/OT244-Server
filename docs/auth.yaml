@@ -21,7 +21,7 @@ paths:
         
           
         '200':
-          description : There is a user with that email!
+          description : Existe un usuario creado con el email enviado.
           content:
             application/json:
               schema:
@@ -31,8 +31,9 @@ paths:
                   mgs:
                     type: string
                     description: mensaje de respuesta.
+                    example: There is a user with that email!
         '500':
-          description : There is a user with that email!
+          description : Ocurrio un error en el servidor.
           content:
             application/json:
               schema:
@@ -42,6 +43,7 @@ paths:
                   mgs:
                     type: string
                     description: mensaje de respuesta.
+                    example: An unexpected error occurred
                   
         
         
@@ -69,8 +71,9 @@ paths:
                   token:
                     type: string
                     description: token de acceso.
+                    example: 7WK5T79u5mIzjIXXi2oI9Fglmgivv7RAJ7izyj9tUyQ
         '401':
-          description : Authentication failed! Email / password does not correct.
+          description : Fallo al autenticar, credenciales incorrectas.
           content:
             application/json:
               schema:
@@ -80,6 +83,7 @@ paths:
                   mgs:
                     type: string
                     description: mensaje de respuesta de error.
+                    example:  Authentication failed! Email / password does not correct.
                   
         
       
@@ -93,13 +97,13 @@ paths:
       responses:
         
         '200':
-          description : Se logea correctamente y recibe el token de acceso
+          description : Recibe los datos personales solicitados.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/UserData'
         '500':
-          description : An unexpected error occurred
+          description : Ocurrio un error en el servidor.
           content:
             application/json:
               schema:
@@ -109,6 +113,7 @@ paths:
                   mgs:
                     type: string
                     description: mensaje de respuesta de error.
+                    example : An unexpected error occurred
                   
         
       
@@ -127,15 +132,19 @@ components:
         firstName:
           type: string
           description: Primer nombre del Usuario
+          example: Gonzalo
         lastName:
           type: string
           description: Apellido del Usuario
+          example: Fleitas
         email:
           type: string
           description: Email del Usuario
+          example: psi.gonzalo.fleitas@gmail.com
         password:
           type: string
           description: contraseña del Usuario
+          example: °°°°°°°°
     BodyLoginPost:
       type: object
       properties:
@@ -143,9 +152,11 @@ components:
         email:
           type: string
           description: Email del Usuario
+          example: psi.gonzalo.fleitas@gmail.com
         password:
           type: string
           description: contraseña del Usuario
+          example: °°°°°°°°
     
     UserData:
       type: object
@@ -153,10 +164,13 @@ components:
         firstName:
           type: string
           description: Primer nombre del Usuario
+          example: Gonzalo
         lastName:
           type: string
           description: Apellido del Usuario
+          example: Fleitas
         email:
           type: string
           description: Email del Usuario
+          example: psi.gonzalo.fleitas@gmail.com
                  
