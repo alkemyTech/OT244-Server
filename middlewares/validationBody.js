@@ -24,7 +24,17 @@ const categories = [
 ]
 
 const members = [
-    body("name").exists().withMessage("Name is required").isString().isLength({ min: 3 }).withMessage("Name must be a string"),
+  body("name", "Enter a valid name!")
+    .trim()
+    .notEmpty()
+    .isString({ min: 4 })
+    .escape(),
+  body("image", "Enter a valid image!")
+    .trim()
+    .notEmpty()
+    .isString({ min: 8 })
+    .escape(),
+
 ];
 
 const news = [

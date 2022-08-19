@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.get("/", userAuthenticate, verifyAdmin, getMembers);
 router.post("/", userAuthenticate, verifyAdmin, members, validationResult, createMember);
-router.put('/', userAuthenticate, verifyAdmin, members, validationResult, updateMember);
+router.put('/:id', userAuthenticate, verifyAdmin, members, validationResult, updateMember);
 router.delete("/:id", userAuthenticate, verifyAdmin, deleteMember, );
 
 
