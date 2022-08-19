@@ -45,6 +45,7 @@ const createUser = async (request, response) => {
       .status(200)
       .json({ msg: "There is a user with that email!" });
   } catch (error) {
+    console.log(error)
     return response.status(500).json({ msg: "An unexpected error occurred" });
   }
 }
