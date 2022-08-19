@@ -53,25 +53,6 @@ const updateNews = async (req, res, next) => {
   }
 };
 
-<<<<<<< HEAD
-async function getNew(req, res, next) { 
-  const  id  = req.params.id;
-    try{
-      const news = await News.findOne({
-        where: { id },
-        attributes: {
-          exclude: [ 'id', 'deletedAt', 'createdAt', 'updatedAt' ]
-        }     
-      })
-      if(news){
-        return res.json({
-          news
-        })
-      }else{
-        res.status(404).json({
-          msg: "This news doesn't exist!"
-        });
-=======
 async function getNew(req, res, next) {
   const id = req.params.id
   try {
@@ -79,7 +60,6 @@ async function getNew(req, res, next) {
       where: { id },
       attributes: {
         exclude: ['id', 'deletedAt', 'createdAt', 'updatedAt']
->>>>>>> be9c8aff2d3aa896d27f3f7006e6cee75fc88a1d
       }
     })
     if (news) {
@@ -97,7 +77,7 @@ async function getNew(req, res, next) {
 }
 
 const getAllNews = async (req, res) => {
-  const { page=0, limit=10 } = req.query;
+  const { page = 0, limit = 10 } = req.query;
   const offset = parseInt(page * limit);
   const endpoint = "news";
   try {
@@ -110,8 +90,8 @@ const getAllNews = async (req, res) => {
 
     res.status(200).json({
       getData,
-      next: nextPage(endpoint,parseInt(page), pages),
-      prev: prevPage(endpoint,parseInt(page), pages),
+      next: nextPage(endpoint, parseInt(page), pages),
+      prev: prevPage(endpoint, parseInt(page), pages),
     })
   } catch (error) {
     next(error)

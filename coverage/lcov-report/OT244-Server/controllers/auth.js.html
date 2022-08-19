@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">38.46% </span>
+                <span class="strong">40.74% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>10/26</span>
+                <span class='fraction'>11/27</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>0/2</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">38.46% </span>
+                <span class="strong">40.74% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>10/26</span>
+                <span class='fraction'>11/27</span>
             </div>
         
             
@@ -137,22 +137,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -163,7 +148,22 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -171,16 +171,16 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const { request, response } = require('express');
-const authService = require('../services/authService');
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const authService = require('../services/authService');
 const { User } = require("../models");
 const bcrypt = require("bcrypt");
 const auth = require('../config/auth')
 const ejs = require('ejs')
 const path = require('path');
 const sendEmail = require("../helpers/mailer");
+const uploadFile = require('../helpers/uploadAWS');
 &nbsp;
-const login = <span class="fstat-no" title="function not covered" >as</span>ync(req = <span class="branch-0 cbranch-no" title="branch not covered" >request,</span> res = <span class="branch-0 cbranch-no" title="branch not covered" >response,</span> next) =&gt; {
+const login = <span class="fstat-no" title="function not covered" >as</span>ync(req, res, next) =&gt; {
 &nbsp;
     const {email, password} = <span class="cstat-no" title="statement not covered" >req.body;</span>
 <span class="cstat-no" title="statement not covered" >    try{</span>
@@ -191,15 +191,16 @@ const login = <span class="fstat-no" title="function not covered" >as</span>ync(
     }
 }
 &nbsp;
-async function <span class="fstat-no" title="function not covered" >createUser(</span>request, response) {
+const createUser = <span class="fstat-no" title="function not covered" >as</span>ync (request, response) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     
     const { firstName, lastName, email, password} = <span class="cstat-no" title="statement not covered" >request.body;</span>
+    const fileLocation = <span class="cstat-no" title="statement not covered" >await uploadFile(request.files.file);</span>
     const passwordHash = <span class="cstat-no" title="statement not covered" >await bcrypt.hash(password, Number(auth.rounds));</span>
     
     const [user, created] = <span class="cstat-no" title="statement not covered" >await User.findOrCreate({</span>
       where: { email },
-      defaults: { firstName, lastName, password: passwordHash, roleId: process.env.STANDARD_ROLE, },
+      defaults: { firstName, lastName, password: passwordHash, roleId: process.env.STANDARD_ROLE, photo: fileLocation },
     });
 &nbsp;
     const message = <span class="cstat-no" title="statement not covered" >{</span>
@@ -217,7 +218,6 @@ async function <span class="fstat-no" title="function not covered" >createUser(<
       .status(200)
       .json({ msg: "There is a user with that email!" });
   } catch (error) {
-<span class="cstat-no" title="statement not covered" >    console.log(error);</span>
 <span class="cstat-no" title="statement not covered" >    return response.status(500).json({ msg: "An unexpected error occurred" });</span>
   }
 }
@@ -232,7 +232,7 @@ module.exports = {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-08-19T11:58:51.603Z
+                at 2022-08-19T16:37:03.231Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

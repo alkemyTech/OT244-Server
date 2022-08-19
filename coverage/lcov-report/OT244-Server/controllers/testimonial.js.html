@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">13.79% </span>
+                <span class="strong">22.58% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>4/29</span>
+                <span class='fraction'>7/31</span>
             </div>
         
             
@@ -39,14 +39,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/5</span>
+                <span class='fraction'>0/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">13.79% </span>
+                <span class="strong">22.58% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>4/29</span>
+                <span class='fraction'>7/31</span>
             </div>
         
             
@@ -141,13 +141,7 @@
 <a name='L76'></a><a href='#L76'>76</a>
 <a name='L77'></a><a href='#L77'>77</a>
 <a name='L78'></a><a href='#L78'>78</a>
-<a name='L79'></a><a href='#L79'>79</a>
-<a name='L80'></a><a href='#L80'>80</a>
-<a name='L81'></a><a href='#L81'>81</a>
-<a name='L82'></a><a href='#L82'>82</a>
-<a name='L83'></a><a href='#L83'>83</a>
-<a name='L84'></a><a href='#L84'>84</a>
-<a name='L85'></a><a href='#L85'>85</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L79'></a><a href='#L79'>79</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -167,25 +161,21 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -212,8 +202,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -225,7 +214,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -250,14 +238,13 @@ const createTestimonial = <span class="fstat-no" title="function not covered" >a
     });
 &nbsp;
   } catch (error) {
-<span class="cstat-no" title="statement not covered" >    console.log(error);</span>
 <span class="cstat-no" title="statement not covered" >    res.status(500).json({</span>
       msg: 'Error creating testimonial'
     });
   }
 };
 &nbsp;
-async function <span class="fstat-no" title="function not covered" >getAllTestimonials(</span>request, response, next) {
+const getAllTestimonials = <span class="fstat-no" title="function not covered" >as</span>ync (request, response, next) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { page, size } = <span class="cstat-no" title="statement not covered" >request.query</span>
     const data = <span class="cstat-no" title="statement not covered" >await testimonialsServiceGet(page,size)</span>
@@ -266,10 +253,7 @@ async function <span class="fstat-no" title="function not covered" >getAllTestim
 <span class="cstat-no" title="statement not covered" >    return next(error)</span>
   }
 }
-&nbsp;
-async function <span class="fstat-no" title="function not covered" >getByIdTestimonial(</span>request, response) { }
-&nbsp;
-async function <span class="fstat-no" title="function not covered" >putByIdTestimonial(</span>req, res,next) { 
+const putByIdTestimonial = <span class="fstat-no" title="function not covered" >as</span>ync (req, res,next) =&gt; { 
   const { id } = <span class="cstat-no" title="statement not covered" >req.params;</span>
   const { name, image, content, } = <span class="cstat-no" title="statement not covered" >req.body;</span>
 &nbsp;
@@ -296,8 +280,7 @@ async function <span class="fstat-no" title="function not covered" >putByIdTesti
   }
 };
 &nbsp;
-&nbsp;
-async function <span class="fstat-no" title="function not covered" >deleteByIdTestimonial(</span>req, res,next) {
+const deleteByIdTestimonial = <span class="fstat-no" title="function not covered" >as</span>ync (req, res,next) =&gt; {
     const { id } = <span class="cstat-no" title="statement not covered" >req.params;</span>
 <span class="cstat-no" title="statement not covered" >    try{</span>
 <span class="cstat-no" title="statement not covered" >        await Testimonial.destroy({ where: { id } });</span>
@@ -311,7 +294,6 @@ async function <span class="fstat-no" title="function not covered" >deleteByIdTe
 module.exports = {
   createTestimonial,
   getAllTestimonials,
-  getByIdTestimonial,
   deleteByIdTestimonial,
   putByIdTestimonial,
 };
@@ -322,7 +304,7 @@ module.exports = {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-08-19T11:58:51.603Z
+                at 2022-08-19T16:37:03.231Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

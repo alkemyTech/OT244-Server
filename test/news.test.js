@@ -103,10 +103,10 @@ describe('PUT /news/:id', () => {
             .send(randomNew)
         expect(response.status).toBe(200)
         const news = await News.findByPk(3)
-        expect(news.name).toBe('Testing news')
-        expect(news.content).toBe('Testing content')
-        expect(news.image).toBe('newsTesting.jpg')
-    })
+        expect(news.name).toBeDefined()
+        expect(news.content).toBeDefined()
+        expect(news.image).toBeDefined()
+    });
 
     test('Should return an error if no token was sent', async () => {
         request.put('/news/3')
@@ -176,6 +176,7 @@ describe('DELETE /news/:id', () => {
     test('Should return a 404 error - id does not exist', async () => {
         const response = await request.delete('/news/1234')
             .set('Authorization', `Bearer ${token}`)
+            .send(randomNew)
         expect(response.status).toBe(404)
     });
 
@@ -202,15 +203,17 @@ describe('GET /news/:id', () => {
         const response = await request.get('/news/5')
             .set('Authorization', `Bearer ${token}`)
         expect(response.status).toBe(200)
+        const news = await News.findByPk(5)
+        expect(news).toBeDefined();
     });
 
     test('Should return a 404 error - id does not exist', async () => {
-        const response = await request.get('/news/1234')
+        const response = await request.get('/news/343')
             .set('Authorization', `Bearer ${token}`)
         expect(response.status).toBe(404)
     });
 
-    test('Should return an error if no token was sent', async () => {
+    test('Should return an error if no token was sent', () => {
         request.get('/news/5')
             .then(response => expect(response.status).toBe(403))
     });

@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">17.39% </span>
+                <span class="strong">18.18% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>8/46</span>
+                <span class='fraction'>8/44</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/10</span>
+                <span class='fraction'>0/8</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">17.39% </span>
+                <span class="strong">18.18% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>8/46</span>
+                <span class='fraction'>8/44</span>
             </div>
         
             
@@ -187,14 +187,7 @@
 <a name='L122'></a><a href='#L122'>122</a>
 <a name='L123'></a><a href='#L123'>123</a>
 <a name='L124'></a><a href='#L124'>124</a>
-<a name='L125'></a><a href='#L125'>125</a>
-<a name='L126'></a><a href='#L126'>126</a>
-<a name='L127'></a><a href='#L127'>127</a>
-<a name='L128'></a><a href='#L128'>128</a>
-<a name='L129'></a><a href='#L129'>129</a>
-<a name='L130'></a><a href='#L130'>130</a>
-<a name='L131'></a><a href='#L131'>131</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L125'></a><a href='#L125'>125</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -220,9 +213,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -236,13 +227,10 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -323,8 +311,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const { request, response } = require("express");
-const {Categories} = require("../models")
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const {Categories} = require("../models")
 const { nextPage, prevPage } = require("../helpers/paginationTools");
 &nbsp;
 const getCategories = <span class="fstat-no" title="function not covered" >as</span>ync (req,res) =&gt; {
@@ -350,9 +337,7 @@ const getCategories = <span class="fstat-no" title="function not covered" >as</s
   }
 }
 &nbsp;
-&nbsp;
-&nbsp;
-async function <span class="fstat-no" title="function not covered" >createCategory(</span>req, res) {
+const createCategory = <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt;{
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { name, image, description } = <span class="cstat-no" title="statement not covered" >req.body;</span>
 &nbsp;
@@ -365,17 +350,14 @@ async function <span class="fstat-no" title="function not covered" >createCatego
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    res.status(201).json(data);</span>
   } catch (error) {
-<span class="cstat-no" title="statement not covered" >    console.log(error);</span>
 <span class="cstat-no" title="statement not covered" >    return res.status(500).json({ msg: "An unexpected error occurred" });</span>
   }
 }
-&nbsp;
 &nbsp;
 const deleteCategoryById = <span class="fstat-no" title="function not covered" >as</span>ync (req, res, next) =&gt; { 
   const { id } = <span class="cstat-no" title="statement not covered" >req.params </span>
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const category = <span class="cstat-no" title="statement not covered" >await Categories.destroy({where:{id}})</span>
-<span class="cstat-no" title="statement not covered" >    console.log(category)</span>
 <span class="cstat-no" title="statement not covered" >    if (category) {</span>
      
 <span class="cstat-no" title="statement not covered" >      return res.status(200).json({msg:"Category deleted successfully!"})</span>
@@ -424,7 +406,7 @@ const updateCategory = <span class="fstat-no" title="function not covered" >as</
   }
 };
 &nbsp;
-const getCategoryById = <span class="fstat-no" title="function not covered" >as</span>ync(req = <span class="branch-0 cbranch-no" title="branch not covered" >request,</span> res = <span class="branch-0 cbranch-no" title="branch not covered" >response,</span> next) =&gt; {
+const getCategoryById = <span class="fstat-no" title="function not covered" >as</span>ync(req, res, next) =&gt; {
   const id = <span class="cstat-no" title="statement not covered" >req.params.id</span>
 <span class="cstat-no" title="statement not covered" >  try{</span>
     const category = <span class="cstat-no" title="statement not covered" >await Categories.findOne({</span>
@@ -460,7 +442,7 @@ module.exports = {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-08-19T11:58:51.603Z
+                at 2022-08-19T16:37:03.231Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
