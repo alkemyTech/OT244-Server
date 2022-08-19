@@ -24,7 +24,7 @@ const getCategories = async (req,res) => {
   }
 }
 
-const createCategory = async (req, res) => {
+const createCategory = async (req, res) =>{
   try {
     const { name, image, description } = req.body;
 

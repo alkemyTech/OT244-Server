@@ -9,11 +9,12 @@ const createComments = async (req, res,next) => {
             user_id,
             news_id
         });
-        res.status(201);  
+        return res.status(201);  
     }catch(err){
         next(err);
     }
 }
+
 
 const putComment = async(req, res, next) => {
     const { id } = req.params
