@@ -38,18 +38,18 @@ components:
 
 
 paths:
- /news/{page}/{size}:
+ /news?page=0&size=10:
      get:
          tags:
              - News
          summary: Gets a news
          parameters:
-             - name: page
-               in: query
-             - name: size
+             - in: query
+               name: page
+             - in: query
+               name: size
                description: Default gets 10 news
                required: true
-               in: query
          responses:
              '200':
                  description: OK
