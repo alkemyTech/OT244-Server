@@ -1,0 +1,162 @@
+openapi: 3.0.1
+paths:
+  /auth/register:
+    post:
+      tags: [Auth]
+      summary: registar un nuevo usuario en la base de datos.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BodyRegisterPost'
+        required: true
+      
+      responses:
+        '201':
+          description: El usuario se registro correctamente.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BodyRegisterPost'
+        
+          
+        '200':
+          description : There is a user with that email!
+          content:
+            application/json:
+              schema:
+                
+                type: object
+                properties:
+                  mgs:
+                    type: string
+                    description: mensaje de respuesta.
+        '500':
+          description : There is a user with that email!
+          content:
+            application/json:
+              schema:
+              
+                type: object
+                properties:
+                  mgs:
+                    type: string
+                    description: mensaje de respuesta.
+                  
+        
+        
+  /auth/login:
+    post:
+      tags: [Auth]
+      summary: logear al usuario.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BodyLoginPost'
+        required: true
+      
+      responses:
+        
+        '200':
+          description : Se logea correctamente y recibe el token de acceso
+          content:
+            application/json:
+              schema:
+                
+                type: object
+                properties:
+                  token:
+                    type: string
+                    description: token de acceso.
+        '401':
+          description : Authentication failed! Email / password does not correct.
+          content:
+            application/json:
+              schema:
+              
+                type: object
+                properties:
+                  mgs:
+                    type: string
+                    description: mensaje de respuesta de error.
+                  
+        
+      
+  /auth/me:
+    get:
+      tags: [Auth]
+      summary: Enviar al usuario su informacion personal.
+      security:
+        - bearerAuth: [] 
+      
+      responses:
+        
+        '200':
+          description : Se logea correctamente y recibe el token de acceso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserData'
+        '401':
+          description : Authentication failed! Email / password does not correct.
+          content:
+            application/json:
+              schema:
+              
+                type: object
+                properties:
+                  mgs:
+                    type: string
+                    description: mensaje de respuesta de error.
+                  
+        
+      
+        
+
+components:
+  securitySchemes:
+    bearerAuth:      
+      type: http
+      scheme: bearer
+  
+  schemas:
+    BodyRegisterPost:
+      type: object
+      properties:
+        firstName:
+          type: string
+          description: Primer nombre del Usuario
+        lastName:
+          type: string
+          description: Apellido del Usuario
+        email:
+          type: string
+          description: Email del Usuario
+        password:
+          type: string
+          description: contraseña del Usuario
+    BodyLoginPost:
+      type: object
+      properties:
+        
+        email:
+          type: string
+          description: Email del Usuario
+        password:
+          type: string
+          description: contraseña del Usuario
+    
+    UserData:
+      type: object
+      properties:
+        firstName:
+          type: string
+          description: Primer nombre del Usuario
+        lastName:
+          type: string
+          description: Apellido del Usuario
+        email:
+          type: string
+          description: Email del Usuario
+                 
