@@ -1,4 +1,3 @@
-const { request, response } = require('express');
 const authService = require('../services/authService');
 const { User } = require("../models");
 const bcrypt = require("bcrypt");
@@ -6,8 +5,9 @@ const auth = require('../config/auth')
 const ejs = require('ejs')
 const path = require('path');
 const sendEmail = require("../helpers/mailer");
+const uploadFile = require('../helpers/uploadAWS');
 
-const login = async(req = request, res = response, next) => {
+const login = async(req, res, next) => {
 
     const {email, password} = req.body;
     try{
@@ -18,15 +18,16 @@ const login = async(req = request, res = response, next) => {
     }
 }
 
-async function createUser(request, response) {
+const createUser = async (request, response) => {
   try {
     
     const { firstName, lastName, email, password} = request.body;
+    const fileLocation = await uploadFile(request.files.file);
     const passwordHash = await bcrypt.hash(password, Number(auth.rounds));
     
     const [user, created] = await User.findOrCreate({
       where: { email },
-      defaults: { firstName, lastName, password: passwordHash, roleId: process.env.STANDARD_ROLE, },
+      defaults: { firstName, lastName, password: passwordHash, roleId: process.env.STANDARD_ROLE, photo: fileLocation },
     });
 
     const message = {
@@ -44,7 +45,6 @@ async function createUser(request, response) {
       .status(200)
       .json({ msg: "There is a user with that email!" });
   } catch (error) {
-    console.log(error);
     return response.status(500).json({ msg: "An unexpected error occurred" });
   }
 }

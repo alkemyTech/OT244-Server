@@ -1,7 +1,6 @@
 const { Comment } = require('../models');
 const { putCommentService, getAll } = require("./../services/comments")
 
-
 const createComments = async (req, res,next) => {  
     const { body, user_id, news_id } = req.body;
     try{
@@ -10,7 +9,7 @@ const createComments = async (req, res,next) => {
             user_id,
             news_id
         });
-        res.status(201);  
+        return res.status(201);  
     }catch(err){
         next(err);
     }

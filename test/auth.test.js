@@ -65,7 +65,6 @@ describe("Login with wrong password", () => {
       .post("/auth/login")
       .send({email: userOk.email, password: "test"});
     expect(res.statusCode).toEqual(500);
-    console.log(res);
     expect(res.text.includes('Authentication failed! Email / password does not correct'));
   })
 })

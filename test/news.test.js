@@ -4,21 +4,18 @@ const { sequelize, News } = require('../models');
 const { describe, test } = require('@jest/globals');
 const generateToken = require('../helpers/jwt-generation');
 
-// Admin role user
 const adminUser = {
-    email: 'martin@got.com',
-    password: 'powerpower',
+    email: 'juan@test.com',
+    password: 'admin',
     roleId: process.env.ADMIN_ROLE
 }
 
-//Standard role user
 const standardUser = {
-    email: 'jon@got.com',
-    password: 'powerpower',
+    email: 'marco@test.com',
+    password: 'standard',
     roleId: process.env.STANDARD_ROLE
 }
 
-//Sending a random new
 const randomNew = {
     name: 'Testing news',
     content: 'Testing content',

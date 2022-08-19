@@ -17,14 +17,13 @@ const createTestimonial = async (req, res) => {
     });
 
   } catch (error) {
-    console.log(error);
     res.status(500).json({
       msg: 'Error creating testimonial'
     });
   }
 };
 
-async function getAllTestimonials(request, response, next) {
+const getAllTestimonials = async (request, response, next) => {
   try {
     const { page, size } = request.query
     const data = await testimonialsServiceGet(page,size)
@@ -33,10 +32,7 @@ async function getAllTestimonials(request, response, next) {
     return next(error)
   }
 }
-
-async function getByIdTestimonial(request, response) { }
-
-async function putByIdTestimonial(req, res,next) { 
+const putByIdTestimonial = async (req, res,next) => { 
   const { id } = req.params;
   const { name, image, content, } = req.body;
 
@@ -63,8 +59,7 @@ async function putByIdTestimonial(req, res,next) {
   }
 };
 
-
-async function deleteByIdTestimonial(req, res,next) {
+const deleteByIdTestimonial = async (req, res,next) => {
     const { id } = req.params;
     try{
         await Testimonial.destroy({ where: { id } });
@@ -78,7 +73,6 @@ async function deleteByIdTestimonial(req, res,next) {
 module.exports = {
   createTestimonial,
   getAllTestimonials,
-  getByIdTestimonial,
   deleteByIdTestimonial,
   putByIdTestimonial,
 };

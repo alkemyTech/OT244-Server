@@ -1,36 +1,35 @@
-const { request, response } = require("express");
 const { News } = require("../models");
+const { nextPage, prevPage } = require("../helpers/paginationTools");
 
-async function createNews(req, res) {
+const createNews = async (req, res) => {
   try {
     const { name, content, image, categoryId } = req.body;
     const news = await News.create({ name, content, image, categoryId });
 
     res.status(201).json(news);
   } catch (error) {
-    console.log(error);
     res.status(500).json({ msg: "An unexpected error occurred" });
   }
 }
 
-const deleteNew = async(req = request, res = response, next) => {
+const deleteNew = async (req, res, next) => {
   const { id } = req.params;
-  try{
+  try {
     const myNews = await News.destroy({
       where: { id }
     })
-    if( myNews ){
+    if (myNews) {
       return res.json({
         msg: 'The new has been deleted!'
       })
-    }else{
+    } else {
       return res.status(404).json({
-        msg: "The new doesnt exist or it had been deleted"
-    })
+        msg: "The new doesn't exist or it had been deleted"
+      })
     }
-  }catch(error){
-    console.log(error)
-}
+  } catch (error) {
+    next(error)
+  }
 }
 
 const updateNews = async (req, res, next) => {
@@ -54,6 +53,7 @@ const updateNews = async (req, res, next) => {
   }
 };
 
+<<<<<<< HEAD
 async function getNew(req, res, next) { 
   const  id  = req.params.id;
     try{
@@ -71,7 +71,48 @@ async function getNew(req, res, next) {
         res.status(404).json({
           msg: "This news doesn't exist!"
         });
+=======
+async function getNew(req, res, next) {
+  const id = req.params.id
+  try {
+    const news = await News.findOne({
+      where: { id },
+      attributes: {
+        exclude: ['id', 'deletedAt', 'createdAt', 'updatedAt']
+>>>>>>> be9c8aff2d3aa896d27f3f7006e6cee75fc88a1d
       }
+    })
+    if (news) {
+      return res.json({
+        news
+      })
+    } else {
+      res.status(404).json({
+        msg: "This news doesn't exist!"
+      });
+    }
+  } catch (error) {
+    next(error)
+  }
+}
+
+const getAllNews = async (req, res) => {
+  const { page=0, limit=10 } = req.query;
+  const offset = parseInt(page * limit);
+  const endpoint = "news";
+  try {
+    const getData = await News.findAndCountAll({
+      limit: parseInt(limit),
+      offset
+    });
+
+    const pages = Math.floor(getData.count / size);
+
+    res.status(200).json({
+      getData,
+      next: nextPage(endpoint,parseInt(page), pages),
+      prev: prevPage(endpoint,parseInt(page), pages),
+    })
   } catch (error) {
     next(error)
   }
@@ -82,4 +123,5 @@ module.exports = {
   deleteNew,
   getNew,
   updateNews,
+  getAllNews,
 };

@@ -1,9 +1,6 @@
-const { response } = require( "express" );
 const { Activities } = require("../models");
 
-const getActivities = async ( req, res ) => {};
-
-const addActivity = async ( req, res = response ) => {
+const addActivity = async (req, res) => {
     const { name, content, image } = req.body;
     try{        
         const activitie = await Activities.create({
@@ -21,12 +18,12 @@ const addActivity = async ( req, res = response ) => {
             activitie
         })
     }catch( error ){
-        console.log( error );
         return res.status(500).json({
             msg: 'Please contact to support'
         })
     }
 };
+
 const updateActivityById = async (req, res, next) => {
     const { id } = req.params;
     const { name, content, image } = req.body;
@@ -50,11 +47,8 @@ const updateActivityById = async (req, res, next) => {
       next(error);
     }
 };
-const deleteActivity = async ( req, res ) => {};
 
 module.exports = {
-    getActivities,
     addActivity,
     updateActivityById,
-    deleteActivity,
 }
