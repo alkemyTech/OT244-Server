@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1660931058644" clover="3.2.0">
-  <project timestamp="1660931058644" name="All files">
-    <metrics statements="825" coveredstatements="624" conditionals="99" coveredconditionals="42" methods="100" coveredmethods="64" elements="1024" coveredelements="730" complexity="0" loc="825" ncloc="825" packages="10" files="68" classes="68"/>
+<coverage generated="1660940097006" clover="3.2.0">
+  <project timestamp="1660940097006" name="All files">
+    <metrics statements="825" coveredstatements="617" conditionals="99" coveredconditionals="40" methods="100" coveredmethods="63" elements="1024" coveredelements="720" complexity="0" loc="825" ncloc="825" packages="10" files="68" classes="68"/>
     <package name="OT244-Server">
       <metrics statements="32" coveredstatements="32" conditionals="4" coveredconditionals="3" methods="2" coveredmethods="2"/>
       <file name="app.js" path="C:\Users\mer13\Desktop\proyectos\Alkemy\OT244-Server\app.js">
@@ -123,7 +123,7 @@
       </file>
     </package>
     <package name="OT244-Server.controllers">
-      <metrics statements="327" coveredstatements="181" conditionals="43" coveredconditionals="14" methods="38" coveredmethods="19"/>
+      <metrics statements="327" coveredstatements="175" conditionals="43" coveredconditionals="12" methods="38" coveredmethods="19"/>
       <file name="activities.js" path="C:\Users\mer13\Desktop\proyectos\Alkemy\OT244-Server\controllers\activities.js">
         <metrics statements="20" coveredstatements="16" conditionals="4" coveredconditionals="2" methods="2" coveredmethods="2"/>
         <line num="1" count="8" type="stmt"/>
@@ -262,7 +262,7 @@
         <line num="49" count="8" type="stmt"/>
       </file>
       <file name="contacts.js" path="C:\Users\mer13\Desktop\proyectos\Alkemy\OT244-Server\controllers\contacts.js">
-        <metrics statements="22" coveredstatements="20" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <metrics statements="22" coveredstatements="16" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
         <line num="1" count="8" type="stmt"/>
         <line num="2" count="8" type="stmt"/>
         <line num="3" count="8" type="stmt"/>
@@ -272,12 +272,12 @@
         <line num="8" count="3" type="stmt"/>
         <line num="10" count="3" type="stmt"/>
         <line num="11" count="3" type="stmt"/>
-        <line num="12" count="3" type="cond" truecount="2" falsecount="0"/>
-        <line num="13" count="2" type="stmt"/>
-        <line num="17" count="2" type="stmt"/>
-        <line num="18" count="2" type="stmt"/>
-        <line num="19" count="2" type="stmt"/>
-        <line num="23" count="1" type="stmt"/>
+        <line num="12" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="23" count="3" type="stmt"/>
         <line num="29" count="0" type="stmt"/>
         <line num="33" count="8" type="stmt"/>
         <line num="35" count="1" type="stmt"/>
@@ -324,7 +324,7 @@
         <line num="93" count="8" type="stmt"/>
       </file>
       <file name="news.js" path="C:\Users\mer13\Desktop\proyectos\Alkemy\OT244-Server\controllers\news.js">
-        <metrics statements="43" coveredstatements="26" conditionals="8" coveredconditionals="2" methods="5" coveredmethods="4"/>
+        <metrics statements="43" coveredstatements="25" conditionals="8" coveredconditionals="1" methods="5" coveredmethods="4"/>
         <line num="1" count="8" type="stmt"/>
         <line num="2" count="8" type="stmt"/>
         <line num="4" count="8" type="stmt"/>
@@ -337,9 +337,9 @@
         <line num="16" count="2" type="stmt"/>
         <line num="17" count="2" type="stmt"/>
         <line num="18" count="2" type="stmt"/>
-        <line num="21" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="22" count="1" type="stmt"/>
-        <line num="26" count="1" type="stmt"/>
+        <line num="21" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
         <line num="31" count="0" type="stmt"/>
         <line num="35" count="8" type="stmt"/>
         <line num="36" count="2" type="stmt"/>
@@ -429,7 +429,7 @@
         <line num="79" count="8" type="stmt"/>
       </file>
       <file name="testimonial.js" path="C:\Users\mer13\Desktop\proyectos\Alkemy\OT244-Server\controllers\testimonial.js">
-        <metrics statements="31" coveredstatements="22" conditionals="2" coveredconditionals="1" methods="4" coveredmethods="3"/>
+        <metrics statements="31" coveredstatements="21" conditionals="2" coveredconditionals="1" methods="4" coveredmethods="3"/>
         <line num="1" count="8" type="stmt"/>
         <line num="2" count="8" type="stmt"/>
         <line num="4" count="8" type="stmt"/>
@@ -450,9 +450,9 @@
         <line num="39" count="1" type="stmt"/>
         <line num="41" count="1" type="stmt"/>
         <line num="43" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="44" count="0" type="stmt"/>
-        <line num="49" count="1" type="stmt"/>
-        <line num="55" count="1" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
         <line num="58" count="0" type="stmt"/>
         <line num="62" count="8" type="stmt"/>
         <line num="63" count="1" type="stmt"/>
@@ -499,7 +499,7 @@
       </file>
     </package>
     <package name="OT244-Server.helpers">
-      <metrics statements="56" coveredstatements="48" conditionals="16" coveredconditionals="9" methods="9" coveredmethods="6"/>
+      <metrics statements="56" coveredstatements="47" conditionals="16" coveredconditionals="9" methods="9" coveredmethods="5"/>
       <file name="jwt-generation.js" path="C:\Users\mer13\Desktop\proyectos\Alkemy\OT244-Server\helpers\jwt-generation.js">
         <metrics statements="8" coveredstatements="7" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="8" type="stmt"/>
@@ -512,10 +512,10 @@
         <line num="19" count="8" type="stmt"/>
       </file>
       <file name="mailer.js" path="C:\Users\mer13\Desktop\proyectos\Alkemy\OT244-Server\helpers\mailer.js">
-        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <metrics statements="4" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="1" count="8" type="stmt"/>
         <line num="3" count="8" type="stmt"/>
-        <line num="4" count="2" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
         <line num="12" count="8" type="stmt"/>
       </file>
       <file name="paginationTools.js" path="C:\Users\mer13\Desktop\proyectos\Alkemy\OT244-Server\helpers\paginationTools.js">

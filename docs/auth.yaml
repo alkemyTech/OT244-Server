@@ -98,8 +98,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UserData'
-        '401':
-          description : Authentication failed! Email / password does not correct.
+        '500':
+          description : An unexpected error occurred
           content:
             application/json:
               schema:
