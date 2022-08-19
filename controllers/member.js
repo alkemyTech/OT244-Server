@@ -1,4 +1,3 @@
-const { request, response } = require("express")
 const { Member } = require('../models')
 const { paginationMembers } = require("../services/menber")
 
@@ -57,7 +56,7 @@ const updateMember = async (req, res, next) => {
     }
 }
 
-const getMembers = async(req = request, res = response) => {
+const getMembers = async(req, res) => {
     try {
         let { page = 0 } = req.query
         page = parseInt(page)

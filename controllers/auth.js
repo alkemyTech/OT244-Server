@@ -1,4 +1,3 @@
-const { request, response } = require('express');
 const authService = require('../services/authService');
 const { User } = require("../models");
 const bcrypt = require("bcrypt");
@@ -7,7 +6,7 @@ const ejs = require('ejs')
 const path = require('path');
 const sendEmail = require("../helpers/mailer");
 
-const login = async(req = request, res = response, next) => {
+const login = async(req, res, next) => {
 
     const {email, password} = req.body;
     try{
@@ -18,7 +17,7 @@ const login = async(req = request, res = response, next) => {
     }
 }
 
-async function createUser(request, response) {
+const createUser = async (request, response) => {
   try {
     
     const { firstName, lastName, email, password} = request.body;

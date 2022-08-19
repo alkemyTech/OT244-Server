@@ -1,8 +1,7 @@
-const { request, response } = require("express");
 const { News } = require("../models");
 const { nextPage, prevPage } = require("../helpers/paginationTools");
 
-async function createNews(req, res) {
+const createNews = async (req, res) => {
   try {
     const { name, content, image, categoryId } = req.body;
     const news = await News.create({ name, content, image, categoryId });
@@ -13,7 +12,7 @@ async function createNews(req, res) {
   }
 }
 
-const deleteNew = async (req = request, res = response, next) => {
+const deleteNew = async (req, res, next) => {
   const { id } = req.params;
   try {
     const myNews = await News.destroy({
@@ -54,7 +53,7 @@ const updateNews = async (req, res, next) => {
   }
 };
 
-async function getNew(request, response, next) {
+async function getNew(req, res, next) {
   const id = req.params.id
   try {
     const news = await News.findOne({

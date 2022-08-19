@@ -1,7 +1,6 @@
-const { response } = require( "express" );
 const { Activities } = require("../models");
 
-const addActivity = async ( req, res = response ) => {
+const addActivity = async (req, res) => {
     const { name, content, image } = req.body;
     try{        
         const activitie = await Activities.create({

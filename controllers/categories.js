@@ -1,4 +1,3 @@
-const { request, response } = require("express");
 const {Categories} = require("../models")
 const { nextPage, prevPage } = require("../helpers/paginationTools");
 
@@ -25,7 +24,7 @@ const getCategories = async (req,res) => {
   }
 }
 
-async function createCategory(req, res) {
+const createCategory = async (req, res) => {
   try {
     const { name, image, description } = req.body;
 
@@ -94,7 +93,7 @@ const updateCategory = async (req, res, next) => {
   }
 };
 
-const getCategoryById = async(req = request, res = response, next) => {
+const getCategoryById = async(req, res, next) => {
   const id = req.params.id
   try{
     const category = await Categories.findOne({
