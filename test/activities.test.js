@@ -17,14 +17,14 @@ describe('POST:/activities', () =>{
     test('There is no token', async() => {
         const api = await supertest(app)
         .post("/activities")
-        .expect(403)
+        expect(api.statusCode).toBe(403)
     })
 
     test('User is not authorize', async() => {
         const api = await supertest(app)
         .post("/activities")
         .set('Authorization', `Bearer ${standard}`)
-        .expect(401)
+        expect(api.statusCode).toBe(401)
     })
 
     test('There is no name', async() => {
@@ -32,7 +32,7 @@ describe('POST:/activities', () =>{
         .post("/activities")
         .send({content:"content", image:"image.example"})
         .set('Authorization', `Bearer ${admin}`)
-        .expect(400)
+        expect(api.statusCode).toBe(400)
     })
 
     test('There is no content', async() => {
@@ -40,7 +40,7 @@ describe('POST:/activities', () =>{
         .post("/activities")
         .send({name:"name", image:"image.example"})
         .set('Authorization', `Bearer ${admin}`)
-        .expect(400)
+        expect(400)
     })
 
     test('There is no image', async() => {
@@ -48,7 +48,7 @@ describe('POST:/activities', () =>{
         .post("/activities")
         .send({content:"content", name:"name"})
         .set('Authorization', `Bearer ${admin}`)
-        .expect(400)
+        expect(api.statusCode).toBe(400)
     })
     
     test('There is no Body', async() => {
@@ -56,7 +56,7 @@ describe('POST:/activities', () =>{
         .post("/activities")
         .send({})
         .set('Authorization', `Bearer ${admin}`)
-        .expect(400)
+        expect(api.statusCode).toBe(400)
     })
 
     test('If there is data', async() => {
@@ -64,8 +64,7 @@ describe('POST:/activities', () =>{
         .post("/activities")
         .send({content:"content", name:"name", image:"image.example"})
         .set('Authorization', `Bearer ${admin}`)
-        .expect(201)
-        .expect('Content-Type', /application\/json/)
+        expect(api.statusCode).toBe(201)
     })
 })
 
@@ -73,14 +72,14 @@ describe('PUT:/activities/id', () =>{
     test('There is no token', async() => {
         const api = await supertest(app)
         .put("/activities/1")
-        .expect(403)
+        expect(api.statusCode).toBe(403)
     })
 
     test('User is not authorize', async() => {
         const api = await supertest(app)
         .put("/activities/1")
         .set('Authorization', `Bearer ${standard}`)
-        .expect(401)
+        expect(api.statusCode).toBe(401)
     })
 
     test('There is no name', async() => {
@@ -88,7 +87,7 @@ describe('PUT:/activities/id', () =>{
         .put("/activities/1")
         .send({content:"content", image:"image.example"})
         .set('Authorization', `Bearer ${admin}`)
-        .expect(400)
+        expect(api.statusCode).toBe(400)
     })
 
     test('There is no content', async() => {
@@ -96,7 +95,7 @@ describe('PUT:/activities/id', () =>{
         .put("/activities/1")
         .send({name:"name", image:"image.example", content:""})
         .set('Authorization', `Bearer ${admin}`)
-        .expect(400)
+        expect(api.statusCode).toBe(400)
     })
     
     test('There is no image', async() => {
@@ -104,7 +103,7 @@ describe('PUT:/activities/id', () =>{
         .put("/activities/1")
         .send({content:"content", name:"name"})
         .set('Authorization', `Bearer ${admin}`)
-        .expect(400)
+        expect(api.statusCode).toBe(400)
     })
 
     test('There is no Body', async() => {
@@ -112,7 +111,7 @@ describe('PUT:/activities/id', () =>{
         .put("/activities/1")
         .send({name:"", content:"", image:""})
         .set('Authorization', `Bearer ${admin}`)
-        .expect(400)
+        expect(api.statusCode).toBe(400)
     })
 
     test('If there is data', async() => {
@@ -120,14 +119,13 @@ describe('PUT:/activities/id', () =>{
         .put("/activities/1")
         .send({content:"content-example", name:"name", image:"image.example"})
         .set('Authorization', `Bearer ${admin}`)
-        .expect(200)
-        .expect('Content-Type', /application\/json/)
+        expect(api.statusCode).toBe(200)
     })
 
     test('ID not found', async() => {
         const api = await supertest(app)
         .put("/activities")
         .set('Authorization', `Bearer ${admin}`)
-        .expect(404)
+        expect(api.statusCode).toBe(404)
     })
 })
