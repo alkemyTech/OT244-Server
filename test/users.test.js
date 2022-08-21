@@ -1,7 +1,22 @@
 const app = require("../app")
 const request = require('supertest')(app)
 const generateToken = require("../helpers/jwt-generation")
-const { User } = require("../models")
+const { User, Role } = require("../models")
+
+const roles = [
+    {
+        name: 'Admin',
+        description: 'Usuario administrador',
+        createdAt: new Date,
+        updatedAt: new Date
+      },
+      {
+        name: 'Standard',
+        description: 'Usuario regular',
+        createdAt: new Date,
+        updatedAt: new Date
+      }
+]
 
 const seederUser = [
     {
@@ -84,6 +99,7 @@ const myEmpty = ''
 
 describe('UPDATE user by id /users/:id', () => {
     beforeAll(async() => {
+        await Role.bulkCreate(roles)
         await User.bulkCreate(seederUser)
     })
     test("User updated", async() => {
@@ -199,9 +215,13 @@ describe('DELETE user by id /users/:id', () => {
     })
 
     afterAll(async() => {
+        await Role.destroy({
+            where: {},
+            force: true
+        });
         await User.destroy({
             where: {},
             force: true
-          });
+        });
     })
 })
