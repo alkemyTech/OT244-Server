@@ -1,7 +1,22 @@
 const app = require("./../app")
 const request = require("supertest")(app);
 const generateToken = require("./../helpers/jwt-generation");
-const{ contacts } = require("./../models")
+const{ contacts, Role } = require("./../models")
+
+const roles = [
+    {
+        name: 'Admin',
+        description: 'Usuario administrador',
+        createdAt: new Date,
+        updatedAt: new Date
+      },
+      {
+        name: 'Standard',
+        description: 'Usuario regular',
+        createdAt: new Date,
+        updatedAt: new Date
+      }
+]
 
 const newContact = {
     name: 'Luis',
@@ -56,6 +71,9 @@ const tokenInvalid = 'jcbdfjuskjskcjdnbckkncd.jcbdjbvjsncbjdkjsjnxx.abcjubdjcbdj
 
 
 describe('POST /contacts', () => {
+    beforeAll(async() => {
+        await Role.bulkCreate(roles)
+    })
     test('Add contact', async() => {
         const response = await request
             .post('/contacts')
@@ -128,6 +146,10 @@ describe('GET /contacts', () => {
     })
 
     afterAll(async() => {
+        await Role.destroy({
+            where: {},
+            force: true
+        });
         await contacts.destroy({
             where: {},
             force: true
