@@ -1,6 +1,7 @@
 const app = require("./../app")
 const request = require("supertest")(app);
 const generateToken = require("./../helpers/jwt-generation");
+const{ contacts } = require("./../models")
 
 const newContact = {
     name: 'Luis',
@@ -13,7 +14,7 @@ const contactEmptyMessage = {
     name: 'Luis',
     phone: 3227191368,
     email: 'lucho2@email.com',
-    message: ''    
+    message: ''
 }
 
 const contactEmptyName = {
@@ -124,5 +125,12 @@ describe('GET /contacts', () => {
         const response = await request
             .get('/contacts')
         expect(response.status).toBe(403)
+    })
+
+    afterAll(async() => {
+        await contacts.destroy({
+            where: {},
+            force: true
+        });
     })
 })
