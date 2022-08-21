@@ -16,14 +16,14 @@ describe('POST:/organization/public/id', () =>{
     test('There is no token', async() => {
         const api = await supertest(app)
         .post("/organization/public/1")
-        .expect(403)
+        expect(api.statusCode).toBe(403)
     })
 
     test('User is not authorize', async() => {
         const api = await supertest(app)
         .post("/organization/public/1")
         .set('Authorization', `Bearer ${standard}`)
-        .expect(401)
+        expect(api.statusCode).toBe(401)
     })
 
     test('There is no name', async() => {
@@ -38,7 +38,7 @@ describe('POST:/organization/public/id', () =>{
             aboutUsText: "aboutUsText-example"
         })
         .set('Authorization', `Bearer ${admin}`)
-        .expect(400)
+        expect(api.statusCode).toBe(400)
     })
     
     test('There is no image', async() => {
@@ -53,7 +53,7 @@ describe('POST:/organization/public/id', () =>{
             aboutUsText: "aboutUsText-example"
         })
         .set('Authorization', `Bearer ${admin}`)
-        .expect(400)
+        expect(api.statusCode).toBe(400)
     })
 
     test('There is no address', async() => {
@@ -68,7 +68,7 @@ describe('POST:/organization/public/id', () =>{
             aboutUsText: "aboutUsText-example"
         })
         .set('Authorization', `Bearer ${admin}`)
-        .expect(400)
+        expect(api.statusCode).toBe(400)
     })
 
     test('There is no phone', async() => {
@@ -84,7 +84,7 @@ describe('POST:/organization/public/id', () =>{
             aboutUsText: "aboutUsText-example"
         })
         .set('Authorization', `Bearer ${admin}`)
-        .expect(400)
+        expect(api.statusCode).toBe(400)
     })
     
     test('There is no email', async() => {
@@ -99,7 +99,7 @@ describe('POST:/organization/public/id', () =>{
             aboutUsText: "aboutUsText-example"
         })
         .set('Authorization', `Bearer ${admin}`)
-        .expect(400)
+        expect(api.statusCode).toBe(400)
     })
 
     test('There is no welcomeText', async() => {
@@ -114,7 +114,7 @@ describe('POST:/organization/public/id', () =>{
             aboutUsText: "aboutUsText-example"
         })
         .set('Authorization', `Bearer ${admin}`)
-        .expect(400)
+        expect(api.statusCode).toBe(400)
     })
 
     test('There is no aboutUsText', async() => {
@@ -129,7 +129,7 @@ describe('POST:/organization/public/id', () =>{
             welcomeText: "welcomeText-example"
         })
         .set('Authorization', `Bearer ${admin}`)
-        .expect(400)
+        expect(api.statusCode).toBe(400)
     })
 
     test('There is no Data', async() => {
@@ -145,30 +145,14 @@ describe('POST:/organization/public/id', () =>{
             aboutUsText: ""
         })
         .set('Authorization', `Bearer ${admin}`)
-        .expect(400)
-    })
-    test('Data already ready', async() => {
-        const api = await supertest(app)
-        .post("/organization/public/1")
-        .send({
-            name: "name-example", 
-            image: "https://www.thunderclient.com/welcome", 
-            address: "address-example", 
-            phone: "+583015399890", 
-            email: "testjose@tes.com", 
-            welcomeText: "welcomeText-example",
-            aboutUsText: "aboutUsText-example"
-        })
-        .set('Authorization', `Bearer ${admin}`)
-        .expect(404)
-        .expect('Content-Type', /application\/json/)
+        expect(api.statusCode).toBe(400)
     })
 
     test('ID not found', async() => {
         const api = await supertest(app)
         .put("/organization/public")
         .set('Authorization', `Bearer ${admin}`)
-        .expect(404)
+        expect(api.statusCode).toBe(404)
     })
     
 })
