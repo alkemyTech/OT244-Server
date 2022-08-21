@@ -1,23 +1,17 @@
-const jwt = require('jsonwebtoken');
+
 
 const ownershipVerification = (req, res, next) => {
 
-    const { id } = req?.params;
-    const token = req?.headers?.authorization;
-
-    if (!token || !id) {
-        res.json('Id or token missing')
-    }
+    const  idUser  = req.user.userData.roleId.toString()
+    const { id } = req.params
 
     try {
-
-        const payload = jwt.verify(token, process.env.JWT_SECRET);
-
-        if (payload.userData.roleId == process.env.ADMIN_ROLE || id == payload.userData.id) {
+        
+        if (idUser === process.env.ADMIN_ROLE || id === idUser) {
             next();
         }else{
             return res.status(403).json({
-                msg: 'Unauthorized'
+                msg: 'Unauthorized',
             });
         }
     } catch (error) {
