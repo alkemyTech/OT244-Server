@@ -13,16 +13,13 @@ const ownershipVerification = (req, res, next) => {
 
         const payload = jwt.verify(token, process.env.JWT_SECRET);
 
-        if (payload.roleId === process.env.ADMIN_ROLE || id === payload.id) {
-
+        if (payload.userData.roleId == process.env.ADMIN_ROLE || id == payload.userData.id) {
             next();
+        }else{
+            return res.status(403).json({
+                msg: 'Unauthorized'
+            });
         }
-
-        return res.status(403).json({
-            msg: 'Unauthorized'
-        });
-
-
     } catch (error) {
         res.status(403).json({
             msg: 'Unauthorized'

@@ -7,30 +7,30 @@ const seederUser = [
     {
         firstName: 'Juan',
         lastName: 'Dev',
-        email: 'prueba3@test.com',
+        email: 'prueba@test.com',
         password: 'Pass1234',
+        roleId: process.env.STANDARD_ROLE,
         photo: "localhost:4001/profile.png"
     },
     {
         firstName: 'Max',
         lastName: 'Dev',
-        email: 'max3@test.com',
+        email: 'max@test.com',
         password: 'Pass1234',
+        roleId: process.env.STANDARD_ROLE,
         photo: "localhost:4001/profile.png"
     }
 ]
 
-const user = {
+const user = generateToken({
     email: 'juan@test.com',
-    password: 'Juan92',
     roleId: process.env.STANDARD_ROLE
-}
+})
 
-const admin = {
+const admin = generateToken({
     email: 'juan@test.com',
-    password: 'Juan92',
     roleId: process.env.ADMIN_ROLE_ID
-}
+})
 
 const updatedUser = {
     firstName: "Juan",
@@ -76,17 +76,15 @@ const invalidPhoto = {
     photo: "invalid"
 }
 
-const token = generateToken(user)
-const emptyToken = ''
-const adminToken = generateToken(admin)
-
+const emptyToken = null
 const invalidId = 12345
 const emptyId = null
 const id = 1
+const myEmpty = ''
 
 describe('UPDATE user by id /users/:id', () => {
-    beforeEach(() => {
-        User.bulkCreate(seederUser)
+    beforeAll(async() => {
+        await User.bulkCreate(seederUser)
     })
     test("User updated", async() => {
         const response = await request
@@ -170,32 +168,40 @@ describe('UPDATE user by id /users/:id', () => {
     })
 })
 
-describe('DELETE user by id /news/:id', () => {
+describe('DELETE user by id /users/:id', () => {
+    
     test("User deleted", async() => {
         const response = await request            
-            .delete(`/users/${ id }`)
-            .set('Authorization', `Token ${ adminToken }`)           
+            .delete(`/users/${id}`)
+            .set('Authorization', myEmpty)           
         expect(response.status).toBe(200)
     })
 
     test("Id missing", async() => {
         const response = await request
             .delete(`/users/${ emptyId }`)
-            .set('Authorization', `Token ${ token }`)
+            .set('Authorization', user)
         expect(response.status).toBe(403)
     })
 
     test("token missing", async() => {
         const response = await request
             .delete(`/users/${ id }`)
-            .set('Authorization', `Token ${ emptyToken }`)
+            .set('Authorization', emptyToken)
         expect(response.status).toBe(403)
     })
 
     test("invalid ID", async() => {
         const response = await request
             .delete(`/users/${ invalidId }`)
-            .set('Authorization', `Token ${ token }`)
+            .set('Authorization', user)
         expect(response.status).toBe(403)
+    })
+
+    afterAll(async() => {
+        await User.destroy({
+            where: {},
+            force: true
+          });
     })
 })
