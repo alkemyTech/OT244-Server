@@ -84,11 +84,16 @@ const id = 1;
 beforeAll(async () => {
     
     const users = await User.findAll({ paranoid: false });
+    const roles = await Role.findAll({ paranoid: false });
     
+    if (roles.length < 1) {
+      await Role.create({name:"Admin"})
+      await Role.create({name:"Standard"})
+    }
     if (users.length < 1) {
         
         await User.bulkCreate(seederUser)
-    }
+  }
 })
 
 describe("UPDATE user by id /users/:id", () => {
