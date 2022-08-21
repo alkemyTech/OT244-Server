@@ -3,6 +3,22 @@ const request = require('supertest')(app)
 const generateToken = require("../helpers/jwt-generation")
 const { User } = require("../models")
 
+const seederUser = [
+    {
+        firstName: 'Juan',
+        lastName: 'Dev',
+        email: 'prueba3@test.com',
+        password: 'Pass1234',
+        photo: "localhost:4001/profile.png"
+    },
+    {
+        firstName: 'Max',
+        lastName: 'Dev',
+        email: 'max3@test.com',
+        password: 'Pass1234',
+        photo: "localhost:4001/profile.png"
+    }
+]
 
 const user = {
     email: 'juan@test.com',
@@ -19,19 +35,19 @@ const admin = {
 const updatedUser = {
     firstName: "Juan",
     lastName: "Triviani",
-    photo: `https://cdn.superaficionados.com/imagenes/1-mugen-ressha-hen-personajes-akaza-cke.jpg`
+    photo: "localhost:4001/profile2.png"
 }
 
 const emptyFirstName = {
     firstName: "",
     lastName: "Triviani",
-    photo: `https://www.egames.news/__export/1643571844615/sites/debate/img/2022/01/30/cuxl_es_el_verdadero_poder_de_zenitsu_agatsuma_en_demon_slayer.jpg_554688468.jpg`
+    photo: "localhost:4001/profile2.png"
 }
 
 const emptyLastName = {
     firstName: "Juan",
     lastName: "",
-    photo: `https://www.egames.news/__export/1643571844615/sites/debate/img/2022/01/30/cuxl_es_el_verdadero_poder_de_zenitsu_agatsuma_en_demon_slayer.jpg_554688468.jpg`
+    photo: "localhost:4001/profile2.png"
 }
 
 const emptyPhoto = {
@@ -66,10 +82,12 @@ const adminToken = generateToken(admin)
 
 const invalidId = 12345
 const emptyId = null
-const id = 2
-
+const id = 1
 
 describe('UPDATE user by id /users/:id', () => {
+    beforeEach(() => {
+        User.bulkCreate(seederUser)
+    })
     test("User updated", async() => {
         const response = await request
             .put(`/users/${id}`)
