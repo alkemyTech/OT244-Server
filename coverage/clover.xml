@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1660927023350" clover="3.2.0">
-  <project timestamp="1660927023350" name="All files">
-    <metrics statements="805" coveredstatements="483" conditionals="98" coveredconditionals="17" methods="97" coveredmethods="34" elements="1000" coveredelements="534" complexity="0" loc="805" ncloc="805" packages="10" files="67" classes="67"/>
+<coverage generated="1661180029793" clover="3.2.0">
+  <project timestamp="1661180029793" name="All files">
+    <metrics statements="805" coveredstatements="484" conditionals="98" coveredconditionals="18" methods="97" coveredmethods="34" elements="1000" coveredelements="536" complexity="0" loc="805" ncloc="805" packages="10" files="67" classes="67"/>
     <package name="OT244-Server">
       <metrics statements="32" coveredstatements="27" conditionals="4" coveredconditionals="0" methods="2" coveredmethods="0"/>
       <file name="app.js" path="/home/martindev/OT244-Server/app.js">
@@ -123,7 +123,7 @@
       </file>
     </package>
     <package name="OT244-Server.controllers">
-      <metrics statements="326" coveredstatements="101" conditionals="43" coveredconditionals="5" methods="38" coveredmethods="4"/>
+      <metrics statements="326" coveredstatements="102" conditionals="43" coveredconditionals="6" methods="38" coveredmethods="4"/>
       <file name="activities.js" path="/home/martindev/OT244-Server/controllers/activities.js">
         <metrics statements="20" coveredstatements="4" conditionals="4" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
@@ -323,7 +323,7 @@
         <line num="93" count="1" type="stmt"/>
       </file>
       <file name="news.js" path="/home/martindev/OT244-Server/controllers/news.js">
-        <metrics statements="43" coveredstatements="30" conditionals="8" coveredconditionals="5" methods="5" coveredmethods="4"/>
+        <metrics statements="43" coveredstatements="31" conditionals="8" coveredconditionals="6" methods="5" coveredmethods="4"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
@@ -336,9 +336,9 @@
         <line num="16" count="2" type="stmt"/>
         <line num="17" count="2" type="stmt"/>
         <line num="18" count="2" type="stmt"/>
-        <line num="21" count="2" type="cond" truecount="1" falsecount="1"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="26" count="2" type="stmt"/>
+        <line num="21" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
         <line num="31" count="0" type="stmt"/>
         <line num="35" count="1" type="stmt"/>
         <line num="36" count="2" type="stmt"/>

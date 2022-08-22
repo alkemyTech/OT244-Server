@@ -1,6 +1,6 @@
 const app = require('../app');
 const request = require('supertest')(app);
-const { sequelize, News } = require('../models');
+const { sequelize } = require('../models');
 const { describe, test } = require('@jest/globals');
 const generateToken = require('../helpers/jwt-generation');
 
@@ -42,54 +42,62 @@ const standardToken = generateToken(standardUser);
 
 describe('POST /news', () => {
     test('Should create a new', async () => {
-        const response = await request.post('/news')
+        const response = await request
+            .post('/news')
             .set('Authorization', `Bearer ${token}`)
             .send(randomNew)
         expect(response.status).toBe(201);
     });
 
     test('Should return an error if no token was sent', async () => {
-        request.post('/news')
+        request
+            .post('/news')
             .send(randomNew)
             .then(response => expect(response.status).toBe(403))
     });
 
     test('Should return a 403 error if token is invalid', async () => {
-        request.post('/news')
+        request
+            .post('/news')
             .set('Authorization', `Bearer 123`)
             .send(randomNew)
             .then(response => expect(response.status).toBe(403));
     });
 
     test('Should respond with a 403 error - user is not admin', async () => {
-        const response = await request.post('/news')
+        const response = await request
+            .post('/news')
             .set('Authorization', `Bearer ${standardToken}`)
         expect(response.status).toBe(401);
     })
 
     test('Should return an error if no fields were sent', async () => {
-        const response = await request.post('/news')
+        const response = await request
+            .post('/news')
             .set('Authorization', `Bearer ${token}`)
             .send({})
         expect(response.status).toBe(400)
     })
 
     test('Should return an 400 error - no name was sent', async () => {
-        const response = await request.post('/news')
+        const response = await request
+            .post('/news')
             .set('Authorization', `Bearer ${token}`)
             .send(noNameNew)
         expect(response.status).toBe(400)
     });
 
     test('Should return an 400 error - no content was sent', async () => {
-        const response = await request.post('/news')
+        const response = await request
+            .post('/news')
             .set('Authorization', `Bearer ${token}`)
             .send(noContentNew)
         expect(response.status).toBe(400)
     });
 
     test('Should return an 400 error - no image was sent', async () => {
-        const response = await request.post('/news')
+        const response = await request
+            .post('/news')
             .set('Authorization', `Bearer ${token}`)
             .send(noImageNew)
         expect(response.status).toBe(400)
@@ -98,66 +106,71 @@ describe('POST /news', () => {
 
 describe('PUT /news/:id', () => {
     test('Should update a new', async () => {
-        const response = await request.put('/news/3')
+        const response = await request
+            .put('/news/1')
             .set('Authorization', `Bearer ${token}`)
             .send(randomNew)
-        expect(response.status).toBe(200)
-        const news = await News.findByPk(3)
-        expect(news.name).toBeDefined()
-        expect(news.content).toBeDefined()
-        expect(news.image).toBeDefined()
+        expect(response.status).toBe(200);
     });
 
     test('Should return an error if no token was sent', async () => {
-        request.put('/news/3')
+        request
+            .put('/news/1')
             .send(randomNew)
             .then(response => expect(response.status).toBe(403))
     });
 
     test('Should return a 403 error if token is invalid', async () => {
-        request.put('/news/3')
+        request
+            .put('/news/1')
             .set('Authorization', `Bearer 123`)
             .send(randomNew)
             .then(response => expect(response.status).toBe(403));
     });
 
     test('Should respond with a 403 error - user is not admin', async () => {
-        const response = await request.put('/news/3')
+        const response = await request
+            .put('/news/1')
             .set('Authorization', `Bearer ${standardToken}`)
             .send(randomNew);
         expect(response.status).toBe(401);
     });
 
     test('Should return a 400 error if no fields were sent', async () => {
-        const response = await request.put('/news/3')
+        const response = await request
+            .put('/news/1')
             .set('Authorization', `Bearer ${token}`)
             .send({})
         expect(response.status).toBe(400)
     });
 
     test('Should return a 400 error - no name was sent', async () => {
-        const response = await request.put('/news/3')
+        const response = await request
+            .put('/news/1')
             .set('Authorization', `Bearer ${token}`)
             .send(noNameNew)
         expect(response.status).toBe(400)
     });
 
     test('Should return a 400 error - no content was sent', async () => {
-        const response = await request.put('/news/3')
+        const response = await request
+            .put('/news/1')
             .set('Authorization', `Bearer ${token}`)
             .send(noContentNew)
         expect(response.status).toBe(400)
     });
 
     test('Should return a 400 error - no image was sent', async () => {
-        const response = await request.put('/news/3')
+        const response = await request
+            .put('/news/1')
             .set('Authorization', `Bearer ${token}`)
             .send(noImageNew)
         expect(response.status).toBe(400)
     });
 
     test('Should return a 404 error - id does not exist', async () => {
-        const response = await request.put('/news/1234')
+        const response = await request
+            .put('/news/10')
             .set('Authorization', `Bearer ${token}`)
             .send(randomNew)
         expect(response.status).toBe(404)
@@ -166,33 +179,36 @@ describe('PUT /news/:id', () => {
 
 describe('DELETE /news/:id', () => {
     test('Should delete a new', async () => {
-        const response = await request.delete('/news/1')
+        const response = await request
+            .delete('/news/2')
             .set('Authorization', `Bearer ${token}`)
-        expect(response.status).toBe(200)
-        const news = await News.findByPk(1);
-        expect(news).toBeNull();
+        expect(response.status).toBe(200);
     });
 
     test('Should return a 404 error - id does not exist', async () => {
-        const response = await request.delete('/news/1234')
+        const response = await request
+            .delete('/news/10')
             .set('Authorization', `Bearer ${token}`)
             .send(randomNew)
         expect(response.status).toBe(404)
     });
 
     test('Should return an error if no token was sent', async () => {
-        request.delete('/news/1')
+        request
+            .delete('/news/2')
             .then(response => expect(response.status).toBe(403))
     });
 
     test('Should return a 403 error if token is invalid', async () => {
-        request.delete('/news/1')
+        request
+            .delete('/news/2')
             .set('Authorization', `Bearer 123`)
             .then(response => expect(response.status).toBe(403));
     });
 
     test('Should respond with a 403 error - user is not admin', async () => {
-        const response = await request.delete('/news/1')
+        const response = await request
+            .delete('/news/2')
             .set('Authorization', `Bearer ${standardToken}`)
         expect(response.status).toBe(401);
     });
@@ -200,39 +216,42 @@ describe('DELETE /news/:id', () => {
 
 describe('GET /news/:id', () => {
     test('Should return the requested new', async () => {
-        const response = await request.get('/news/5')
+        const response = await request
+            .get('/news/3')
             .set('Authorization', `Bearer ${token}`)
         expect(response.status).toBe(200)
-        const news = await News.findByPk(5)
-        expect(news).toBeDefined();
     });
 
     test('Should return a 404 error - id does not exist', async () => {
-        const response = await request.get('/news/343')
+        const response = await request
+            .get('/news/10')
             .set('Authorization', `Bearer ${token}`)
         expect(response.status).toBe(404)
     });
 
     test('Should return an error if no token was sent', () => {
-        request.get('/news/5')
+        request
+            .get('/news/3')
             .then(response => expect(response.status).toBe(403))
     });
 
     test('Should return a 403 error if token is invalid', async () => {
-        request.get('/news/5')
+        request
+            .get('/news/3')
             .set('Authorization', `Bearer 123`)
             .then(response => expect(response.status).toBe(403));
     });
 
     test('Should respond with a 403 error - user is not admin', async () => {
-        const response = await request.get('/news/5')
+        const response = await request
+            .get('/news/3')
             .set('Authorization', `Bearer ${standardToken}`)
         expect(response.status).toBe(401);
     });
 });
 
-afterAll(() => {
-    sequelize.close();
+afterAll(async () => {
+    await sequelize.close();
 });
 
 
