@@ -20,10 +20,15 @@ const login = async(req, res, next) => {
 
 const createUser = async (request, response) => {
   try {
-    
     const { firstName, lastName, email, password} = request.body;
-    const fileLocation = await uploadFile(request.files.file);
     const passwordHash = await bcrypt.hash(password, Number(auth.rounds));
+    let fileLocation;
+
+    if(request.files == undefined){
+      fileLocation = "https://1.gravatar.com/avatar/7954b53cb8dd62dbae5af2bcc39e7563?s=500&d=mm&r=g"
+    }else{
+      fileLocation = await uploadFile(request.files.file);
+    }
     
     const [user, created] = await User.findOrCreate({
       where: { email },
