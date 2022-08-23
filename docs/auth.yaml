@@ -144,7 +144,7 @@ components:
         password:
           type: string
           description: contraseña del Usuario
-          example: °°°°°°°°
+          example: alkemy2022
     BodyLoginPost:
       type: object
       properties:
@@ -156,7 +156,7 @@ components:
         password:
           type: string
           description: contraseña del Usuario
-          example: °°°°°°°°
+          example: alkemy2022
     
     UserData:
       type: object
