@@ -1,11 +1,12 @@
 const authService = require('../services/authService');
 const { User } = require("../models");
 const bcrypt = require("bcrypt");
-const auth = require('../config/auth')
 const ejs = require('ejs')
 const path = require('path');
 const sendEmail = require("../helpers/mailer");
 const uploadFile = require('../helpers/uploadAWS');
+
+const roleId = process.env.ADMIN_ROLE
 
 const login = async(req, res, next) => {
 
@@ -21,9 +22,9 @@ const login = async(req, res, next) => {
 const createUser = async (request, response) => {
   try {
     const { firstName, lastName, email, password} = request.body;
-    const passwordHash = await bcrypt.hash(password, Number(auth.rounds));
+    const passwordHash = await bcrypt.hash(password, 10);
     let fileLocation;
-
+      
     if(request.files == undefined){
       fileLocation = "https://1.gravatar.com/avatar/7954b53cb8dd62dbae5af2bcc39e7563?s=500&d=mm&r=g"
     }else{
@@ -32,7 +33,7 @@ const createUser = async (request, response) => {
     
     const [user, created] = await User.findOrCreate({
       where: { email },
-      defaults: { firstName, lastName, password: passwordHash, roleId: process.env.STANDARD_ROLE, photo: fileLocation },
+      defaults: { firstName, lastName, password: passwordHash, roleId, photo: fileLocation },
     });
 
     const message = {

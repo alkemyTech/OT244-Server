@@ -2,10 +2,10 @@ const app = require('../app');
 const request = require('supertest');
 
 const userOk = {
-    firstName: "Homer",
-    lastName: "Thompson",
-    email: "homerthomson@aol.com",
-    password: "password",
+  firstName: "Homer",
+  lastName: "Thompson",
+  email: "homerthomson@aol.com",
+  password: "password",
 };
 
 describe("Create a new user", () => {
@@ -13,6 +13,7 @@ describe("Create a new user", () => {
     const res = await request(app)
       .post("/auth/register")
       .send(userOk);
+    
     expect(res.statusCode).toEqual(201);
   });
 });
@@ -111,3 +112,19 @@ describe("Register a user without a lastName", () => {
   })
 })
 
+
+
+/* function reformEmail (email) {
+  const emailInArray = email.split("@")
+
+  const randomNumberToString = getRandomInt(1000).toString()
+
+  emailInArray[0] = emailInArray + randomNumberToString
+  
+  const newEmail = emailInArray.join("@")
+
+  return newEmail;
+}
+function getRandomInt (max){
+  return Math.floor(Math.random() * max);
+} */
